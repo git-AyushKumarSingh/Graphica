@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPD Consultation Desk | Dr. Arjun Mehta | CareFlow</title>
+  <meta name="description" content="CareFlow Clinical Staff Portal - OPD Queue Controller for Dr. Arjun Mehta (Cardiology, Room 104).">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body style="background-color: var(--bg-cream);">
+
+  <!-- Staff Portal Top Header -->
+  <header class="doctor-desk-header">
+    <div class="container doctor-desk-nav">
+      <div class="doctor-desk-title">
+        <div class="hospital-emblem" style="background:rgba(255,255,255,0.2); width:36px; height:36px; border:1px solid rgba(255,255,255,0.3);">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+        </div>
+        <div>
+          <h2>CareFlow Staff Portal • OPD Consultation Desk</h2>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:16px;">
+        <span class="doctor-desk-badge">Clinic Block A • Room 104</span>
+        <a href="index.html" style="color:#ffffff; font-size:0.85rem; text-decoration:underline;">Exit to Hospital Portal</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Doctor Consultation Desk Workspace -->
+  <main class="container">
+    <div class="doctor-main-grid">
+      
+      <!-- Left Action Controller Panel -->
+      <section class="doctor-action-panel">
+        
+        <div class="doctor-profile-summary">
+          <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; font-weight:700; color:var(--accent-terracotta);">
+            Active Clinical Session
+          </div>
+          <h3 class="font-serif">Dr. Arjun Mehta</h3>
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:4px;">
+            MD, DM (Cardiology) • Senior Consultant
+          </div>
+          <div class="room-indicator">
+            Cardiology OPD — Room 104 (1st Floor)
+          </div>
+        </div>
+
+        <!-- Current Active Token Call Box -->
+        <div class="doctor-active-call-box">
+          <div class="call-box-label">CURRENT CONSULTATION TOKEN</div>
+          <div class="call-box-token" id="doc-serving-token">A-109</div>
+          <div class="call-box-patient-name" id="doc-serving-name">Devji Bhai Solanki</div>
+          <div class="call-box-time" id="doc-serving-time">Called at: 10:35 AM</div>
+        </div>
+
+        <!-- Primary Action: Call Next Patient -->
+        <div>
+          <button type="button" class="btn-call-next" onclick="doctorCallNextPatient()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            CALL NEXT PATIENT
+          </button>
+          <div style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:6px;">
+            Advances queue and triggers chime in hospital waiting areas
+          </div>
+        </div>
+
+        <!-- Secondary Consultation Actions -->
+        <div class="doctor-sub-actions">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="doctorRecallCurrent()">
+            Repeat Chime
+          </button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="doctorAddWalkin()">
+            + Add Walk-In
+          </button>
+        </div>
+
+        <!-- Session Overview Stats -->
+        <div style="background:var(--bg-offwhite); padding:14px; border:1px solid var(--border-subtle); border-radius:var(--radius-sm); font-size:0.825rem;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+            <span class="text-muted">Session Timings:</span>
+            <strong>08:30 AM – 01:30 PM</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+            <span class="text-muted">Avg. Consultation Time:</span>
+            <strong>~4.2 minutes</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between;">
+            <span class="text-muted">Nursing Assistant:</span>
+            <strong>Sister Bindu (Ext. 104)</strong>
+          </div>
+        </div>
+
+        <!-- Live Sync Navigation Helper -->
+        <div style="border-top:1px solid var(--border-subtle); padding-top:12px; font-size:0.8rem; color:var(--text-muted);">
+          <span>💡 Live Test: Open </span><a href="patient.html" target="_blank" style="font-weight:700; text-decoration:underline;">patient.html (Token A-117)</a><span> in a side window to verify real-time response.</span>
+        </div>
+
+      </section>
+
+      <!-- Right Active Queue Table -->
+      <section class="doctor-queue-view">
+        <div class="doctor-table-header">
+          <div>
+            <h3>Cardiology OPD Queue Sheet</h3>
+            <div class="text-xs text-muted">Saturday, 12 Sep 2026 • Real-time patient flow register</div>
+          </div>
+          <span class="live-indicator"><span class="live-dot"></span> LIVE SYNC</span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="hospital-table">
+            <thead>
+              <tr>
+                <th style="width: 15%;">TOKEN</th>
+                <th style="width: 35%;">PATIENT NAME</th>
+                <th style="width: 18%;">STATUS</th>
+                <th style="width: 17%;">EST. TIME</th>
+                <th style="width: 15%;">ACTION</th>
+              </tr>
+            </thead>
+            <tbody id="doc-queue-tbody">
+              <!-- Dynamically rendered by script.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Clean Institutional Staff Footer -->
+  <footer style="border-top:1px solid var(--border-subtle); padding:16px 0; background:var(--bg-paper); font-size:0.8rem; color:var(--text-muted);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+      <div>CareFlow Hospital Information System (HIS) • OPD Clinical Module v4.1</div>
+      <div>Logged in as: Dr. Arjun Mehta (Emp ID: CF-DOC-108)</div>
+    </div>
+  </footer>
+
+</body>
+</html>

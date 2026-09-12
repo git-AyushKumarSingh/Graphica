@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Operations Command | CareFlow Memorial Hospital</title>
+  <meta name="description" content="CareFlow Hospital Operations Command Center - Institutional OPD queue throughput, bed occupancy, and active clinical audit.">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body style="background-color: var(--bg-offwhite);">
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container top-utility-inner">
+      <div class="top-utility-left">
+        <span class="utility-item emergency-phone">
+          24×7 Trauma & Emergency Command: +91 (079) 4000 2400
+        </span>
+        <span class="utility-divider"></span>
+        <span class="utility-badge">OPERATIONS & CLINICAL BED BOARD</span>
+      </div>
+      <div class="top-utility-right">
+        <a href="index.html" class="utility-link">Public Hospital Portal</a>
+        <span class="utility-divider"></span>
+        <a href="doctor.html" class="utility-link">Doctor OPD Desk</a>
+        <span class="utility-divider"></span>
+        <a href="patient.html" class="utility-link">Patient Token Slip</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="admin-top-strip">
+    <div class="container admin-header-row">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div class="hospital-emblem">
+          <svg viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+        </div>
+        <div>
+          <h1 class="font-serif">Hospital Operations</h1>
+          <div class="text-xs text-muted">CareFlow Memorial Hospital & Research Centre • Medical Administration</div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="live-indicator"><span class="live-dot"></span> REAL-TIME TELEMETRY</span>
+        <div class="admin-date-badge">Saturday, 12 September 2026</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Clean Horizontal Statistics Strip (No giant SaaS cards) -->
+  <section class="ops-stats-strip">
+    <div class="container">
+      <div class="ops-stats-grid">
+        <div class="ops-stat-col">
+          <div class="ops-stat-number" id="admin-stat-waiting">47</div>
+          <div class="ops-stat-label">Patients Waiting</div>
+          <div class="ops-stat-sub">Across all 4 active OPD clinics</div>
+        </div>
+
+        <div class="ops-stat-col">
+          <div class="ops-stat-number">12</div>
+          <div class="ops-stat-label">Doctors Active</div>
+          <div class="ops-stat-sub">OPD & Inpatient rounds</div>
+        </div>
+
+        <div class="ops-stat-col">
+          <div class="ops-stat-number" id="admin-stat-avgwait">28 min</div>
+          <div class="ops-stat-label">Average OPD Wait</div>
+          <div class="ops-stat-sub">Target: &lt; 35 minutes</div>
+        </div>
+
+        <div class="ops-stat-col">
+          <div class="ops-stat-number" style="color:var(--accent-terracotta);">82%</div>
+          <div class="ops-stat-label">ICU Occupancy</div>
+          <div class="ops-stat-sub">19 of 24 critical beds occupied</div>
+        </div>
+
+        <div class="ops-stat-col">
+          <div class="ops-stat-number" style="color:var(--accent-success);">4</div>
+          <div class="ops-stat-label">Emergency Beds</div>
+          <div class="ops-stat-sub">Trauma bay ready for triage</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Main Content Grid -->
+  <main class="container">
+    <div class="admin-sections-grid">
+      
+      <!-- Department Flow Status Table -->
+      <section class="admin-card">
+        <div class="admin-card-header">
+          <h3>Department Queue Throughput</h3>
+          <span class="text-xs text-muted">OPD Shift 1: 08:30 AM – 02:00 PM</span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="hospital-table">
+            <thead>
+              <tr>
+                <th>DEPARTMENT</th>
+                <th>ACTIVE CONSULTANT</th>
+                <th>NOW SERVING</th>
+                <th>WAITING</th>
+                <th>AVG. WAIT</th>
+                <th>STATUS</th>
+              </tr>
+            </thead>
+            <tbody id="admin-dept-tbody">
+              <!-- Rendered via script.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <div style="padding:14px 20px; background:var(--bg-offwhite); border-top:1px solid var(--border-subtle); font-size:0.8rem; color:var(--text-muted); display:flex; justify-content:space-between; align-items:center;">
+          <span>* Wait time metrics dynamically recalculate as doctors call tokens</span>
+          <button onclick="doctorCallNextPatient()" class="btn btn-sm btn-secondary">Simulate Doctor Call</button>
+        </div>
+      </section>
+
+      <!-- Live Clinical Audit Log -->
+      <section class="admin-card">
+        <div class="admin-card-header">
+          <h3>Live Patient Flow Audit</h3>
+          <span class="live-indicator"><span class="live-dot"></span> LIVE FEED</span>
+        </div>
+
+        <ul class="audit-log-list" id="admin-audit-log-list">
+          <!-- Dynamically populated by script.js -->
+        </ul>
+
+        <div style="padding:12px 20px; background:var(--bg-offwhite); border-top:1px solid var(--border-subtle); font-size:0.775rem; color:var(--text-muted);">
+          Audit trail stored according to NABH Hospital Information System protocols.
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="border-top:1px solid var(--border-subtle); padding:16px 0; background:var(--bg-paper); font-size:0.8rem; color:var(--text-muted);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+      <div>CareFlow Hospital Administration • Internal Facility Management System</div>
+      <div class="demo-prototype-badge">Prototype Operations Console</div>
+    </div>
+  </footer>
+
+</body>
+</html>

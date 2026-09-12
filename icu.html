@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICU Patient Updates & Family Portal | CareFlow Hospital</title>
+  <meta name="description" content="Compassionate, plain-language patient condition updates for family members from the CareFlow Critical Care Unit (ICU).">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body style="background-color: var(--bg-offwhite);">
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container top-utility-inner">
+      <div class="top-utility-left">
+        <span class="utility-item">
+          <strong>ICU Family Liaison Desk:</strong> <a href="tel:+917940002412">+91 (079) 4000 2412</a> (Ext. 12)
+        </span>
+        <span class="utility-divider"></span>
+        <span class="utility-item">
+          Visiting Hours: 04:30 PM – 05:30 PM
+        </span>
+      </div>
+      <div class="top-utility-right">
+        <a href="index.html" class="utility-link">Hospital Home</a>
+        <span class="utility-divider"></span>
+        <a href="patient.html" class="utility-link">OPD Token Slip</a>
+        <span class="utility-divider"></span>
+        <a href="doctor.html" class="utility-link">Staff Console</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="hospital-brand">
+        <div class="hospital-emblem">
+          <svg viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">CareFlow</span>
+          <span class="brand-subtitle">Critical Care & ICU Family Information</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#departments" class="nav-link">Departments</a>
+        <a href="patient.html" class="nav-link">Live OPD Queue</a>
+        <a href="icu.html" class="nav-link active">ICU Family Care</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="tel:+917940002412" class="btn btn-secondary btn-sm">
+          Call ICU Nurse Desk
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ICU Family Main Container -->
+  <main class="icu-page-wrap">
+    <div class="icu-container">
+      
+      <!-- Gentle Empathetic Heading -->
+      <div class="icu-header-section">
+        <span class="section-label" style="color:var(--secondary-sage-dark);">Patient Family Communication Portal</span>
+        <h1 style="font-size:2.2rem; margin-bottom:8px;">Patient Care Summary</h1>
+        <p class="icu-sub-heading">
+          This portal provides transparent, simplified updates directly recorded by our intensive care medical team following clinical rounds.
+        </p>
+      </div>
+
+      <!-- Patient Information Card -->
+      <div class="icu-patient-card">
+        
+        <div class="icu-patient-banner">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span class="icu-id-tag">PATIENT ID: CF-2048</span>
+            <span class="status-monitoring-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+              UNDER CLOSE MONITORING
+            </span>
+          </div>
+          <div class="text-xs text-muted">
+            Last Updated: <strong>10:42 AM Today</strong> (Morning Consultant Rounds)
+          </div>
+        </div>
+
+        <div class="icu-patient-details">
+          
+          <!-- Key Meta Info -->
+          <div class="icu-info-grid">
+            <div class="icu-info-block">
+              <span class="icu-info-label">Patient Name</span>
+              <span class="icu-info-val">Kailashchandra V. Trivedi</span>
+              <span class="text-xs text-muted">64 Yrs • Male</span>
+            </div>
+
+            <div class="icu-info-block">
+              <span class="icu-info-label">Unit Location</span>
+              <span class="icu-info-val">ICU-A — Bed 12</span>
+              <span class="text-xs text-muted">3rd Floor, Critical Care Block</span>
+            </div>
+
+            <div class="icu-info-block">
+              <span class="icu-info-label">Lead Intensivist</span>
+              <span class="icu-info-val">Dr. Suresh Menon</span>
+              <span class="text-xs text-muted">MD, FNB (Critical Care)</span>
+            </div>
+          </div>
+
+          <!-- Doctor's Formal Clinical Note -->
+          <div class="icu-medical-update">
+            <h4>Update from the Medical Team</h4>
+            <div class="medical-team-quote" id="icu-medical-quote">
+              "Patient remains stable under current supportive care. The medical team continues close monitoring."
+            </div>
+            <div class="medical-team-meta">
+              Recorded by Dr. Suresh Menon & Dr. Pooja Verma (Senior Resident, Critical Care) • 10:42 AM
+            </div>
+          </div>
+
+          <!-- Plain-Language Summary Section (with Multi-language tabs) -->
+          <div class="plain-language-panel">
+            <div class="plain-language-header">
+              <h4>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                In Simple Language
+              </h4>
+
+              <div class="language-switcher">
+                <button type="button" class="lang-btn active" data-lang="en" onclick="switchIcuLanguage('en')">English</button>
+                <button type="button" class="lang-btn" data-lang="hi" onclick="switchIcuLanguage('hi')">हिन्दी</button>
+                <button type="button" class="lang-btn" data-lang="gu" onclick="switchIcuLanguage('gu')">ગુજરાતી</button>
+              </div>
+            </div>
+
+            <!-- Translated Plain Text Box -->
+            <div class="plain-language-content" id="icu-simple-text">
+              The patient's condition is currently stable and the medical team is continuing to monitor them closely. Vital signs are within expected supportive ranges, and breathing support remains standard as planned for recovery.
+            </div>
+
+            <!-- Quiet Assisted Explanation Note -->
+            <div class="assisted-disclaimer" id="icu-disclaimer-text">
+              Assisted explanation — This explanation only simplifies information provided by the healthcare team. It does not provide a diagnosis or medical prediction.
+            </div>
+          </div>
+
+          <!-- Attendant & Visiting Guidelines -->
+          <div class="icu-family-guidelines">
+            <h4>Visiting Guidelines & Support for Family Members</h4>
+            <div class="visiting-grid">
+              <div class="visiting-box">
+                <strong style="display:block; margin-bottom:4px; color:var(--primary-green);">Today's Visiting Slot</strong>
+                <div style="font-family:var(--font-mono); font-size:1.05rem; font-weight:700; margin-bottom:4px;">04:30 PM – 05:30 PM</div>
+                <div class="text-xs text-muted">1 family attendant permitted at bedside with sanitized protective gown & mask.</div>
+              </div>
+
+              <div class="visiting-box">
+                <strong style="display:block; margin-bottom:4px; color:var(--primary-green);">Doctor In-Person Briefing</strong>
+                <div style="font-family:var(--font-mono); font-size:1.05rem; font-weight:700; margin-bottom:4px;">05:30 PM – 06:00 PM</div>
+                <div class="text-xs text-muted">Dr. Suresh Menon will address immediate family members at ICU Counseling Room 2.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Need Immediate Help Contact Box -->
+      <div style="text-align:center; padding:20px; background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); font-size:0.875rem;">
+        <span>Questions or concerns regarding your family member? Contact our <strong>24×7 ICU Medical Social Worker:</strong></span>
+        <a href="tel:+917940002412" style="font-weight:700; margin-left:8px; color:var(--primary-green);">+91 (079) 4000 2412 (Ext. 12)</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Hospital Footer -->
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border:none; padding:0;">
+        <div>
+          CareFlow Memorial Hospital & Research Centre • Department of Critical Care Medicine
+        </div>
+        <div class="demo-prototype-badge">
+          Calm Plain-Language Family Prototype
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
