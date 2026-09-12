@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Patient Dashboard & Live OPD Token | GWS</title>
-  <meta name="description" content="Personalized patient dashboard across connected hospitals. Live OPD token tracking, appointments, lab reports, and medicine reminders powered by GWS.">
+  <meta name="description"
+    content="Personalized patient dashboard across connected hospitals. Live OPD token tracking, appointments, lab reports, and medicine reminders powered by GWS.">
   <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
+
 <body data-require-role="patient">
 
   <!-- Top Utility Bar -->
@@ -24,15 +27,18 @@
       <div class="top-utility-right">
         <!-- Global Language Switcher -->
         <div class="global-lang-picker">
-          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;" data-i18n="global.langLabel">Lang:</span>
-          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;"
+            data-i18n="global.langLabel">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en"
+            onclick="setGlobalLanguage('en')">EN</button>
           <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
           <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
         </div>
         <span class="utility-divider"></span>
         <a href="index.html" class="utility-link" data-i18n="global.returnHome">Platform Home</a>
         <span class="utility-divider"></span>
-        <button onclick="handleLogout()" class="utility-link" style="color:var(--accent-emergency); font-weight:600;" data-i18n="global.signOut">Sign Out</button>
+        <button onclick="handleLogout()" class="utility-link" style="color:var(--accent-emergency); font-weight:600;"
+          data-i18n="global.signOut">Sign Out</button>
       </div>
     </div>
   </div>
@@ -42,7 +48,8 @@
     <div class="container header-container">
       <a href="index.html" class="hospital-brand">
         <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
-          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo"
+            style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div class="brand-text">
           <span class="brand-title" data-i18n="global.appName">GWS</span>
@@ -68,39 +75,49 @@
   </header>
 
   <main class="container" style="padding: 32px 24px 60px;">
-    
+
     <!-- Greeting & Active Hospital Status -->
-    <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid var(--border-subtle);">
+    <div
+      style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid var(--border-subtle);">
       <div>
         <span class="section-label" data-i18n="patient.title">Patient Dashboard</span>
-        <h1 style="margin:0;"><span data-i18n="patient.greeting">Good morning, Rahul</span></h1>
+        <h1 style="margin:1;"><span >Good Morning, Rahul</span></h1>
         <div class="text-xs text-muted">
-          <span data-i18n="patient.activeVisitHospital">Active Visit Hospital:</span> <strong id="patient-active-hospital-pill">Shantideep Multispeciality Hospital</strong> • ID: <strong>GWS-1024</strong>
+          <span data-i18n="patient.activeVisitHospital">Active Visit Hospital:</span> <strong
+            id="patient-active-hospital-pill">Shantideep Multispeciality Hospital</strong> • ID:
+          <strong>GWS-1024</strong>
         </div>
       </div>
 
       <!-- New Lab Report Alert -->
-      <div id="patient-lab-notif-box" style="background:var(--accent-terracotta-light); border:1px solid var(--accent-terracotta); border-radius:var(--radius-sm); padding:10px 16px; display:flex; align-items:center; gap:12px;">
+      <div id="patient-lab-notif-box"
+        style="background:var(--accent-terracotta-light); border:1px solid var(--accent-terracotta); border-radius:var(--radius-sm); padding:10px 16px; display:flex; align-items:center; gap:12px;">
         <span style="font-size:1.2rem;">🔔</span>
         <div>
-          <div style="font-weight:700; font-size:0.85rem; color:var(--accent-terracotta-dark);" data-i18n="patient.newLabReportAlert">NEW LAB REPORT AVAILABLE</div>
+          <div style="font-weight:700; font-size:0.85rem; color:var(--accent-terracotta-dark);"
+            data-i18n="patient.newLabReportAlert">NEW LAB REPORT AVAILABLE</div>
           <div class="text-xs text-muted" id="patient-lab-notif-title">Complete Blood Count (CBC) is now certified</div>
         </div>
-        <a href="reports.html" class="btn btn-sm btn-primary" style="padding:4px 10px; font-size:0.75rem;" data-i18n="patient.viewReport">View Report</a>
+        <a href="reports.html" class="btn btn-sm btn-primary" style="padding:4px 10px; font-size:0.75rem;"
+          data-i18n="patient.viewReport">View Report</a>
       </div>
     </div>
 
     <!-- Main 2-Column Layout -->
     <div class="token-ticket-layout" style="display:grid; grid-template-columns:1fr 380px; gap:24px;">
-      
+
       <!-- Left Column: Hospital Appointment & Live Token Receipt Slip -->
-      <div class="hospital-ticket-slip" style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-medium);">
-        
+      <div class="hospital-ticket-slip"
+        style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-medium);">
+
         <!-- Slip Header Band -->
-        <div class="ticket-header-band" style="background:var(--primary-green); color:#fff; padding:18px 24px; display:flex; justify-content:space-between; align-items:center;">
+        <div class="ticket-header-band"
+          style="background:var(--primary-green); color:#fff; padding:18px 24px; display:flex; justify-content:space-between; align-items:center;">
           <div>
-            <div class="h-name" id="patient-hospital-name" style="font-size:1.25rem; font-weight:700;">Shantideep Multispeciality Hospital</div>
-            <div class="h-sub" style="font-size:0.8rem; color:#A7D0B4;" data-i18n="patient.slipHeader">Live OPD Consultation Token Slip • Powered by GWS</div>
+            <div class="h-name" id="patient-hospital-name" style="font-size:1.25rem; font-weight:700;">Shantideep
+              Multispeciality Hospital</div>
+            <div class="h-sub" style="font-size:0.8rem; color:#A7D0B4;" data-i18n="patient.slipHeader">Live OPD
+              Consultation Token Slip • Powered by GWS</div>
           </div>
           <div style="text-align:right; font-size:0.75rem; color:#A7D0B4;">
             <div>SLIP #: GWS-OPD-94021</div>
@@ -109,16 +126,21 @@
         </div>
 
         <div class="ticket-body" style="padding:24px;">
-          
+
           <!-- Token Number Spotlight -->
-          <div class="ticket-token-spotlight" style="background:var(--bg-cream); border:2px dashed var(--border-strong); border-radius:var(--radius-sm); padding:20px; text-align:center; margin-bottom:20px;">
-            <div class="ticket-token-label" style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); font-weight:700;" data-i18n="patient.yourToken">
+          <div class="ticket-token-spotlight"
+            style="background:var(--bg-cream); border:2px dashed var(--border-strong); border-radius:var(--radius-sm); padding:20px; text-align:center; margin-bottom:20px;">
+            <div class="ticket-token-label"
+              style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); font-weight:700;"
+              data-i18n="patient.yourToken">
               YOUR ASSIGNED OPD TOKEN
             </div>
-            <div class="ticket-token-value" id="patient-my-token" style="font-family:var(--font-mono); font-size:3.5rem; font-weight:700; color:var(--primary-green); line-height:1.1; margin:6px 0;">
+            <div class="ticket-token-value" id="patient-my-token"
+              style="font-family:var(--font-mono); font-size:3.5rem; font-weight:700; color:var(--primary-green); line-height:1.1; margin:6px 0;">
               A-117
             </div>
-            <div class="ticket-dept-room" id="patient-dept-name" style="font-weight:700; font-size:1.1rem; color:var(--text-main);">
+            <div class="ticket-dept-room" id="patient-dept-name"
+              style="font-weight:700; font-size:1.1rem; color:var(--text-main);">
               Cardiology OPD — Dr. Arjun Mehta
             </div>
             <div class="text-xs text-muted" id="patient-room-name" style="margin-top:2px;">
@@ -127,55 +149,76 @@
           </div>
 
           <!-- 3 Live Metrics Strip -->
-          <div class="ticket-metrics-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:16px; text-align:center;">
-            <div style="background:var(--accent-terracotta-light); padding:12px; border-radius:4px; border:1px solid var(--accent-terracotta);">
-              <span class="text-xs text-muted" style="display:block; font-weight:700; text-transform:uppercase;" data-i18n="patient.servingNow">Currently Serving</span>
-              <span id="patient-current-serving" style="font-family:var(--font-mono); font-size:1.6rem; font-weight:700; color:var(--accent-terracotta);">A-109</span>
+          <div class="ticket-metrics-grid"
+            style="display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-bottom:16px; text-align:center;">
+            <div
+              style="background:var(--accent-terracotta-light); padding:12px; border-radius:4px; border:1px solid var(--accent-terracotta);">
+              <span class="text-xs text-muted" style="display:block; font-weight:700; text-transform:uppercase;"
+                data-i18n="patient.servingNow">Currently Serving</span>
+              <span id="patient-current-serving"
+                style="font-family:var(--font-mono); font-size:1.6rem; font-weight:700; color:var(--accent-terracotta);">A-109</span>
             </div>
-            <div style="background:var(--bg-cream); padding:12px; border-radius:4px; border:1px solid var(--border-subtle);">
-              <span class="text-xs text-muted" style="display:block; font-weight:700; text-transform:uppercase;" data-i18n="patient.estimatedWait">Estimated Wait</span>
-              <span id="patient-est-wait-min" style="font-family:var(--font-mono); font-size:1.6rem; font-weight:700; color:var(--text-main);">32 min</span>
+            <div
+              style="background:var(--bg-cream); padding:12px; border-radius:4px; border:1px solid var(--border-subtle);">
+              <span class="text-xs text-muted" style="display:block; font-weight:700; text-transform:uppercase;"
+                data-i18n="patient.estimatedWait">Estimated Wait</span>
+              <span id="patient-est-wait-min"
+                style="font-family:var(--font-mono); font-size:1.6rem; font-weight:700; color:var(--text-main);">32
+                min</span>
             </div>
-            <div style="background:var(--bg-cream); padding:12px; border-radius:4px; border:1px solid var(--border-subtle);">
-              <span class="text-xs text-muted" style="display:block; font-weight:700; text-transform:uppercase;" data-i18n="patient.patientsAhead">Patients Ahead</span>
-              <span id="patient-patients-ahead" style="font-family:var(--font-mono); font-size:1.6rem; font-weight:700; color:var(--text-main);">8</span>
+            <div
+              style="background:var(--bg-cream); padding:12px; border-radius:4px; border:1px solid var(--border-subtle);">
+              <span class="text-xs text-muted" style="display:block; font-weight:700; text-transform:uppercase;"
+                data-i18n="patient.patientsAhead">Patients Ahead</span>
+              <span id="patient-patients-ahead"
+                style="font-family:var(--font-mono); font-size:1.6rem; font-weight:700; color:var(--text-main);">8</span>
             </div>
           </div>
 
           <!-- Formula & Range Transparency -->
-          <div style="background:var(--bg-offwhite); border:1px solid var(--border-subtle); border-radius:4px; padding:10px 14px; margin-bottom:20px; font-size:0.8rem; color:var(--text-muted); text-align:center;">
-            <span><strong id="patient-est-range" style="color:var(--text-main);">25–38 min</strong></span> • 
+          <div
+            style="background:var(--bg-offwhite); border:1px solid var(--border-subtle); border-radius:4px; padding:10px 14px; margin-bottom:20px; font-size:0.8rem; color:var(--text-muted); text-align:center;">
+            <span><strong id="patient-est-range" style="color:var(--text-main);">25–38 min</strong></span> •
             <span>8 patients ahead × 4.0 min avg</span>
           </div>
 
           <!-- Appointment Meta Details -->
           <table style="width:100%; font-size:0.875rem; border-collapse:collapse; margin-bottom:20px;">
             <tr style="border-bottom:1px solid var(--border-subtle);">
-              <td style="padding:8px 0; color:var(--text-muted);" data-i18n="patient.patientNameLabel">Patient Name:</td>
+              <td style="padding:8px 0; color:var(--text-muted);" data-i18n="patient.patientNameLabel">Patient Name:
+              </td>
               <td style="padding:8px 0; text-align:right;"><strong>Rahul Sharma</strong> (GWS-1024)</td>
             </tr>
             <tr style="border-bottom:1px solid var(--border-subtle);">
-              <td style="padding:8px 0; color:var(--text-muted);" data-i18n="patient.appointmentSlot">Appointment Slot:</td>
+              <td style="padding:8px 0; color:var(--text-muted);" data-i18n="patient.appointmentSlot">Appointment Slot:
+              </td>
               <td style="padding:8px 0; text-align:right;"><strong>18 September 2026 • 10:30 AM</strong></td>
             </tr>
             <tr style="border-bottom:1px solid var(--border-subtle);">
-              <td style="padding:8px 0; color:var(--text-muted);" data-i18n="patient.consultingSpecialist">Consulting Specialist:</td>
-              <td style="padding:8px 0; text-align:right;"><strong id="patient-doctor-name">Dr. Arjun Mehta</strong> (MD, DM Cardiology)</td>
+              <td style="padding:8px 0; color:var(--text-muted);" data-i18n="patient.consultingSpecialist">Consulting
+                Specialist:</td>
+              <td style="padding:8px 0; text-align:right;"><strong id="patient-doctor-name">Dr. Arjun Mehta</strong>
+                (MD, DM Cardiology)</td>
             </tr>
             <tr>
-              <td style="padding:8px 0; color:var(--text-muted);" data-i18n="patient.reportingCounter">Reporting Counter:</td>
+              <td style="padding:8px 0; color:var(--text-muted);" data-i18n="patient.reportingCounter">Reporting
+                Counter:</td>
               <td style="padding:8px 0; text-align:right;">Nursing Desk 1A (Opposite Room 104)</td>
             </tr>
           </table>
 
           <!-- Hospital Advisory Note -->
-          <div style="background:var(--primary-green-light); border-left:3px solid var(--primary-green); padding:10px 14px; font-size:0.8rem; color:var(--primary-green-dark); margin-bottom:18px;" data-i18n="patient.advisory">
-            Advisory: Estimated from the current queue and recent consultation duration. You may wait comfortably in the hospital cafeteria, ground-floor gardens, or 1st-floor lounge.
+          <div
+            style="background:var(--primary-green-light); border-left:3px solid var(--primary-green); padding:10px 14px; font-size:0.8rem; color:var(--primary-green-dark); margin-bottom:18px;"
+            data-i18n="patient.advisory">
+            Advisory: Estimated from the current queue and recent consultation duration. You may wait comfortably in the
+            hospital cafeteria, ground-floor gardens, or 1st-floor lounge.
           </div>
 
           <!-- Live Queue Progression Visual List -->
           <div>
-            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase; margin-bottom:8px;" data-i18n="patient.liveQueueOrder">Live Queue Order:</div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase; margin-bottom:8px;"
+              data-i18n="patient.liveQueueOrder">Live Queue Order:</div>
             <div id="patient-queue-visual-list">
               <!-- Populated dynamically -->
             </div>
@@ -183,21 +226,26 @@
 
         </div>
 
-        <div style="background:var(--bg-cream); border-top:1px solid var(--border-subtle); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-          <button onclick="patientSearchCustomToken()" class="btn btn-sm btn-secondary" data-i18n="patient.trackDifferentToken">Track Different Token #</button>
-          <button onclick="window.print()" class="btn btn-sm btn-primary" data-i18n="patient.printTokenSlip">Print Token Slip</button>
+        <div
+          style="background:var(--bg-cream); border-top:1px solid var(--border-subtle); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <button onclick="patientSearchCustomToken()" class="btn btn-sm btn-secondary"
+            data-i18n="patient.trackDifferentToken">Track Different Token #</button>
+          <button onclick="window.print()" class="btn btn-sm btn-primary" data-i18n="patient.printTokenSlip">Print Token
+            Slip</button>
         </div>
 
       </div>
 
       <!-- Right Column: Quick Action Shortcuts & Live Sync Demo Controller -->
       <div>
-        
+
         <!-- Live Status Banner -->
-        <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:18px; margin-bottom:20px;">
+        <div
+          style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:18px; margin-bottom:20px;">
           <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
             <span class="live-dot" style="width:8px; height:8px;"></span>
-            <strong style="font-size:0.9rem; text-transform:uppercase;" data-i18n="patient.opdQueueActive">OPD QUEUE STATUS: ACTIVE</strong>
+            <strong style="font-size:0.9rem; text-transform:uppercase;" data-i18n="patient.opdQueueActive">OPD QUEUE
+              STATUS: ACTIVE</strong>
           </div>
           <p class="text-xs text-muted" style="margin:0;" data-i18n="patient.syncNotice">
             This screen synchronizes automatically in real time whenever the doctor calls the next token.
@@ -205,29 +253,42 @@
         </div>
 
         <!-- Quick Actions Shortcuts -->
-        <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px; margin-bottom:20px;">
+        <div
+          style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px; margin-bottom:20px;">
           <h4 style="margin:0 0 14px 0; font-size:1rem;" data-i18n="patient.quickServices">Quick Services</h4>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-            <a href="map.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;" data-i18n="nav.map">🗺️ Hospital Map</a>
-            <a href="reports.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;" data-i18n="nav.reports">📄 Lab Reports</a>
-            <a href="appointments.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;" data-i18n="nav.appointments">📅 Appointments</a>
-            <a href="medicines.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;" data-i18n="nav.medicines">💊 Medicines</a>
-            <a href="icu.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;" data-i18n="nav.familyCare">🏥 Family Care</a>
-            <a href="reviews.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;" data-i18n="nav.reviews">⭐ Doctor Reviews</a>
+            <a href="map.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;"
+              data-i18n="nav.map">🗺️ Hospital Map</a>
+            <a href="reports.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;"
+              data-i18n="nav.reports">📄 Lab Reports</a>
+            <a href="appointments.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;"
+              data-i18n="nav.appointments">📅 Appointments</a>
+            <a href="medicines.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;"
+              data-i18n="nav.medicines">💊 Medicines</a>
+            <a href="icu.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;"
+              data-i18n="nav.familyCare">🏥 Family Care</a>
+            <a href="reviews.html" class="btn btn-secondary btn-sm" style="justify-content:flex-start;"
+              data-i18n="nav.reviews">⭐ Doctor Reviews</a>
           </div>
         </div>
 
         <!-- Multi-Tab Presentation Box for Hackathon Judges -->
-        <div style="background:var(--bg-cream); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:18px;">
-          <div style="font-weight:700; color:var(--primary-green); font-size:0.95rem; margin-bottom:4px;" data-i18n="patient.hackathonDemo">
+        <div
+          style="background:var(--bg-cream); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:18px;">
+          <div style="font-weight:700; color:var(--primary-green); font-size:0.95rem; margin-bottom:4px;"
+            data-i18n="patient.hackathonDemo">
             💡 Hackathon Multi-Tab Demo:
           </div>
-          <p class="text-xs text-muted" style="margin-bottom:12px; line-height:1.5;" data-i18n="patient.hackathonDemoDesc">
-            Open the Doctor Portal in another tab. Click [ CALL NEXT PATIENT ] to watch this token tracker advance in real-time with an audible chime!
+          <p class="text-xs text-muted" style="margin-bottom:12px; line-height:1.5;"
+            data-i18n="patient.hackathonDemoDesc">
+            Open the Doctor Portal in another tab. Click [ CALL NEXT PATIENT ] to watch this token tracker advance in
+            real-time with an audible chime!
           </p>
           <div style="display:flex; flex-direction:column; gap:8px;">
-            <a href="doctor.html" target="_blank" class="btn btn-sm btn-primary" data-i18n="patient.openDoctorPortal">Open Doctor Portal ↗</a>
-            <button onclick="doctorCallNextPatient()" class="btn btn-sm btn-secondary" data-i18n="patient.simulateDoctorCall">Simulate Doctor Call (+1)</button>
+            <a href="doctor.html" target="_blank" class="btn btn-sm btn-primary"
+              data-i18n="patient.openDoctorPortal">Open Doctor Portal ↗</a>
+            <button onclick="doctorCallNextPatient()" class="btn btn-sm btn-secondary"
+              data-i18n="patient.simulateDoctorCall">Simulate Doctor Call (+1)</button>
           </div>
         </div>
 
@@ -263,4 +324,5 @@
   </script>
 
 </body>
+
 </html>
