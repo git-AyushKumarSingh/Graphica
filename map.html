@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Indoor Navigation & Floor Map | GWS</title>
+  <meta name="description" content="Find your way around hospitals with interactive indoor floor plans, room locators, and walking directions powered by GWS.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container top-utility-inner">
+      <div class="top-utility-left">
+        <span class="utility-item emergency-phone">
+          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a>
+        </span>
+        <span class="utility-divider"></span>
+        <span class="utility-badge">CAMPUS INDOOR NAVIGATION</span>
+      </div>
+      <div class="top-utility-right">
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker">
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
+        </div>
+        <span class="utility-divider"></span>
+        <a href="index.html" class="utility-link">Home</a>
+        <span class="utility-divider"></span>
+        <a href="patient.html" class="utility-link">Live Queue</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="hospital-brand">
+        <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">GWS</span>
+          <span class="brand-subtitle">Hospital Floor Plan & Navigation</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="hospitals.html" class="nav-link">Find Hospitals</a>
+        <a href="appointments.html" class="nav-link">Appointments</a>
+        <a href="patient.html" class="nav-link">Live Queue</a>
+        <a href="map.html" class="nav-link active">Hospital Map</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="emergency.html" class="btn-emergency-nav">24×7 Emergency</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 40px 24px 60px;">
+    
+    <div class="section-title-wrap">
+      <div>
+        <span class="section-label">Indoor Hospital Guidance</span>
+        <h1 style="margin:0 0 4px 0;">Find Your Way Around the Hospital</h1>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+          Select a floor and click any room or department below to view step-by-step walking directions.
+        </p>
+      </div>
+      <div>
+        <span class="utility-badge" style="font-size:0.8rem;">CAMPUS HELP: GROUND FLOOR COUNTER 1</span>
+      </div>
+    </div>
+
+    <!-- Floor Selector Tabs -->
+    <div class="map-floor-selector" style="display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap;">
+      <button type="button" class="btn btn-secondary btn-sm active map-floor-btn" data-floor="0" onclick="renderFloorPlan(0)">
+        GROUND FLOOR (Reception, Emergency, Pharmacy, Diagnostics)
+      </button>
+      <button type="button" class="btn btn-secondary btn-sm map-floor-btn" data-floor="1" onclick="renderFloorPlan(1)">
+        FIRST FLOOR (Cardiology, Orthopaedics, Medicine, Paediatrics)
+      </button>
+      <button type="button" class="btn btn-secondary btn-sm map-floor-btn" data-floor="2" onclick="renderFloorPlan(2)">
+        SECOND FLOOR (ICU Critical Care, Operation Theatres, Inpatient Wards)
+      </button>
+    </div>
+
+    <!-- Clickable Floor Rooms Grid -->
+    <div class="floor-plan-grid" id="floor-rooms-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-bottom:24px;">
+      <!-- Populated dynamically by app.js renderFloorPlan() -->
+    </div>
+
+    <!-- Route Guidance Output Card -->
+    <div class="route-direction-box" id="map-route-guidance" style="display:none; background:var(--bg-paper); border:2px solid var(--primary-green); border-radius:var(--radius-sm); padding:20px; margin-bottom:24px;">
+      <!-- Generated when clicking a room -->
+    </div>
+
+  </main>
+
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border:none; padding:0;">
+        <div>GWS Multi-Hospital Navigation Layer • Healthcare, connected.</div>
+        <div class="demo-prototype-badge">Interactive Campus Floor Plan</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const FLOOR_DATA = {
+      0: [
+        { name: "Main Reception & Registration", room: "Counter 1–4", type: "Registration", desc: "Token generation, admission desks, help center", directions: "Directly opposite the main campus portico entry gate." },
+        { name: "Emergency & Trauma Resuscitation", room: "Emergency Bay", type: "Critical", desc: "24x7 Red Triage, ambulance drop-off, resuscitation beds", directions: "Take immediate left from the main gate via the emergency ramp." },
+        { name: "Central Diagnostic Pathology Lab", room: "Wing C", type: "Diagnostics", desc: "Blood collection counters, biochemistry, NABL reporting desk", directions: "Walk past the main elevators on the right hallway into Wing C." },
+        { name: "24x7 In-House Pharmacy", room: "Counter 8", type: "Pharmacy", desc: "Dispensing medicines, prescription fulfillment", directions: "Located next to billing counter near the ground floor exit." }
+      ],
+      1: [
+        { name: "Cardiology OPD (Dr. Arjun Mehta)", room: "Room 104", type: "OPD Clinic", desc: "Consultation, ECG, 2D Echo recording", directions: "Take the central elevators to the 1st Floor, turn right into Clinical Block A. Room 104 is on the left." },
+        { name: "Orthopaedics & Joint Clinic", room: "Room 208", type: "OPD Clinic", desc: "Consultation, plaster room, mobility check", directions: "Take central stairs to 1st Floor, follow the blue floor line towards West Corridor." },
+        { name: "General Internal Medicine", room: "Room 112", type: "OPD Clinic", desc: "Adult medicine, diabetes checks, vital triage", directions: "Take elevator to 1st floor, walk straight past Nursing Station 1." },
+        { name: "Paediatrics & Child Health", room: "Room 105", type: "OPD Clinic", desc: "Vaccinations, infant wellness room", directions: "1st Floor East Wing, adjacent to the paediatric play lounge." }
+      ],
+      2: [
+        { name: "Intensive Care Unit (ICU-A)", room: "Beds 1–18", type: "Intensive Care", desc: "Cardiovascular critical care, authorized family visits", directions: "Take elevator to 2nd Floor, enter through glass security doors at Nursing Station 2." },
+        { name: "Modular Operation Theatres (OT 1–4)", room: "Surgical Wing", type: "Surgical", desc: "Restricted sterile surgical complex", directions: "2nd Floor North Wing, access restricted to authorized clinical staff." },
+        { name: "Inpatient Recovery Suites", room: "Rooms 201–220", type: "Inpatient", desc: "Private recovery rooms with central nurse monitoring", directions: "2nd Floor South Corridor, follow the green path." }
+      ]
+    };
+
+    function renderFloorPlan(floorNum) {
+      document.querySelectorAll('.map-floor-btn').forEach(btn => {
+        if (parseInt(btn.getAttribute('data-floor'), 10) === floorNum) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      const grid = document.getElementById('floor-rooms-grid');
+      if (!grid) return;
+
+      grid.innerHTML = '';
+      const rooms = FLOOR_DATA[floorNum] || FLOOR_DATA[0];
+
+      rooms.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'hospital-compare-card';
+        card.style.cssText = 'padding:18px; cursor:pointer; background:var(--bg-paper); border:1px solid var(--border-subtle);';
+        card.onclick = () => selectMapRoom(r, floorNum);
+
+        card.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px;">
+            <strong style="color:var(--primary-green); font-size:1.05rem;">${r.name}</strong>
+            <span class="utility-badge" style="font-family:var(--font-mono); font-weight:700;">${r.room}</span>
+          </div>
+          <div class="text-xs text-muted" style="margin-bottom:8px;">${r.desc}</div>
+          <div style="font-size:0.775rem; color:var(--accent-terracotta); font-weight:600;">
+            Click to view step-by-step walking route →
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function selectMapRoom(roomObj, floorNum) {
+      const guidanceBox = document.getElementById('map-route-guidance');
+      if (!guidanceBox) return;
+
+      guidanceBox.style.display = 'block';
+      guidanceBox.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+          <div>
+            <span class="utility-badge" style="background:var(--primary-green); color:#fff;">NAVIGATING TO</span>
+            <h3 style="margin:4px 0 0 0; color:var(--primary-green);">${roomObj.name} (${roomObj.room})</h3>
+          </div>
+          <button class="btn btn-sm btn-secondary" onclick="this.parentElement.parentElement.style.display='none'">✕ Close</button>
+        </div>
+        <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:4px; padding:14px; margin-bottom:12px;">
+          <strong>Walking Route from Main Reception:</strong>
+          <p style="margin:4px 0 0 0; font-size:0.9rem; color:var(--text-main);">${roomObj.directions}</p>
+        </div>
+        <div class="text-xs text-muted">
+          💡 If you need wheelchair assistance, ask at Ground Floor Counter 1.
+        </div>
+      `;
+      guidanceBox.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderFloorPlan(0);
+    });
+  </script>
+
+</body>
+</html>

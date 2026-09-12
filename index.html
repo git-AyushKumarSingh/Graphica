@@ -3,36 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CareFlow Memorial Hospital & Research Centre | Ahmedabad</title>
-  <meta name="description" content="CareFlow Memorial Hospital & Research Centre, Ahmedabad. Comprehensive tertiary healthcare, 24x7 emergency & trauma, multi-specialty OPD with live patient queue tracking.">
+  <title>GWS | Healthcare, connected. | Multi-Hospital Healthcare Platform</title>
+  <meta name="description" content="GWS connects patients with multiple hospitals. Search nearby hospitals, compare live OPD waiting times, book appointments, track tokens in real-time, and access digital lab reports.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
 <body>
 
-  <!-- Top Utility Bar (Traditional Hospital Website) -->
+  <!-- Top Utility Bar -->
   <div class="top-utility-bar">
     <div class="container top-utility-inner">
       <div class="top-utility-left">
         <span class="utility-item emergency-phone">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-          24×7 Emergency: <a href="tel:+917940002400">+91 (079) 4000 2400</a> / 108
+          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a> / 108
         </span>
         <span class="utility-divider"></span>
         <span class="utility-item">
-          <strong>Blood Centre:</strong> A+, B+, O+, AB+ Available
+          <strong>Network Status:</strong> 6 Hospitals Connected • Live OPD Sync Active
         </span>
         <span class="utility-divider"></span>
-        <span class="utility-badge">NABH ACCREDITED (REG: NABH-2018-0492)</span>
+        <span class="utility-badge">NABH & NABL NETWORK</span>
       </div>
+
       <div class="top-utility-right">
-        <a href="#timings" class="utility-link">OPD Timings</a>
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker">
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
+        </div>
         <span class="utility-divider"></span>
-        <a href="patient.html" class="utility-link">Patient Portal</a>
+        <a href="appointments.html" class="utility-link" data-i18n="navAppointments">Appointments</a>
         <span class="utility-divider"></span>
-        <a href="doctor.html" class="utility-link" title="Staff Consultation Console">Staff Login (Doctor Desk)</a>
+        <a href="business.html" class="utility-link" data-i18n="navBusiness">How GWS Works</a>
         <span class="utility-divider"></span>
-        <a href="hospital.html" class="utility-link" title="Hospital Operations">Hospital Admin</a>
+        <a href="login.html" class="utility-link">Sign In</a>
+        <span class="utility-divider"></span>
+        <button onclick="resetDemoState()" class="utility-badge" style="cursor:pointer;" title="Reset all demonstration states">Reset Demo</button>
       </div>
     </div>
   </div>
@@ -41,31 +51,31 @@
   <header class="main-header">
     <div class="container header-container">
       <a href="index.html" class="hospital-brand">
-        <div class="hospital-emblem">
-          <svg viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+        <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div class="brand-text">
-          <span class="brand-title">CareFlow</span>
-          <span class="brand-subtitle">Memorial Hospital & Research Centre</span>
+          <span class="brand-title">GWS</span>
+          <span class="brand-subtitle" data-i18n="brandTagline">Healthcare, connected.</span>
         </div>
       </a>
 
-      <!-- Navigation Menu -->
+      <!-- Main Navigation Menu -->
       <nav class="main-nav" id="main-nav">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="#departments" class="nav-link">Departments</a>
-        <a href="#doctors" class="nav-link">Doctors</a>
-        <a href="#services" class="nav-link">Patient Services</a>
+        <a href="index.html" class="nav-link active" data-i18n="navHome">Home</a>
+        <a href="hospitals.html" class="nav-link" data-i18n="navHospitals">Find Hospitals</a>
+        <a href="appointments.html" class="nav-link" data-i18n="navAppointments">Appointments</a>
         <a href="patient.html" class="nav-link live-queue-tab">
-          <span class="live-dot" style="width:6px;height:6px;"></span> Live OPD Queue
+          <span class="live-dot" style="width:6px;height:6px;"></span>
+          <span data-i18n="navLiveQueue">Live Queue</span>
         </a>
-        <a href="doctor.html" class="nav-link" style="font-size:0.85rem; color:var(--text-muted);">Doctor Desk</a>
-        <a href="hospital.html" class="nav-link" style="font-size:0.85rem; color:var(--text-muted);">Hospital Ops</a>
-        <a href="icu.html" class="nav-link" style="font-size:0.85rem; color:var(--text-muted);">ICU Family</a>
+        <a href="reports.html" class="nav-link" data-i18n="navReports">Lab Reports</a>
+        <a href="icu.html" class="nav-link" data-i18n="navFamilyCare">Family Care (ICU)</a>
+        <a href="business.html" class="nav-link" data-i18n="navBusiness">Business Model</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="tel:+917940002400" class="btn-emergency-nav">
+        <a href="emergency.html" class="btn-emergency-nav" data-i18n="navEmergency">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
           24×7 Emergency
         </a>
@@ -74,620 +84,452 @@
     </div>
   </header>
 
-  <!-- Hero Section (Institutional Hospital Hero) -->
-  <section class="hero-section">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="hero-institution-tag">
+  <!-- Hero Section with Unified Multi-Hospital Search -->
+  <section class="hero-section" style="background:var(--bg-cream); border-bottom:1px solid var(--border-medium); padding:48px 0 54px;">
+    <div class="container">
+      <div style="max-width:860px; margin:0 auto; text-align:center;">
+        <div class="hero-institution-tag" style="margin-bottom:12px;">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/></svg>
-          Tertiary Care Hospital & Research Centre
+          GWS DIGITAL HEALTHCARE PLATFORM • 6 CONNECTED HOSPITALS
         </div>
-        <h1 class="hero-title">Your care should come with less waiting.</h1>
-        <p class="hero-lead">
-          Check your OPD queue, follow your token and stay informed while you wait. Receive compassionate clinical care with real-time consultation transparency.
+        <h1 class="hero-title" data-i18n="heroTitle" style="font-size:2.65rem; line-height:1.2; margin-bottom:14px;">
+          Find the right care, without the unnecessary waiting.
+        </h1>
+        <p class="hero-lead" data-i18n="heroSub" style="font-size:1.15rem; color:var(--text-muted); margin-bottom:28px;">
+          Search hospitals, compare availability, book appointments and stay updated throughout your visit.
         </p>
-
-        <div class="hero-actions">
-          <a href="patient.html" class="btn btn-primary btn-lg">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
-            CHECK MY TOKEN
-          </a>
-          <button type="button" onclick="openAppointmentModal()" class="btn btn-secondary btn-lg">
-            BOOK AN APPOINTMENT
-          </button>
-        </div>
-
-        <div class="hero-trust-notes">
-          <div class="trust-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            <span>Govt. Registered (GUJ/MED/2012/8841)</span>
-          </div>
-          <div class="trust-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            <span>Cashless TPA & PM-JAY Desks</span>
-          </div>
-        </div>
       </div>
 
-      <!-- Hero Right: Restrained Hospital Queue Status Panel -->
-      <div class="hero-visual-card">
-        <div class="hero-visual-header">
-          <h4>OPD Consultation Counter</h4>
-          <span class="live-indicator"><span class="live-dot"></span> LIVE ●</span>
+      <!-- Primary Unified Search Component -->
+      <div class="gws-search-box" style="max-width:960px; margin:0 auto;">
+        <div style="font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:10px;">
+          What do you need today?
         </div>
-        <div class="hero-queue-snapshot">
-          <div class="dept-badge-row">
-            <span class="dept-name">Cardiology OPD</span>
-            <span class="room-tag">Room 104 • 1st Floor</span>
-          </div>
-
-          <div class="snapshot-token-box">
-            <div class="snapshot-stat">
-              <span class="stat-label">Now Serving</span>
-              <span class="stat-val serving" id="home-snapshot-serving">A-109</span>
+        
+        <form onsubmit="handleHomeSearch(event)">
+          <div class="gws-search-inputs-grid">
+            <!-- Search Query Input -->
+            <div style="position:relative;">
+              <input type="text" id="home-search-query" class="form-input" placeholder="Search doctors, departments or hospitals (e.g. Cardiologist, Shantideep, Blood test)..." style="padding:12px 14px 12px 38px; font-size:0.95rem; width:100%; border:1px solid var(--border-strong);" data-i18n-placeholder="searchPlaceholder">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--text-muted)" style="position:absolute; left:12px; top:14px;"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
             </div>
-            <div class="snapshot-stat">
-              <span class="stat-label">Active Doctor</span>
-              <span style="font-size: 0.95rem; font-weight:700; color:var(--text-main); margin-top:2px;">Dr. Arjun Mehta</span>
-              <span style="font-size: 0.75rem; color:var(--text-muted);">MD, DM Cardiology</span>
-            </div>
-          </div>
 
-          <ul class="snapshot-details-list">
-            <li>
-              <span>Estimated Wait Per Patient</span>
-              <span>~4 Minutes</span>
-            </li>
-            <li>
-              <span>Current Session Status</span>
-              <span style="color:var(--accent-success);">Consultations In Progress</span>
-            </li>
-            <li>
-              <span>Clinic Reporting Hours</span>
-              <span>08:30 AM – 01:30 PM</span>
-            </li>
-          </ul>
-
-          <a href="patient.html" class="btn btn-terracotta btn-block">
-            View Live Patient Token Slip →
-          </a>
-        </div>
-        <div class="hero-visual-footer">
-          <span>CareFlow Medical Campus, SG Highway</span>
-          <span class="text-mono" style="color:var(--text-muted);">Real-time Synced</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Today at CareFlow (Operational Status Strip) -->
-  <section class="today-status-strip" id="timings">
-    <div class="container">
-      <div class="today-header-row">
-        <span class="today-title">TODAY AT CAREFLOW</span>
-        <span class="text-sm text-muted">Saturday, 12 September 2026 • Live Facility Status</span>
-      </div>
-
-      <div class="today-grid">
-        <div class="today-card">
-          <div>
-            <div class="facility-name">Emergency & Trauma</div>
-            <div class="facility-timing">Open 24 Hours</div>
-          </div>
-          <div class="facility-status status-badge-emergency">Emergency Response Active</div>
-        </div>
-
-        <div class="today-card">
-          <div>
-            <div class="facility-name">OPD Consultations</div>
-            <div class="facility-timing">07:00 AM – 08:00 PM</div>
-          </div>
-          <div class="facility-status status-badge-open">All 6 Clinics Active</div>
-        </div>
-
-        <div class="today-card">
-          <div>
-            <div class="facility-name">In-House Pharmacy</div>
-            <div class="facility-timing">Open 24 Hours</div>
-          </div>
-          <div class="facility-status status-badge-open">Ground Floor Dispensing</div>
-        </div>
-
-        <div class="today-card">
-          <div>
-            <div class="facility-name">Diagnostics & Radiology</div>
-            <div class="facility-timing">06:30 AM – 09:00 PM</div>
-          </div>
-          <div class="facility-status status-badge-open">MRI, CT & Pathology Open</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Patient Queue Feature Section -->
-  <section class="queue-feature-section">
-    <div class="container queue-feature-grid">
-      <div class="queue-feature-content">
-        <span class="section-label">Patient Flow System</span>
-        <h2>Already at the hospital?</h2>
-        <p class="lead">Don't spend your appointment sitting in a crowded waiting room.</p>
-        <p>
-          CareFlow's institutional queue system tracks your OPD token live. Wait comfortably at our cafeteria, campus gardens, or pharmacy while keeping tabs on your exact turn in real-time.
-        </p>
-
-        <ul class="queue-feature-steps">
-          <li>
-            <span class="step-num">1</span>
-            <div><strong>Receive Your Physical or Digital Slip</strong> with your allotted token number at the reception desk.</div>
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            <div><strong>Track Wait Times in Real-Time</strong> with calculated estimates based on active doctor consultations.</div>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            <div><strong>Proceed Directly to the Consulting Room</strong> when your turn is approaching.</div>
-          </li>
-        </ul>
-
-        <div style="display:flex; gap:12px;">
-          <a href="patient.html" class="btn btn-primary">
-            CHECK LIVE QUEUE
-          </a>
-          <button type="button" onclick="openAppointmentModal()" class="btn btn-secondary">
-            Get OPD Token Slip
-          </button>
-        </div>
-      </div>
-
-      <!-- Queue Display Widget -->
-      <div class="queue-widget-frame">
-        <div class="queue-widget-top">
-          <h3>Live OPD Department Monitor</h3>
-          <span class="live-indicator" style="background:#ffffff; color:var(--primary-green); border:none;">
-            <span class="live-dot" style="background:var(--primary-green);"></span> LIVE ●
-          </span>
-        </div>
-
-        <div class="queue-widget-body">
-          <div class="queue-dept-select-wrap">
-            <label class="form-label" for="home-dept-select">Select OPD Department:</label>
-            <select id="home-dept-select" class="form-select">
-              <option value="cardiology" selected>Cardiology OPD (Dr. Arjun Mehta — Room 104)</option>
-              <option value="orthopaedics">Orthopaedics OPD (Dr. Neha Shah — Room 208)</option>
-              <option value="medicine">General Medicine OPD (Dr. Rohan Patel — Room 112)</option>
-              <option value="paediatrics">Paediatrics OPD (Dr. Ananya Iyer — Room 105)</option>
-            </select>
-          </div>
-
-          <div class="queue-display-strip">
-            <div class="queue-metric">
-              <span class="metric-label">Now Serving</span>
-              <span class="metric-number now-serving" id="home-queue-serving">A-109</span>
-            </div>
-            <div class="queue-metric">
-              <span class="metric-label">Estimated Wait</span>
-              <span class="metric-number wait-time" id="home-queue-wait">~32 min</span>
-            </div>
-            <div class="queue-metric">
-              <span class="metric-label">Patients Waiting</span>
-              <span class="metric-number" id="home-queue-ahead" style="font-size:1.4rem;">8 in queue</span>
-            </div>
-          </div>
-
-          <div class="queue-notification-banner">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <!-- Location / City Dropdown -->
             <div>
-              Active Consultant: <strong id="home-queue-doctor">Dr. Arjun Mehta</strong> (<span id="home-queue-room">Room 104, 1st Floor</span>)
+              <select id="home-city-select" class="form-select" style="padding:12px 14px; font-size:0.9rem; width:100%;" onchange="selectCityLocation(this.value)">
+                <option value="Pune">📍 Pune (City Default)</option>
+                <option value="Mumbai">📍 Mumbai</option>
+                <option value="Ahmedabad">📍 Ahmedabad</option>
+                <option value="Jamnagar">📍 Jamnagar</option>
+                <option value="Surat">📍 Surat</option>
+              </select>
+            </div>
+
+            <!-- Primary Action Button -->
+            <div>
+              <button type="submit" class="btn btn-primary btn-block" style="padding:12px; font-weight:700; font-size:0.95rem; text-transform:uppercase;" data-i18n="findCareBtn">
+                FIND CARE
+              </button>
             </div>
           </div>
+        </form>
 
-          <div class="queue-widget-actions">
-            <a href="patient.html" class="btn btn-terracotta btn-block">
-              Open My Token Slip (A-117)
-            </a>
+        <!-- Location Permission Trigger & Quick Need Chips -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-top:14px; padding-top:12px; border-top:1px solid var(--border-subtle);">
+          <div class="gws-quick-chips">
+            <span style="font-size:0.775rem; color:var(--text-muted); font-weight:600;">Popular Needs:</span>
+            <button type="button" class="chip-btn" onclick="quickFilterNeeds('Cardiology')">Cardiology</button>
+            <button type="button" class="chip-btn" onclick="quickFilterNeeds('Orthopaedics')">Orthopaedics</button>
+            <button type="button" class="chip-btn" onclick="quickFilterNeeds('General Medicine')">General Medicine</button>
+            <button type="button" class="chip-btn" onclick="quickFilterNeeds('Paediatrics')">Paediatrics</button>
+            <button type="button" class="chip-btn" onclick="quickFilterNeeds('Diagnostics')">Diagnostics / Lab</button>
+            <button type="button" class="chip-btn" onclick="window.location.href='emergency.html'" style="color:var(--accent-emergency); border-color:var(--accent-emergency);">🚨 Emergency 24×7</button>
+          </div>
+
+          <div>
+            <button type="button" onclick="requestBrowserLocation()" class="btn btn-secondary btn-sm" style="font-size:0.775rem; padding:4px 10px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px;"><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+              Use My Location
+            </button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Hospital Departments Section -->
-  <section class="departments-section" id="departments">
-    <div class="container">
-      <div class="section-title-wrap">
+  <!-- Key Innovation Showcase: Live Waiting Time Comparison -->
+  <section class="container" style="padding:48px 24px 32px;">
+    <div class="section-title-wrap">
+      <div>
+        <span class="section-label">Core GWS Differentiator</span>
+        <h2 style="margin:0 0 4px 0;">Compare Live Waiting Times Before You Travel</h2>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+          Traditional directories only show if a hospital is open. GWS shows live OPD queue wait times so you can choose care based on your need and schedule.
+        </p>
+      </div>
+      <div>
+        <a href="hospitals.html" class="btn btn-secondary btn-sm">View All 6 Hospitals →</a>
+      </div>
+    </div>
+
+    <!-- 3 Hospital Live Comparison Cards -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
+      
+      <!-- Hospital 1: Lifeline (Fastest Wait) -->
+      <div class="hospital-compare-card" style="border-top:4px solid var(--accent-success);">
         <div>
-          <span class="section-label">Clinical Care</span>
-          <h2>Our Departments</h2>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <div>
+              <span class="hospital-badge-wait hospital-badge-fastest">⚡ Shortest Wait: ~18 min</span>
+              <h3 style="margin:6px 0 2px 0; font-size:1.25rem;">Lifeline Medical Centre</h3>
+              <div class="text-xs text-muted">Baner / Aundh • 1.8 km away • ★★★★★ 4.8</div>
+            </div>
+            <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Open 24×7</span>
+          </div>
+
+          <div style="background:var(--bg-cream); padding:10px 12px; border-radius:var(--radius-sm); font-size:0.85rem; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span class="text-muted">Cardiology OPD Wait:</span>
+              <strong>~18 min</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span class="text-muted">Next Available Slot:</span>
+              <strong style="color:var(--primary-green);">10:15 AM Today</strong>
+            </div>
+          </div>
+
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
+            Specialities: Cardiology • General Medicine • Gynaecology • Diagnostics
+          </div>
         </div>
-        <p class="text-muted" style="max-width:480px; margin:0; font-size:0.9rem;">
-          CareFlow provides comprehensive outpatient, inpatient, critical care, and advanced surgical interventions across six core specialty centers.
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <button class="btn btn-secondary btn-sm" onclick="setSelectedHospital('H003', true)">View Hospital</button>
+          <a href="appointments.html" class="btn btn-primary btn-sm" onclick="setSelectedHospital('H003', false)">Book Appt</a>
+        </div>
+      </div>
+
+      <!-- Hospital 2: Shantideep (Featured Demo) -->
+      <div class="hospital-compare-card" style="border-top:4px solid var(--primary-green);">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <div>
+              <span class="hospital-badge-wait">⚡ OPD Wait: ~28 min</span>
+              <h3 style="margin:6px 0 2px 0; font-size:1.25rem;">Shantideep Multispeciality</h3>
+              <div class="text-xs text-muted">Shivajinagar • 2.4 km away • ★★★★★ 4.7</div>
+            </div>
+            <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Open 24×7</span>
+          </div>
+
+          <div style="background:var(--bg-cream); padding:10px 12px; border-radius:var(--radius-sm); font-size:0.85rem; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span class="text-muted">Cardiology OPD Wait:</span>
+              <strong>~28 min (A-109 serving)</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span class="text-muted">Next Available Slot:</span>
+              <strong style="color:var(--primary-green);">10:30 AM Today</strong>
+            </div>
+          </div>
+
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
+            Specialities: Cardiology • Orthopaedics • General Medicine • Paediatrics
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <button class="btn btn-secondary btn-sm" onclick="setSelectedHospital('H001', true)">View Hospital</button>
+          <a href="appointments.html" class="btn btn-primary btn-sm" onclick="setSelectedHospital('H001', false)">Book Appt</a>
+        </div>
+      </div>
+
+      <!-- Hospital 3: Aarogya Care -->
+      <div class="hospital-compare-card" style="border-top:4px solid var(--secondary-sage);">
+        <div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <div>
+              <span class="hospital-badge-wait">⚡ OPD Wait: ~41 min</span>
+              <h3 style="margin:6px 0 2px 0; font-size:1.25rem;">Aarogya Care Hospital</h3>
+              <div class="text-xs text-muted">Kothrud • 3.1 km away • ★★★★★ 4.5</div>
+            </div>
+            <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Open 24×7</span>
+          </div>
+
+          <div style="background:var(--bg-cream); padding:10px 12px; border-radius:var(--radius-sm); font-size:0.85rem; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span class="text-muted">Cardiology OPD Wait:</span>
+              <strong>~41 min</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span class="text-muted">Next Available Slot:</span>
+              <strong style="color:var(--primary-green);">11:00 AM Today</strong>
+            </div>
+          </div>
+
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
+            Specialities: Cardiology • Neurology • General Medicine • ENT
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <button class="btn btn-secondary btn-sm" onclick="setSelectedHospital('H002', true)">View Hospital</button>
+          <a href="appointments.html" class="btn btn-primary btn-sm" onclick="setSelectedHospital('H002', false)">Book Appt</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- How GWS Works: The Complete Patient Flow -->
+  <section style="background:var(--bg-paper); border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle); padding:52px 0;">
+    <div class="container">
+      <div style="text-align:center; max-width:760px; margin:0 auto 36px;">
+        <span class="section-label">End-To-End Digital Healthcare Journey</span>
+        <h2 style="margin:0 0 6px 0;">How GWS Connects You to Hospital Care</h2>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+          From the moment you realize you need a doctor to your consultation, laboratory reports, and family updates.
         </p>
       </div>
 
-      <div class="dept-grid">
-        <!-- Dept 1: Cardiology -->
-        <div class="dept-card">
-          <div>
-            <div class="dept-header">
-              <h3>Cardiology</h3>
-              <div class="dept-location">1st Floor • Clinical Block A (Rooms 101–106)</div>
-            </div>
-            <p class="dept-desc">
-              Comprehensive preventive cardiology, coronary angiography, 2D Echo, TMT, and cardiac rehabilitation.
-            </p>
-            <ul class="dept-timings-list">
-              <li><span>Morning OPD:</span> <span>08:30 AM – 01:30 PM</span></li>
-              <li><span>Evening Clinic:</span> <span>04:30 PM – 07:30 PM</span></li>
-              <li><span>Senior Consultant:</span> <span>Dr. Arjun Mehta</span></li>
-            </ul>
-          </div>
-          <div class="dept-card-footer">
-            <span class="text-sm font-semibold" style="color:var(--primary-green);">OPD Queue Active</span>
-            <a href="patient.html" class="font-semibold text-sm">View Queue →</a>
-          </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
+        
+        <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+          <div style="font-family:var(--font-mono); font-size:1.5rem; font-weight:700; color:var(--accent-terracotta); margin-bottom:8px;">01</div>
+          <h4 style="margin:0 0 6px 0;">Search Nearby Care</h4>
+          <p class="text-xs text-muted" style="margin:0;">
+            Search by symptom, doctor specialization, department, or hospital name across your city.
+          </p>
         </div>
 
-        <!-- Dept 2: Orthopaedics -->
-        <div class="dept-card">
-          <div>
-            <div class="dept-header">
-              <h3>Orthopaedics & Joint Care</h3>
-              <div class="dept-location">2nd Floor • Surgical Block B (Rooms 205–210)</div>
-            </div>
-            <p class="dept-desc">
-              Joint replacement surgery, trauma management, arthroscopy, sports injury rehabilitation and spine clinic.
-            </p>
-            <ul class="dept-timings-list">
-              <li><span>Morning OPD:</span> <span>09:00 AM – 01:00 PM</span></li>
-              <li><span>Evening Clinic:</span> <span>05:00 PM – 08:00 PM</span></li>
-              <li><span>Senior Consultant:</span> <span>Dr. Neha Shah</span></li>
-            </ul>
-          </div>
-          <div class="dept-card-footer">
-            <span class="text-sm font-semibold" style="color:var(--primary-green);">OPD Queue Active</span>
-            <a href="patient.html" class="font-semibold text-sm">View Queue →</a>
-          </div>
+        <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+          <div style="font-family:var(--font-mono); font-size:1.5rem; font-weight:700; color:var(--primary-green); margin-bottom:8px;">02</div>
+          <h4 style="margin:0 0 6px 0;">Compare Availability</h4>
+          <p class="text-xs text-muted" style="margin:0;">
+            Compare live OPD queue waiting times, earliest appointment slots, and travel distances side-by-side.
+          </p>
         </div>
 
-        <!-- Dept 3: General Medicine -->
-        <div class="dept-card">
-          <div>
-            <div class="dept-header">
-              <h3>General Medicine</h3>
-              <div class="dept-location">1st Floor • West Wing (Rooms 110–115)</div>
-            </div>
-            <p class="dept-desc">
-              Management of lifestyle disorders, diabetes, infectious diseases, hypertension, and geriatric care.
-            </p>
-            <ul class="dept-timings-list">
-              <li><span>Morning OPD:</span> <span>08:00 AM – 02:00 PM</span></li>
-              <li><span>Evening Clinic:</span> <span>04:00 PM – 08:00 PM</span></li>
-              <li><span>Senior Consultant:</span> <span>Dr. Rohan Patel</span></li>
-            </ul>
-          </div>
-          <div class="dept-card-footer">
-            <span class="text-sm font-semibold" style="color:var(--primary-green);">OPD Queue Active</span>
-            <a href="patient.html" class="font-semibold text-sm">View Queue →</a>
-          </div>
+        <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+          <div style="font-family:var(--font-mono); font-size:1.5rem; font-weight:700; color:var(--secondary-sage-dark); margin-bottom:8px;">03</div>
+          <h4 style="margin:0 0 6px 0;">Book & Get Token</h4>
+          <p class="text-xs text-muted" style="margin:0;">
+            Confirm your slot, receive a digital token, and print department-specific visit checklists.
+          </p>
         </div>
 
-        <!-- Dept 4: Paediatrics -->
-        <div class="dept-card">
-          <div>
-            <div class="dept-header">
-              <h3>Paediatrics & Neonatology</h3>
-              <div class="dept-location">1st Floor • East Wing (Rooms 105–108)</div>
-            </div>
-            <p class="dept-desc">
-              Child health, vaccination clinics, developmental assessment, pediatric intensive care (PICU/NICU).
-            </p>
-            <ul class="dept-timings-list">
-              <li><span>Morning OPD:</span> <span>09:00 AM – 02:00 PM</span></li>
-              <li><span>Evening Clinic:</span> <span>05:00 PM – 07:30 PM</span></li>
-              <li><span>Senior Consultant:</span> <span>Dr. Ananya Iyer</span></li>
-            </ul>
-          </div>
-          <div class="dept-card-footer">
-            <span class="text-sm font-semibold" style="color:var(--primary-green);">OPD Queue Active</span>
-            <a href="patient.html" class="font-semibold text-sm">View Queue →</a>
-          </div>
+        <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+          <div style="font-family:var(--font-mono); font-size:1.5rem; font-weight:700; color:var(--text-main); margin-bottom:8px;">04</div>
+          <h4 style="margin:0 0 6px 0;">Stay Connected</h4>
+          <p class="text-xs text-muted" style="margin:0;">
+            Track your queue in real time, view floor maps, access lab reports, and keep family informed during ICU care.
+          </p>
         </div>
 
-        <!-- Dept 5: Neurology -->
-        <div class="dept-card">
-          <div>
-            <div class="dept-header">
-              <h3>Neurology & Neurosurgery</h3>
-              <div class="dept-location">3rd Floor • Neuro Sciences Wing</div>
-            </div>
-            <p class="dept-desc">
-              Stroke management, epilepsy, movement disorders, neuromuscular diseases, and neuro-rehabilitation.
-            </p>
-            <ul class="dept-timings-list">
-              <li><span>Consulting OPD:</span> <span>10:00 AM – 02:00 PM</span></li>
-              <li><span>Emergency Neuro:</span> <span>24×7 Available</span></li>
-              <li><span>Senior Consultant:</span> <span>Dr. Vikramaditya Sen</span></li>
-            </ul>
-          </div>
-          <div class="dept-card-footer">
-            <span class="text-sm font-semibold" style="color:var(--primary-green);">OPD Queue Active</span>
-            <a href="patient.html" class="font-semibold text-sm">View Queue →</a>
-          </div>
-        </div>
-
-        <!-- Dept 6: Gynaecology -->
-        <div class="dept-card">
-          <div>
-            <div class="dept-header">
-              <h3>Obstetrics & Gynaecology</h3>
-              <div class="dept-location">2nd Floor • Women's Wing (Rooms 215–220)</div>
-            </div>
-            <p class="dept-desc">
-              Antenatal care, high-risk pregnancy management, laparoscopic surgeries, and maternal wellness.
-            </p>
-            <ul class="dept-timings-list">
-              <li><span>Morning OPD:</span> <span>08:30 AM – 01:00 PM</span></li>
-              <li><span>Evening Clinic:</span> <span>04:30 PM – 07:00 PM</span></li>
-              <li><span>Senior Consultant:</span> <span>Dr. Sarita Kulkarni</span></li>
-            </ul>
-          </div>
-          <div class="dept-card-footer">
-            <span class="text-sm font-semibold" style="color:var(--primary-green);">OPD Queue Active</span>
-            <a href="patient.html" class="font-semibold text-sm">View Queue →</a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Our Doctors & Consultants Section -->
-  <section class="doctors-section" id="doctors">
-    <div class="container">
-      <div class="section-title-wrap">
-        <div>
-          <span class="section-label">Medical Faculty</span>
-          <h2>Our Doctors</h2>
-        </div>
-        <p class="text-muted" style="max-width:460px; margin:0; font-size:0.9rem;">
-          Our team of full-time senior consultants brings decades of institutional and clinical experience across premier teaching hospitals.
+  <!-- Platform Scale Numbers (Aggregate Demo Data) -->
+  <section class="container" style="padding:48px 24px;">
+    <div style="background:var(--bg-cream); border:1px solid var(--border-medium); border-radius:var(--radius-md); padding:28px 32px; display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:24px; text-align:center;">
+      <div>
+        <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--primary-green); line-height:1;">6</div>
+        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;">Connected Hospitals</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--primary-green); line-height:1;">84</div>
+        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;">Active Specialists</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--primary-green); line-height:1;">28</div>
+        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;">Clinical Departments</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--primary-green); line-height:1;">312</div>
+        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;">Appointments Today</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--accent-terracotta); line-height:1;">1,420</div>
+        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;">Patients Active on GWS</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete Patient Services Grid -->
+  <section class="container" style="padding:0 24px 64px;">
+    <div class="section-title-wrap">
+      <div>
+        <span class="section-label">Patient Services Hub</span>
+        <h2 style="margin:0 0 4px 0;">All Digital Services in One Platform</h2>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+          Select any service to manage your ongoing visit or access historical health records.
         </p>
       </div>
+    </div>
 
-      <div class="doctors-grid">
-        <!-- Doctor 1: Dr. Arjun Mehta -->
-        <div class="doctor-card">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:18px;">
+      
+      <a href="patient.html" class="hospital-compare-card" style="text-decoration:none;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="background:var(--primary-green-light); width:40px; height:40px; border-radius:4px; display:flex; align-items:center; justify-content:center; color:var(--primary-green); font-size:1.2rem;">⏱️</div>
           <div>
-            <span class="doc-badge-available">In OPD Today</span>
-            <h3 class="doc-name">Dr. Arjun Mehta</h3>
-            <div class="doc-designation">Consultant Cardiologist</div>
-            <div class="doc-qualifications">MBBS, MD (Medicine), DM (Cardiology), FSCAI</div>
-            
-            <table class="doc-meta-table">
-              <tr><td>OPD Room:</td><td>Room 104 (1st Floor)</td></tr>
-              <tr><td>Timings:</td><td>08:30 AM – 01:30 PM</td></tr>
-              <tr><td>Experience:</td><td>18+ Years</td></tr>
-              <tr><td>Languages:</td><td>English, हिन्दी, ગુજરાતી</td></tr>
-            </table>
-          </div>
-          <div class="doc-card-actions">
-            <button onclick="openAppointmentModal()" class="btn btn-sm btn-primary">Book OPD Slot</button>
-            <a href="doctor.html" class="btn btn-sm btn-secondary" title="View OPD Consultation Console">Desk View</a>
+            <h4 style="margin:0; color:var(--text-main);">Live OPD Queue</h4>
+            <div class="text-xs text-muted">Track token progress in real-time</div>
           </div>
         </div>
+      </a>
 
-        <!-- Doctor 2: Dr. Neha Shah -->
-        <div class="doctor-card">
+      <a href="appointments.html" class="hospital-compare-card" style="text-decoration:none;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="background:var(--accent-terracotta-light); width:40px; height:40px; border-radius:4px; display:flex; align-items:center; justify-content:center; color:var(--accent-terracotta); font-size:1.2rem;">📅</div>
           <div>
-            <span class="doc-badge-available">In OPD Today</span>
-            <h3 class="doc-name">Dr. Neha Shah</h3>
-            <div class="doc-designation">Senior Orthopaedic Consultant</div>
-            <div class="doc-qualifications">MBBS, MS (Orthopaedics), MCh (Joint Repl.)</div>
-            
-            <table class="doc-meta-table">
-              <tr><td>OPD Room:</td><td>Room 208 (2nd Floor)</td></tr>
-              <tr><td>Timings:</td><td>09:00 AM – 01:00 PM</td></tr>
-              <tr><td>Experience:</td><td>15+ Years</td></tr>
-              <tr><td>Languages:</td><td>English, हिन्दी, ગુજરાતી</td></tr>
-            </table>
-          </div>
-          <div class="doc-card-actions">
-            <button onclick="openAppointmentModal()" class="btn btn-sm btn-primary">Book OPD Slot</button>
-            <a href="patient.html" class="btn btn-sm btn-secondary">Check Queue</a>
+            <h4 style="margin:0; color:var(--text-main);">Book Appointment</h4>
+            <div class="text-xs text-muted">Confirmed consultation slots & checklists</div>
           </div>
         </div>
+      </a>
 
-        <!-- Doctor 3: Dr. Rohan Patel -->
-        <div class="doctor-card">
+      <a href="reports.html" class="hospital-compare-card" style="text-decoration:none;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="background:var(--accent-info-light); width:40px; height:40px; border-radius:4px; display:flex; align-items:center; justify-content:center; color:var(--accent-info); font-size:1.2rem;">📄</div>
           <div>
-            <span class="doc-badge-available">In OPD Today</span>
-            <h3 class="doc-name">Dr. Rohan Patel</h3>
-            <div class="doc-designation">Consultant Physician</div>
-            <div class="doc-qualifications">MBBS, MD (General Medicine), DNB (Int. Med)</div>
-            
-            <table class="doc-meta-table">
-              <tr><td>OPD Room:</td><td>Room 112 (1st Floor)</td></tr>
-              <tr><td>Timings:</td><td>08:00 AM – 02:00 PM</td></tr>
-              <tr><td>Experience:</td><td>12+ Years</td></tr>
-              <tr><td>Languages:</td><td>English, हिन्दी, ગુજરાતી</td></tr>
-            </table>
-          </div>
-          <div class="doc-card-actions">
-            <button onclick="openAppointmentModal()" class="btn btn-sm btn-primary">Book OPD Slot</button>
-            <a href="patient.html" class="btn btn-sm btn-secondary">Check Queue</a>
+            <h4 style="margin:0; color:var(--text-main);">Digital Lab Reports</h4>
+            <div class="text-xs text-muted">Certified NABL diagnostic sheets</div>
           </div>
         </div>
-      </div>
+      </a>
+
+      <a href="icu.html" class="hospital-compare-card" style="text-decoration:none;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="background:var(--secondary-sage-light); width:40px; height:40px; border-radius:4px; display:flex; align-items:center; justify-content:center; color:var(--secondary-sage-dark); font-size:1.2rem;">🏥</div>
+          <div>
+            <h4 style="margin:0; color:var(--text-main);">ICU Family Care</h4>
+            <div class="text-xs text-muted">Authorized updates & plain-language notes</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="medicines.html" class="hospital-compare-card" style="text-decoration:none;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="background:var(--accent-amber-light); width:40px; height:40px; border-radius:4px; display:flex; align-items:center; justify-content:center; color:var(--accent-amber); font-size:1.2rem;">💊</div>
+          <div>
+            <h4 style="margin:0; color:var(--text-main);">Medicine Reminders</h4>
+            <div class="text-xs text-muted">Track your daily prescribed doses</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="map.html" class="hospital-compare-card" style="text-decoration:none;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="background:var(--bg-subtle); width:40px; height:40px; border-radius:4px; display:flex; align-items:center; justify-content:center; color:var(--text-main); font-size:1.2rem;">🗺️</div>
+          <div>
+            <h4 style="margin:0; color:var(--text-main);">Hospital Indoor Map</h4>
+            <div class="text-xs text-muted">Step-by-step navigation to OPD rooms</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="reviews.html" class="hospital-compare-card" style="text-decoration:none;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="background:var(--accent-success-light); width:40px; height:40px; border-radius:4px; display:flex; align-items:center; justify-content:center; color:var(--accent-success); font-size:1.2rem;">⭐</div>
+          <div>
+            <h4 style="margin:0; color:var(--text-main);">Doctor Reviews</h4>
+            <div class="text-xs text-muted">Verified patient feedback & ratings</div>
+          </div>
+        </div>
+      </a>
+
+      <a href="emergency.html" class="hospital-compare-card" style="text-decoration:none; border-color:var(--accent-emergency);">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="background:var(--accent-emergency-light); width:40px; height:40px; border-radius:4px; display:flex; align-items:center; justify-content:center; color:var(--accent-emergency); font-size:1.2rem;">🚨</div>
+          <div>
+            <h4 style="margin:0; color:var(--accent-emergency);">24×7 Emergency SOS</h4>
+            <div class="text-xs text-muted">Ambulance dispatch & bed availability</div>
+          </div>
+        </div>
+      </a>
+
     </div>
   </section>
 
-  <!-- Patient Services & Hospital Facilities -->
-  <section class="services-section" id="services">
-    <div class="container">
-      <div class="section-title-wrap">
-        <div>
-          <span class="section-label">Hospital Facilities</span>
-          <h2>Patient Services & Support</h2>
-        </div>
-        <p class="text-muted" style="max-width:460px; margin:0; font-size:0.9rem;">
-          Designed to ensure comfortable, organized, and transparent hospital visits for patients and family attendants.
-        </p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <h4>Cashless TPA & Insurance</h4>
-          <p>Direct cashless clearance for Star Health, ICICI Lombard, MediAssist, CGHS, and Ayushman Bharat PM-JAY cards.</p>
-          <div class="service-contact">Desk: Ground Floor, Counter 6</div>
-        </div>
-
-        <div class="service-card">
-          <h4>24×7 Ambulance Fleet</h4>
-          <p>Equipped with ventilator, defibrillator, cardiac monitor, and trained emergency paramedic crew.</p>
-          <div class="service-contact">Call: +91 (079) 4000 2400</div>
-        </div>
-
-        <div class="service-card">
-          <h4>ICU Family Updates</h4>
-          <p>Calm, plain-language patient condition summaries for families, updated following clinical rounds.</p>
-          <div class="service-contact"><a href="icu.html">Access ICU Portal →</a></div>
-        </div>
-
-        <div class="service-card">
-          <h4>Diagnostic & Radiology</h4>
-          <p>128-slice CT, 1.5T MRI, digital X-Ray, ultrasound, 2D-Echo, automated biochemistry laboratory.</p>
-          <div class="service-contact">Timing: 06:30 AM – 09:00 PM</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Traditional Hospital Footer -->
+  <!-- Global Footer -->
   <footer class="hospital-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <div class="hospital-brand" style="margin-bottom:16px;">
-            <div class="hospital-emblem" style="width:36px;height:36px;">
-              <svg viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+          <div class="footer-brand" style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div class="hospital-emblem" style="width:36px; height:36px; background:#FCFBF9; padding:2px; overflow:hidden;">
+              <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
             </div>
-            <div class="brand-text">
-              <span class="brand-title" style="font-size:1.35rem;">CareFlow</span>
-              <span class="brand-subtitle">Memorial Hospital & Research Centre</span>
-            </div>
+            <div style="font-size:1.35rem; font-weight:700; color:#ffffff;">GWS</div>
           </div>
-          <p class="text-sm text-muted" style="line-height:1.6; margin-bottom:12px;">
-            A 250-bed multi-specialty tertiary care teaching and referral hospital committed to compassionate clinical excellence, patient dignity, and transparent care pathways.
+          <p style="font-size:0.875rem; color:#A7D0B4; line-height:1.6; margin-bottom:12px;">
+            Connecting patients with hospitals across India. Real-time availability, live queue transparency, and continuous digital care.
           </p>
-          <div class="text-xs text-muted">
-            Registration No: GUJ/MED/2012/8841 • NABH Accredited
+          <div class="text-xs" style="color:#A7D0B4;">
+            "We don't replace hospitals. We connect patients to them."
           </div>
         </div>
 
         <div class="footer-col">
-          <h4>Hospital Quick Links</h4>
-          <ul class="footer-links text-sm">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#departments">Departments & Clinics</a></li>
-            <li><a href="#doctors">Consultant Directory</a></li>
-            <li><a href="patient.html">Live OPD Token Queue</a></li>
-            <li><a href="icu.html">ICU Family Information</a></li>
-            <li><a href="#timings">Visiting Hours & Timings</a></li>
+          <h4 class="footer-heading">Find Care</h4>
+          <ul class="footer-links">
+            <li><a href="hospitals.html">Find Nearby Hospitals</a></li>
+            <li><a href="appointments.html">Doctor Availability</a></li>
+            <li><a href="patient.html">Check Live Token</a></li>
+            <li><a href="reports.html">Digital Lab Reports</a></li>
+            <li><a href="emergency.html">24×7 Ambulance Service</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Staff & Operations</h4>
-          <ul class="footer-links text-sm">
-            <li><a href="doctor.html">Doctor Consultation Desk</a></li>
-            <li><a href="hospital.html">Hospital Operations Command</a></li>
-            <li><a href="#" onclick="patientSearchCustomToken(); return false;">Find Patient Token</a></li>
-            <li><a href="#services">Cashless Insurance Desk</a></li>
-            <li><a href="#services">Blood Bank Registry</a></li>
+          <h4 class="footer-heading">For Hospitals</h4>
+          <ul class="footer-links">
+            <li><a href="business.html">GWS Platform Architecture</a></li>
+            <li><a href="business.html#pricing">Hospital SaaS Pricing</a></li>
+            <li><a href="hospital.html">Hospital Administrator Desk</a></li>
+            <li><a href="doctor.html">Doctor Consultation Portal</a></li>
+            <li><a href="login.html">Staff Sign In</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Campus & Contact</h4>
-          <div class="footer-contact-block">
-            <strong>CareFlow Medical Campus</strong><br>
-            Opposite SG Highway Science City Road,<br>
-            Ahmedabad, Gujarat – 380060, India<br><br>
-            <strong>24×7 Emergency:</strong> <a href="tel:+917940002400">+91 (079) 4000 2400</a><br>
-            <strong>OPD Appointments:</strong> +91 (079) 4000 2401<br>
-            <strong>General Email:</strong> care@careflowhospital.org
+          <h4 class="footer-heading">Emergency Helpline</h4>
+          <p style="font-size:0.875rem; color:#ffffff; font-weight:700; margin-bottom:6px;">
+            National Emergency: 108 / 112
+          </p>
+          <p style="font-size:0.875rem; color:#A7D0B4; margin-bottom:14px;">
+            GWS Rapid Response: +91 (020) 2600 2400
+          </p>
+          <div class="demo-prototype-badge" style="background:rgba(255,255,255,0.15); color:#ffffff; border-color:rgba(255,255,255,0.3);">
+            College Hackathon Prototype
           </div>
         </div>
       </div>
 
       <div class="footer-bottom-bar">
         <div>
-          © 2026 CareFlow Memorial Hospital & Research Centre. All rights reserved.
+          &copy; 2026 GWS Platform • Healthcare, connected. All rights reserved.
         </div>
-        <div class="demo-prototype-badge">
-          Demo Hospital Website — Fictional Data for Demonstration
+        <div class="text-xs text-muted" style="color:#A7D0B4;">
+          Demo platform — all hospitals, patients, doctors and reports shown are fictional.
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Appointment / Instant Token Booking Modal -->
-  <div class="modal-overlay" id="appointment-modal">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h3 class="font-serif">Book OPD Consultation / Generate Token</h3>
-        <button class="modal-close-btn" onclick="closeAppointmentModal()">×</button>
-      </div>
-      <div class="modal-body">
-        <form onsubmit="handleBookTokenSubmit(event)">
-          <div class="form-group">
-            <label class="form-label" for="modal-dept-select">Select OPD Department:</label>
-            <select id="modal-dept-select" class="form-select" required>
-              <option value="cardiology" selected>Cardiology (Dr. Arjun Mehta — Room 104)</option>
-              <option value="orthopaedics">Orthopaedics (Dr. Neha Shah — Room 208)</option>
-              <option value="medicine">General Medicine (Dr. Rohan Patel — Room 112)</option>
-              <option value="paediatrics">Paediatrics (Dr. Ananya Iyer — Room 105)</option>
-            </select>
-          </div>
+  <script>
+    function handleHomeSearch(e) {
+      if (e) e.preventDefault();
+      const q = document.getElementById('home-search-query').value.trim();
+      const city = document.getElementById('home-city-select').value;
+      window.location.href = `hospitals.html?q=${encodeURIComponent(q)}&city=${encodeURIComponent(city)}`;
+    }
 
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="modal-patient-name">Patient Full Name:</label>
-              <input type="text" id="modal-patient-name" class="form-input" placeholder="e.g. Ramesh Bhai Patel" required value="Ayush Kumar Singh">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="modal-patient-phone">Mobile Number:</label>
-              <input type="tel" id="modal-patient-phone" class="form-input" placeholder="+91 98765 43210" required value="+91 98765 43210">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Consultation Date:</label>
-              <input type="text" class="form-input" value="Today (12 Sep 2026)" readonly>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Consultation Type:</label>
-              <select class="form-select">
-                <option selected>In-Person OPD Consultation</option>
-                <option>Follow-up Visit (within 14 days)</option>
-                <option>Senior Citizen Priority Token</option>
-              </select>
-            </div>
-          </div>
-
-          <div style="background-color: var(--bg-cream); border: 1px solid var(--border-subtle); padding: 12px; border-radius: var(--radius-sm); margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted);">
-            <strong style="color: var(--text-main);">Note:</strong> Generating an OPD token places you directly in the active clinic queue. You can track your position live on your phone.
-          </div>
-
-          <div style="display:flex; justify-content:flex-end; gap:10px;">
-            <button type="button" class="btn btn-secondary" onclick="closeAppointmentModal()">Cancel</button>
-            <button type="submit" class="btn btn-primary">Generate Instant Token Slip →</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+    function quickFilterNeeds(category) {
+      window.location.href = `hospitals.html?q=${encodeURIComponent(category)}`;
+    }
+  </script>
 
 </body>
 </html>

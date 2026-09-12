@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book OPD Appointment & Visit Checklist | GWS</title>
+  <meta name="description" content="Book confirmed specialist doctor appointments across hospitals on GWS. Choose doctor, select time slot, and print tailored visit checklists.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container top-utility-inner">
+      <div class="top-utility-left">
+        <span class="utility-item emergency-phone">
+          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a>
+        </span>
+        <span class="utility-divider"></span>
+        <span class="utility-badge">OPD CONSULTATION BOOKING</span>
+      </div>
+      <div class="top-utility-right">
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker">
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
+        </div>
+        <span class="utility-divider"></span>
+        <a href="index.html" class="utility-link">Home</a>
+        <span class="utility-divider"></span>
+        <a href="patient.html" class="utility-link">Patient Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="hospital-brand">
+        <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">GWS</span>
+          <span class="brand-subtitle">Doctor Availability & Appointments</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="hospitals.html" class="nav-link">Find Hospitals</a>
+        <a href="appointments.html" class="nav-link active">Appointments</a>
+        <a href="patient.html" class="nav-link">Live Queue</a>
+        <a href="reports.html" class="nav-link">Lab Reports</a>
+        <a href="icu.html" class="nav-link">Family Care</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="emergency.html" class="btn-emergency-nav">24×7 Emergency</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 36px 24px 60px;">
+    
+    <div class="section-title-wrap">
+      <div>
+        <span class="section-label">Confirmed OPD Slots</span>
+        <h1 style="margin:0 0 4px 0;">Book Doctor Consultation</h1>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+          Select a hospital, specialist doctor, preferred date and time slot for a confirmed OPD consultation.
+        </p>
+      </div>
+      <div>
+        <span class="utility-badge" style="font-size:0.8rem;">OPD TIMINGS: 08:30 AM – 02:00 PM</span>
+      </div>
+    </div>
+
+    <!-- Booking Confirmation Banner (Populates on submission) -->
+    <div id="appt-confirmation-box" style="display:none; margin-bottom:32px;"></div>
+
+    <!-- 5-Step Booking Container -->
+    <div id="booking-flow-container">
+      
+      <!-- Step 1: Select Hospital -->
+      <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:24px; margin-bottom:24px;">
+        <h3 style="margin:0 0 14px 0; font-size:1.15rem;">Step 1: Select Hospital</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;" id="hospital-selector-cards">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Step 2: Choose Specialist & Department -->
+      <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:24px; margin-bottom:24px;">
+        <h3 style="margin:0 0 14px 0; font-size:1.15rem;">Step 2: Choose Specialist Consultant</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px;" id="doctor-selector-cards">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Step 3: Select Date & Time Slot -->
+      <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:24px; margin-bottom:24px;">
+        <h3 style="margin:0 0 14px 0; font-size:1.15rem;">Step 3: Choose Date & Consultation Slot</h3>
+        
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+          <!-- Dates -->
+          <div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase; margin-bottom:8px;">Available Dates (September 2026)</div>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;">
+              <button type="button" class="btn btn-secondary btn-sm date-btn active" onclick="selectDate(this, '18 Sep 2026')">18 Sep (Today)</button>
+              <button type="button" class="btn btn-secondary btn-sm date-btn" onclick="selectDate(this, '19 Sep 2026')">19 Sep (Sat)</button>
+              <button type="button" class="btn btn-secondary btn-sm date-btn" onclick="selectDate(this, '21 Sep 2026')">21 Sep (Mon)</button>
+            </div>
+          </div>
+
+          <!-- Time Slots -->
+          <div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase; margin-bottom:8px;">Available Morning Slots</div>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;">
+              <button type="button" class="btn btn-secondary btn-sm slot-btn active" onclick="selectSlot(this, '10:30 AM')">10:30 AM</button>
+              <button type="button" class="btn btn-secondary btn-sm slot-btn" onclick="selectSlot(this, '11:00 AM')">11:00 AM</button>
+              <button type="button" class="btn btn-secondary btn-sm slot-btn" onclick="selectSlot(this, '11:30 AM')">11:30 AM</button>
+              <button type="button" class="btn btn-secondary btn-sm slot-btn" onclick="selectSlot(this, '12:00 PM')">12:00 PM</button>
+              <button type="button" class="btn btn-secondary btn-sm slot-btn" onclick="selectSlot(this, '12:30 PM')">12:30 PM</button>
+              <button type="button" class="btn btn-secondary btn-sm slot-btn" onclick="selectSlot(this, '01:00 PM')">01:00 PM</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Patient Details & Confirm -->
+      <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:24px; margin-bottom:24px;">
+        <h3 style="margin:0 0 14px 0; font-size:1.15rem;">Step 4: Patient Details & Confirmation</h3>
+        
+        <form onsubmit="handleAppointmentSubmit(event)">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+            <div>
+              <label class="form-label">Full Patient Name *</label>
+              <input type="text" id="appt-patient-name" class="form-input" value="Rahul Sharma" required>
+            </div>
+            <div>
+              <label class="form-label">Mobile Number *</label>
+              <input type="tel" id="appt-patient-phone" class="form-input" value="+91 98765 43210" required>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-top:1px solid var(--border-subtle); padding-top:16px;">
+            <div class="text-xs text-muted">
+              Zero booking charges. Consultation fee is payable directly at the hospital cash counter.
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="padding:12px 28px; font-weight:700;">
+              CONFIRM APPOINTMENT & GENERATE TOKEN
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border:none; padding:0;">
+        <div>GWS Multi-Hospital Connected Platform • Appointment Scheduling Desk</div>
+        <div class="demo-prototype-badge">Instant Token Slip Generator</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let selectedHospitalId = "H001";
+    let selectedDeptKey = "cardiology";
+    let selectedDateStr = "18 Sep 2026";
+    let selectedSlotStr = "10:30 AM";
+
+    function initBookingPage() {
+      const state = getAppState();
+      selectedHospitalId = state.selectedHospitalId || "H001";
+
+      renderHospitalOptions();
+      renderDoctorOptions();
+    }
+
+    function renderHospitalOptions() {
+      const state = getAppState();
+      const container = document.getElementById('hospital-selector-cards');
+      if (!container) return;
+
+      container.innerHTML = '';
+      state.hospitals.forEach(h => {
+        const isSelected = h.id === selectedHospitalId;
+        const card = document.createElement('div');
+        card.style.cssText = `border:2px solid ${isSelected ? 'var(--primary-green)' : 'var(--border-subtle)'}; background:${isSelected ? 'var(--primary-green-light)' : 'var(--bg-cream)'}; border-radius:var(--radius-sm); padding:14px; cursor:pointer;`;
+        card.onclick = () => {
+          selectedHospitalId = h.id;
+          const firstDept = Object.keys(h.departments)[0];
+          selectedDeptKey = firstDept;
+          renderHospitalOptions();
+          renderDoctorOptions();
+        };
+
+        card.innerHTML = `
+          <div style="font-weight:700; font-size:0.95rem; color:${isSelected ? 'var(--primary-green)' : 'var(--text-main)'};">${h.name}</div>
+          <div class="text-xs text-muted">${h.area} • ${h.distance} km • ~${h.avgWaitMin}m wait</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderDoctorOptions() {
+      const state = getAppState();
+      const hospital = state.hospitals.find(h => h.id === selectedHospitalId) || state.hospitals[0];
+      const container = document.getElementById('doctor-selector-cards');
+      if (!container) return;
+
+      container.innerHTML = '';
+      Object.keys(hospital.departments).forEach(key => {
+        const d = hospital.departments[key];
+        const isSelected = key === selectedDeptKey;
+
+        const card = document.createElement('div');
+        card.style.cssText = `border:2px solid ${isSelected ? 'var(--accent-terracotta)' : 'var(--border-subtle)'}; background:${isSelected ? 'var(--accent-terracotta-light)' : 'var(--bg-cream)'}; border-radius:var(--radius-sm); padding:14px; cursor:pointer;`;
+        card.onclick = () => {
+          selectedDeptKey = key;
+          renderDoctorOptions();
+        };
+
+        card.innerHTML = `
+          <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--text-muted);">${d.name}</div>
+          <div style="font-weight:700; font-size:1.05rem; margin:2px 0;">${d.doctor}</div>
+          <div class="text-xs text-muted">${d.qualifications}</div>
+          <div style="font-size:0.8rem; color:var(--primary-green); font-weight:600; margin-top:4px;">${d.room} • Fee: ${d.consultationFee || '₹700'}</div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function selectDate(btn, dateStr) {
+      document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedDateStr = dateStr;
+    }
+
+    function selectSlot(btn, slotStr) {
+      document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedSlotStr = slotStr;
+    }
+
+    function handleAppointmentSubmit(e) {
+      if (e) e.preventDefault();
+      const name = document.getElementById('appt-patient-name').value;
+      const phone = document.getElementById('appt-patient-phone').value;
+
+      const appt = bookAppointment({
+        hospitalId: selectedHospitalId,
+        deptKey: selectedDeptKey,
+        date: selectedDateStr,
+        time: selectedSlotStr,
+        patientName: name,
+        phone: phone
+      });
+
+      // Render Confirmation Banner and "What Should I Bring?" Checklist
+      const confBox = document.getElementById('appt-confirmation-box');
+      const flowContainer = document.getElementById('booking-flow-container');
+      
+      const checklist = DEPARTMENT_CHECKLISTS[selectedDeptKey] || DEPARTMENT_CHECKLISTS.default;
+      const checklistItemsHtml = checklist.items.map(item => `
+        <li style="margin-bottom:6px; display:flex; align-items:flex-start; gap:8px;">
+          <span style="color:var(--primary-green); font-weight:700;">✓</span>
+          <span>${item}</span>
+        </li>
+      `).join('');
+
+      if (confBox) {
+        confBox.style.display = 'block';
+        confBox.innerHTML = `
+          <div style="background:var(--accent-success-light); border:2px solid var(--accent-success); border-radius:var(--radius-md); padding:28px; box-shadow:var(--shadow-medium);">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom:18px;">
+              <div>
+                <span class="utility-badge" style="background:var(--accent-success); color:#fff;">CONFIRMED APPOINTMENT</span>
+                <h2 style="margin:6px 0 2px 0; color:var(--primary-green);">Appointment Booked Successfully!</h2>
+                <div class="text-xs text-muted">Booking Reference: <strong style="font-family:var(--font-mono); font-size:0.95rem;">${appt.id}</strong></div>
+              </div>
+              <div style="text-align:right;">
+                <div class="text-xs text-muted" style="font-weight:700;">YOUR ASSIGNED TOKEN</div>
+                <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--accent-terracotta); line-height:1;">${appt.token}</div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:16px; margin-bottom:20px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; font-size:0.875rem;">
+              <div><span class="text-muted">Hospital:</span><br><strong>${appt.hospitalName}</strong></div>
+              <div><span class="text-muted">Specialist:</span><br><strong>${appt.doctor}</strong> (${appt.department})</div>
+              <div><span class="text-muted">Slot:</span><br><strong>${appt.date} at ${appt.time}</strong></div>
+              <div><span class="text-muted">Consultation Room:</span><br><strong>${appt.room}</strong></div>
+            </div>
+
+            <!-- "What Should I Bring?" Checklist Box -->
+            <div style="background:var(--bg-cream); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:20px; margin-bottom:20px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <h4 style="margin:0; font-size:1.05rem;">📋 Before Your Visit — Checklist for ${appt.department}</h4>
+                <button type="button" class="btn btn-sm btn-secondary" onclick="window.print()">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px;"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-4 11H9v-5h6v5zm4-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-2-9H7v3h10V3z"/></svg>
+                  PRINT CHECKLIST
+                </button>
+              </div>
+              <ul style="list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.6;">
+                ${checklistItemsHtml}
+              </ul>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+              <a href="patient.html" class="btn btn-primary btn-lg">Go to Live Token Dashboard →</a>
+              <button class="btn btn-secondary btn-sm" onclick="window.location.reload()">Book Another Appointment</button>
+            </div>
+          </div>
+        `;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initBookingPage();
+    });
+  </script>
+
+</body>
+</html>

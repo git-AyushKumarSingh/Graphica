@@ -3,73 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OPD Consultation Desk | Dr. Arjun Mehta | CareFlow</title>
-  <meta name="description" content="CareFlow Clinical Staff Portal - OPD Queue Controller for Dr. Arjun Mehta (Cardiology, Room 104).">
+  <title>Doctor Consultation Desk | GWS Doctor Portal</title>
+  <meta name="description" content="GWS Doctor Portal - OPD Queue Controller for Dr. Arjun Mehta (Cardiology, Room 104, Shantideep Hospital).">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
-<body style="background-color: var(--bg-cream);">
+<body style="background-color: var(--bg-cream);" data-require-role="doctor">
 
   <!-- Staff Portal Top Header -->
-  <header class="doctor-desk-header">
-    <div class="container doctor-desk-nav">
-      <div class="doctor-desk-title">
-        <div class="hospital-emblem" style="background:rgba(255,255,255,0.2); width:36px; height:36px; border:1px solid rgba(255,255,255,0.3);">
-          <svg viewBox="0 0 24 24" style="width:18px;height:18px;"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+  <header style="background-color: var(--primary-green); color: #ffffff; padding: 14px 0; border-bottom: 3px solid var(--primary-green-dark);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="hospital-emblem" style="background:#FCFBF9; width:36px; height:36px; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div>
-          <h2>CareFlow Staff Portal • OPD Consultation Desk</h2>
+          <h2 style="color:#ffffff; margin:0; font-size:1.2rem; font-family:var(--font-sans); font-weight:700;" id="doc-hospital-name">
+            Shantideep Multispeciality Hospital • GWS Doctor Portal
+          </h2>
+          <div class="text-xs" style="color:#A7D0B4;" id="doc-dept-room">Cardiology OPD — Room 104 (1st Floor)</div>
         </div>
       </div>
 
-      <div style="display:flex; align-items:center; gap:16px;">
-        <span class="doctor-desk-badge">Clinic Block A • Room 104</span>
-        <a href="index.html" style="color:#ffffff; font-size:0.85rem; text-decoration:underline;">Exit to Hospital Portal</a>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <span class="utility-badge" style="background:rgba(255,255,255,0.15); color:#ffffff; border:1px solid rgba(255,255,255,0.3);">
+          LIVE OPD SYNC ACTIVE ●
+        </span>
+        <button onclick="handleLogout()" style="color:#ffffff; font-size:0.85rem; text-decoration:underline;">
+          Sign Out
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Doctor Consultation Desk Workspace -->
+  <!-- Doctor Consultation Workspace -->
   <main class="container">
-    <div class="doctor-main-grid">
+    <div style="display:grid; grid-template-columns: 360px 1fr; gap: 24px; padding: 32px 0 60px;">
       
       <!-- Left Action Controller Panel -->
-      <section class="doctor-action-panel">
+      <section style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:24px; display:flex; flex-direction:column; gap:20px;">
         
-        <div class="doctor-profile-summary">
-          <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; font-weight:700; color:var(--accent-terracotta);">
-            Active Clinical Session
-          </div>
-          <h3 class="font-serif">Dr. Arjun Mehta</h3>
-          <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:4px;">
-            MD, DM (Cardiology) • Senior Consultant
-          </div>
-          <div class="room-indicator">
-            Cardiology OPD — Room 104 (1st Floor)
+        <div style="border-bottom:1px solid var(--border-subtle); padding-bottom:16px;">
+          <div class="section-label">Active Clinical Session</div>
+          <h3 class="font-serif" style="margin:0 0 2px 0;">Dr. Arjun Mehta</h3>
+          <div class="text-xs text-muted">MBBS, MD, DM (Cardiology) • Senior Consultant</div>
+          <div style="font-size:0.85rem; color:var(--primary-green); font-weight:700; margin-top:4px;">
+            Cardiology OPD — Room 104
           </div>
         </div>
 
         <!-- Current Active Token Call Box -->
-        <div class="doctor-active-call-box">
-          <div class="call-box-label">CURRENT CONSULTATION TOKEN</div>
-          <div class="call-box-token" id="doc-serving-token">A-109</div>
-          <div class="call-box-patient-name" id="doc-serving-name">Devji Bhai Solanki</div>
-          <div class="call-box-time" id="doc-serving-time">Called at: 10:35 AM</div>
+        <div style="background:var(--bg-cream); border:2px solid var(--border-strong); border-radius:var(--radius-sm); padding:18px; text-align:center;">
+          <div class="section-label" style="color:var(--text-muted); font-size:0.7rem;">CURRENT CONSULTATION TOKEN</div>
+          <div style="font-family:var(--font-mono); font-size:3.25rem; font-weight:700; color:var(--primary-green); line-height:1.1; margin-bottom:4px;" id="doc-serving-token">
+            A-109
+          </div>
+          <div style="font-weight:600; font-size:1.05rem;" id="doc-serving-name">Devji Bhai Solanki</div>
+          <div class="text-xs text-muted" id="doc-serving-time">Called at: 10:35 AM</div>
         </div>
 
         <!-- Primary Action: Call Next Patient -->
         <div>
-          <button type="button" class="btn-call-next" onclick="doctorCallNextPatient()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          <button type="button" class="btn btn-primary btn-block btn-lg" style="font-size:1.1rem; padding:16px; font-weight:700; text-transform:uppercase;" onclick="doctorCallNextPatient()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:6px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
             CALL NEXT PATIENT
           </button>
           <div style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:6px;">
-            Advances queue and triggers chime in hospital waiting areas
+            Advances queue and triggers chime across patient monitors
           </div>
         </div>
 
         <!-- Secondary Consultation Actions -->
-        <div class="doctor-sub-actions">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
           <button type="button" class="btn btn-secondary btn-sm" onclick="doctorRecallCurrent()">
             Repeat Chime
           </button>
@@ -80,50 +86,50 @@
 
         <!-- Session Overview Stats -->
         <div style="background:var(--bg-offwhite); padding:14px; border:1px solid var(--border-subtle); border-radius:var(--radius-sm); font-size:0.825rem;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-            <span class="text-muted">Session Timings:</span>
-            <strong>08:30 AM – 01:30 PM</strong>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span class="text-muted">Patients Waiting:</span>
+            <strong>11</strong>
           </div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-            <span class="text-muted">Avg. Consultation Time:</span>
-            <strong>~4.2 minutes</strong>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span class="text-muted">Average Consultation:</span>
+            <strong>4.0 min</strong>
           </div>
           <div style="display:flex; justify-content:space-between;">
-            <span class="text-muted">Nursing Assistant:</span>
-            <strong>Sister Bindu (Ext. 104)</strong>
+            <span class="text-muted">OPD Status:</span>
+            <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Active Session</span>
           </div>
         </div>
 
-        <!-- Live Sync Navigation Helper -->
-        <div style="border-top:1px solid var(--border-subtle); padding-top:12px; font-size:0.8rem; color:var(--text-muted);">
-          <span>💡 Live Test: Open </span><a href="patient.html" target="_blank" style="font-weight:700; text-decoration:underline;">patient.html (Token A-117)</a><span> in a side window to verify real-time response.</span>
+        <!-- Multi-Tab Sync Note -->
+        <div style="background:var(--bg-cream); border:1px dashed var(--border-medium); border-radius:4px; padding:12px; font-size:0.775rem; color:var(--text-muted);">
+          💡 <strong>Live Multi-Tab Demonstration:</strong> Open <code>patient.html</code> in another browser tab. Clicking <strong>CALL NEXT PATIENT</strong> will update the patient's token screen immediately without page refresh.
         </div>
 
       </section>
 
-      <!-- Right Active Queue Table -->
-      <section class="doctor-queue-view">
-        <div class="doctor-table-header">
+      <!-- Right Queue & Patient Management Table -->
+      <section style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
           <div>
-            <h3>Cardiology OPD Queue Sheet</h3>
-            <div class="text-xs text-muted">Saturday, 12 Sep 2026 • Real-time patient flow register</div>
+            <h3 style="margin:0 0 2px 0;">Today's OPD Queue Register</h3>
+            <p class="text-xs text-muted" style="margin:0;">Cardiology Consultation Session • Morning 08:30 AM – 02:00 PM</p>
           </div>
-          <span class="live-indicator"><span class="live-dot"></span> LIVE SYNC</span>
+          <span class="utility-badge">AUTO-SYNC ENABLED</span>
         </div>
 
-        <div style="overflow-x: auto;">
-          <table class="hospital-table">
+        <div style="overflow-x:auto;">
+          <table class="data-table" style="width:100%; border-collapse:collapse;">
             <thead>
-              <tr>
-                <th style="width: 15%;">TOKEN</th>
-                <th style="width: 35%;">PATIENT NAME</th>
-                <th style="width: 18%;">STATUS</th>
-                <th style="width: 17%;">EST. TIME</th>
-                <th style="width: 15%;">ACTION</th>
+              <tr style="background:var(--bg-cream); text-align:left; border-bottom:2px solid var(--border-medium);">
+                <th style="padding:10px 14px;">Token</th>
+                <th style="padding:10px 14px;">Patient Name</th>
+                <th style="padding:10px 14px;">Slot / Arrival</th>
+                <th style="padding:10px 14px;">Queue Status</th>
+                <th style="padding:10px 14px; text-align:right;">Action</th>
               </tr>
             </thead>
             <tbody id="doc-queue-tbody">
-              <!-- Dynamically rendered by script.js -->
+              <!-- Populated dynamically by app.js renderDoctorDesk() -->
             </tbody>
           </table>
         </div>
@@ -132,13 +138,20 @@
     </div>
   </main>
 
-  <!-- Clean Institutional Staff Footer -->
-  <footer style="border-top:1px solid var(--border-subtle); padding:16px 0; background:var(--bg-paper); font-size:0.8rem; color:var(--text-muted);">
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
-      <div>CareFlow Hospital Information System (HIS) • OPD Clinical Module v4.1</div>
-      <div>Logged in as: Dr. Arjun Mehta (Emp ID: CF-DOC-108)</div>
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border:none; padding:0;">
+        <div>GWS Doctor Clinical Console • Internal Healthcare Operations</div>
+        <div class="demo-prototype-badge">Role Protected • Doctor Authenticated</div>
+      </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderDoctorDesk();
+    });
+  </script>
 
 </body>
 </html>

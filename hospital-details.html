@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Hub & Patient Services | GWS</title>
+  <meta name="description" content="View hospital profile, specialist departments, live OPD queue status, digital laboratory access, and doctor availability on GWS.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container top-utility-inner">
+      <div class="top-utility-left">
+        <span class="utility-item emergency-phone" id="hub-emergency-top">
+          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a>
+        </span>
+        <span class="utility-divider"></span>
+        <span class="utility-badge" id="hub-accreditation-badge">NABH ACCREDITED</span>
+      </div>
+      <div class="top-utility-right">
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker">
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
+        </div>
+        <span class="utility-divider"></span>
+        <a href="hospitals.html" class="utility-link">← All Hospitals</a>
+        <span class="utility-divider"></span>
+        <a href="patient.html" class="utility-link">My Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="hospital-brand">
+        <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title" id="hub-nav-hosp-name">GWS</span>
+          <span class="brand-subtitle">Hospital Services Hub</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="hospitals.html" class="nav-link">Find Hospitals</a>
+        <a href="appointments.html" class="nav-link">Appointments</a>
+        <a href="patient.html" class="nav-link">Live Queue</a>
+        <a href="reports.html" class="nav-link">Lab Reports</a>
+        <a href="icu.html" class="nav-link">Family Care</a>
+        <a href="business.html" class="nav-link">Business Model</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="emergency.html" class="btn-emergency-nav">24×7 Emergency</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hospital Profile Banner -->
+  <section style="background:var(--bg-cream); border-bottom:1px solid var(--border-medium); padding:32px 0;">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px;">
+        <div>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+            <span class="section-label" style="margin:0;">Hospital Profile & Services</span>
+            <span class="utility-badge" id="hub-status-badge">OPEN 24×7</span>
+          </div>
+          <h1 id="hub-hosp-title" style="margin:0 0 6px 0; font-size:2.2rem;">Shantideep Multispeciality Hospital</h1>
+          <p id="hub-hosp-tagline" class="text-muted" style="margin:0 0 8px 0; font-size:1.05rem;">
+            Tertiary Care & Multispeciality Research Centre (Estd. 2008)
+          </p>
+          <div class="text-xs text-muted" id="hub-hosp-meta">
+            📍 Plot 42, Shivajinagar, Pune • <strong>2.4 km away</strong> • ⭐ <strong>4.7</strong> (1,248 reviews) • 📞 +91 (020) 2600 2400
+          </div>
+        </div>
+
+        <!-- Hospital Switcher Dropdown (Demo Helper) -->
+        <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:12px 16px; text-align:right;">
+          <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-bottom:4px;">Switch Selected Hospital:</div>
+          <select id="hub-hosp-switch-select" class="form-select" style="font-size:0.875rem;" onchange="switchHubHospital(this.value)">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" style="padding: 36px 24px 60px;">
+
+    <!-- Hospital Services Matrix (8 Key Digital Touchpoints) -->
+    <div style="margin-bottom:40px;">
+      <div class="section-title-wrap" style="margin-bottom:18px;">
+        <div>
+          <h2 style="margin:0 0 4px 0;">Hospital Digital Services</h2>
+          <p class="text-muted" style="margin:0; font-size:0.9rem;">
+            Access all patient services provided by this hospital through the GWS digital connection layer.
+          </p>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px;">
+        
+        <a href="patient.html" class="hospital-compare-card" style="border-left:4px solid var(--primary-green); text-decoration:none;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:1.5rem;">⏱️</span>
+            <div>
+              <h4 style="margin:0; color:var(--text-main);">LIVE OPD QUEUE</h4>
+              <div class="text-xs text-muted">Track your token & waiting time</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="appointments.html" class="hospital-compare-card" style="border-left:4px solid var(--accent-terracotta); text-decoration:none;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:1.5rem;">📅</span>
+            <div>
+              <h4 style="margin:0; color:var(--text-main);">BOOK APPOINTMENT</h4>
+              <div class="text-xs text-muted">Choose doctor & time slot</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="map.html" class="hospital-compare-card" style="border-left:4px solid var(--secondary-sage); text-decoration:none;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:1.5rem;">🗺️</span>
+            <div>
+              <h4 style="margin:0; color:var(--text-main);">HOSPITAL MAP</h4>
+              <div class="text-xs text-muted">Floor plans & indoor navigation</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="reports.html" class="hospital-compare-card" style="border-left:4px solid var(--accent-info); text-decoration:none;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:1.5rem;">📄</span>
+            <div>
+              <h4 style="margin:0; color:var(--text-main);">LAB REPORTS</h4>
+              <div class="text-xs text-muted">Certified digital pathology sheets</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="medicines.html" class="hospital-compare-card" style="border-left:4px solid var(--accent-amber); text-decoration:none;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:1.5rem;">💊</span>
+            <div>
+              <h4 style="margin:0; color:var(--text-main);">MEDICINE REMINDERS</h4>
+              <div class="text-xs text-muted">Daily prescription schedule</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="icu.html" class="hospital-compare-card" style="border-left:4px solid var(--primary-green-dark); text-decoration:none;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:1.5rem;">🏥</span>
+            <div>
+              <h4 style="margin:0; color:var(--text-main);">FAMILY CARE (ICU)</h4>
+              <div class="text-xs text-muted">Authorized patient updates</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="reviews.html" class="hospital-compare-card" style="border-left:4px solid var(--accent-success); text-decoration:none;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:1.5rem;">⭐</span>
+            <div>
+              <h4 style="margin:0; color:var(--text-main);">DOCTOR REVIEWS</h4>
+              <div class="text-xs text-muted">Verified patient feedback</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="emergency.html" class="hospital-compare-card" style="border-left:4px solid var(--accent-emergency); text-decoration:none;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:1.5rem;">🚨</span>
+            <div>
+              <h4 style="margin:0; color:var(--accent-emergency);">EMERGENCY SOS</h4>
+              <div class="text-xs text-muted">Ambulance & trauma desk</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Active OPD Departments & Waiting Times Table -->
+    <div style="margin-bottom:36px;">
+      <div class="section-title-wrap" style="margin-bottom:14px;">
+        <div>
+          <h3 style="margin:0 0 2px 0;">Specialist Departments & Live OPD Queues</h3>
+          <p class="text-muted" style="margin:0; font-size:0.875rem;">
+            Live consultation status for all departments in this hospital.
+          </p>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-md); overflow-x:auto;">
+        <table class="data-table" style="width:100%; border-collapse:collapse;">
+          <thead>
+            <tr style="background:var(--bg-cream); text-align:left; border-bottom:2px solid var(--border-medium);">
+              <th style="padding:12px 16px;">Department</th>
+              <th style="padding:12px 16px;">Active Specialist</th>
+              <th style="padding:12px 16px;">Room / Location</th>
+              <th style="padding:12px 16px;">Now Serving</th>
+              <th style="padding:12px 16px;">Est. Wait</th>
+              <th style="padding:12px 16px;">Fee</th>
+              <th style="padding:12px 16px; text-align:right;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="hub-departments-tbody">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Facilities & Hospital Infrastructure Info -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px;">
+      
+      <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+        <h4 style="margin:0 0 10px 0;">Hospital Facilities</h4>
+        <ul style="list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:2;">
+          <li>✓ 24×7 Diagnostic Pathology & Radiology Wing</li>
+          <li>✓ Cashless TPA Desk (Ayushman Bharat, Star, HDFC ERGO, ICICI Lombard)</li>
+          <li>✓ 24×7 In-House Pharmacy & Central Oxygen Supply</li>
+          <li>✓ Cardiovascular & Neonatal Intensive Care Units</li>
+        </ul>
+      </div>
+
+      <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+        <h4 style="margin:0 0 10px 0;">Emergency Readiness</h4>
+        <div style="font-size:0.875rem; line-height:1.8; margin-bottom:12px;">
+          <div>Ambulance Fleet: <strong id="hub-amb-count">2 Available</strong></div>
+          <div>Emergency Stretchers: <strong id="hub-stretch-count">7 Ready</strong></div>
+          <div>Trauma Resuscitation Desk: <strong>Open 24×7</strong></div>
+        </div>
+        <a href="emergency.html" class="btn btn-emergency-nav" style="display:inline-block; font-size:0.85rem;">Request Ambulance</a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border:none; padding:0;">
+        <div>GWS Multi-Hospital Digital Network • Healthcare, connected.</div>
+        <div class="demo-prototype-badge">Fictional Demo Hospital Hub</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function renderHospitalDetails() {
+      const state = getAppState();
+      const hospital = getSelectedHospital(state);
+
+      const switchSelect = document.getElementById('hub-hosp-switch-select');
+      if (switchSelect) {
+        switchSelect.innerHTML = '';
+        state.hospitals.forEach(h => {
+          const opt = document.createElement('option');
+          opt.value = h.id;
+          opt.textContent = `${h.name} (${h.distance} km • ~${h.avgWaitMin}m wait)`;
+          if (h.id === hospital.id) opt.selected = true;
+          switchSelect.appendChild(opt);
+        });
+      }
+
+      const titleEl = document.getElementById('hub-hosp-title');
+      const taglineEl = document.getElementById('hub-hosp-tagline');
+      const metaEl = document.getElementById('hub-hosp-meta');
+      const accredEl = document.getElementById('hub-accreditation-badge');
+      const statusEl = document.getElementById('hub-status-badge');
+      const ambEl = document.getElementById('hub-amb-count');
+      const stretchEl = document.getElementById('hub-stretch-count');
+
+      if (titleEl) titleEl.textContent = hospital.name;
+      if (taglineEl) taglineEl.textContent = hospital.tagline;
+      if (accredEl) accredEl.textContent = hospital.accreditation.split(' ')[0] + ' ACCREDITED';
+      if (statusEl) statusEl.textContent = hospital.emergencyStatus || 'OPEN 24×7';
+      if (ambEl) ambEl.textContent = `${hospital.emergencyResources.ambulancesAvailable} Available`;
+      if (stretchEl) stretchEl.textContent = `${hospital.emergencyResources.stretchers} Ready`;
+
+      if (metaEl) {
+        metaEl.innerHTML = `📍 ${hospital.address} • <strong>${hospital.distance} km away</strong> • ⭐ <strong style="color:var(--accent-amber);">${hospital.rating}</strong> (${hospital.reviewCount} reviews) • 📞 ${hospital.phone}`;
+      }
+
+      const tbody = document.getElementById('hub-departments-tbody');
+      if (tbody) {
+        tbody.innerHTML = '';
+        Object.keys(hospital.departments).forEach(key => {
+          const d = hospital.departments[key];
+          const waitingCount = d.queue.filter(q => q.status === 'waiting' || q.status === 'next').length;
+          const waitMin = Math.round(waitingCount * (d.avgWaitPerPatientMin || 4.0));
+
+          const tr = document.createElement('tr');
+          tr.style.borderBottom = '1px solid var(--border-subtle)';
+          tr.innerHTML = `
+            <td style="padding:12px 16px; font-weight:700;">${d.name}</td>
+            <td style="padding:12px 16px;">
+              <strong>${d.doctor}</strong><br>
+              <span class="text-xs text-muted">${d.qualifications}</span>
+            </td>
+            <td style="padding:12px 16px; font-size:0.875rem;">${d.room}</td>
+            <td style="padding:12px 16px;">
+              <span class="utility-badge" style="font-family:var(--font-mono); font-weight:700; background:var(--accent-terracotta-light); color:var(--accent-terracotta-dark);">
+                ${d.prefix}-${d.currentServingNum}
+              </span>
+            </td>
+            <td style="padding:12px 16px;">
+              <span class="hospital-badge-wait" style="font-size:0.75rem;">~${waitMin || 15} min</span>
+            </td>
+            <td style="padding:12px 16px; font-size:0.875rem; font-weight:600;">${d.consultationFee || '₹700'}</td>
+            <td style="padding:12px 16px; text-align:right;">
+              <a href="appointments.html" class="btn btn-sm btn-primary" onclick="selectHospitalAndBook('${hospital.id}')">Book</a>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+    }
+
+    function switchHubHospital(hospId) {
+      setSelectedHospital(hospId, false);
+      renderHospitalDetails();
+    }
+
+    function selectHospitalAndBook(id) {
+      setSelectedHospital(id, false);
+      window.location.href = 'appointments.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHospitalDetails();
+    });
+  </script>
+
+</body>
+</html>

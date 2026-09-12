@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Model & Platform Architecture | GWS</title>
+  <meta name="description" content="Discover how GWS operates as a B2B2C digital healthcare layer. Free for patients, sustainable SaaS infrastructure for hospitals.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container top-utility-inner">
+      <div class="top-utility-left">
+        <span class="utility-item emergency-phone">
+          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a>
+        </span>
+        <span class="utility-divider"></span>
+        <span class="utility-badge">GWS PLATFORM ARCHITECTURE & BUSINESS MODEL</span>
+      </div>
+      <div class="top-utility-right">
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker">
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
+        </div>
+        <span class="utility-divider"></span>
+        <a href="index.html" class="utility-link">Home</a>
+        <span class="utility-divider"></span>
+        <a href="hospitals.html" class="utility-link">Find Hospitals</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="hospital-brand">
+        <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">GWS</span>
+          <span class="brand-subtitle">Healthcare, connected.</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="hospitals.html" class="nav-link">Find Hospitals</a>
+        <a href="appointments.html" class="nav-link">Appointments</a>
+        <a href="patient.html" class="nav-link">Live Queue</a>
+        <a href="reports.html" class="nav-link">Lab Reports</a>
+        <a href="business.html" class="nav-link active">Business Model</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="emergency.html" class="btn-emergency-nav">24×7 Emergency</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header for Judges & Partners -->
+  <section style="background:var(--bg-cream); border-bottom:1px solid var(--border-medium); padding:48px 0 40px;">
+    <div class="container text-center" style="max-width:860px; margin:0 auto;">
+      <div class="hero-institution-tag" style="margin-bottom:10px;">
+        STARTUP PITCH & COMMERCIAL MODEL
+      </div>
+      <h1 style="font-size:2.5rem; line-height:1.2; margin-bottom:12px;">
+        "We don't replace hospitals. We connect patients to them."
+      </h1>
+      <p class="lead" style="font-size:1.15rem; color:var(--text-muted); margin-bottom:0;">
+        GWS is a multi-hospital digital healthcare platform. Patients use GWS for free to find care and compare waiting times. Hospitals pay a SaaS subscription to power their digital operations.
+      </p>
+    </div>
+  </section>
+
+  <main class="container" style="padding: 48px 24px 64px;">
+
+    <!-- B2B2C Architecture Flow Diagram -->
+    <div style="margin-bottom:48px;">
+      <div class="section-title-wrap">
+        <div>
+          <span class="section-label">Platform Architecture</span>
+          <h2 style="margin:0 0 4px 0;">The GWS Multi-Hospital Connected Model</h2>
+          <p class="text-muted" style="margin:0; font-size:0.95rem;">
+            How GWS bridges the gap between patient discovery and hospital operational efficiency.
+          </p>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-md); padding:32px; box-shadow:var(--shadow-subtle);">
+        
+        <div style="display:grid; grid-template-columns:1fr 80px 1fr; gap:16px; align-items:center;">
+          
+          <!-- Patient Side -->
+          <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h3 style="margin:0; color:var(--primary-green); font-size:1.25rem;">PATIENT SIDE</h3>
+              <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">100% FREE</span>
+            </div>
+            <ul style="list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:2.2;">
+              <li>🔍 <strong>Search & Discovery:</strong> Nearby hospitals & verified specialists</li>
+              <li>⏱️ <strong>Availability Comparison:</strong> Compare live OPD waiting times</li>
+              <li>📅 <strong>Appointments:</strong> Book confirmed slots with checklists</li>
+              <li>🎫 <strong>Live Queue Tracking:</strong> Real-time tokens from waiting area</li>
+              <li>📄 <strong>Digital Health Records:</strong> Certified lab reports on mobile</li>
+              <li>🏥 <strong>Family Care:</strong> Authorized ICU monitoring & plain-language updates</li>
+            </ul>
+          </div>
+
+          <!-- Connection Node -->
+          <div style="text-align:center;">
+            <div style="background:var(--primary-green); color:#fff; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 6px; font-weight:700; font-size:0.85rem;">
+              GWS
+            </div>
+            <div class="text-xs text-muted" style="font-weight:700;">CONNECT LAYER</div>
+          </div>
+
+          <!-- Hospital Side -->
+          <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <h3 style="margin:0; color:var(--accent-terracotta); font-size:1.25rem;">HOSPITAL SIDE</h3>
+              <span class="utility-badge" style="background:var(--accent-terracotta-light); color:var(--accent-terracotta-dark);">SAAS SUBSCRIPTION</span>
+            </div>
+            <ul style="list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:2.2;">
+              <li>🖥️ <strong>Doctor Portal:</strong> 1-click token advancing & patient recall</li>
+              <li>📊 <strong>Admin SaaS Dashboard:</strong> Real-time department load metrics</li>
+              <li>🗂️ <strong>Queue Management:</strong> Eliminate physical hallway crowding</li>
+              <li>📋 <strong>Digital Pathology:</strong> Automated report dispatch to patients</li>
+              <li>🚨 <strong>Emergency Fleet:</strong> Dispatch tracking & stretcher availability</li>
+              <li>📈 <strong>Operational Visibility:</strong> Average consultation turnaround analytics</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Revenue Streams & SaaS Pricing Tiers -->
+    <div style="margin-bottom:48px;" id="pricing">
+      <div class="section-title-wrap">
+        <div>
+          <span class="section-label">Commercial Revenue Model</span>
+          <h2 style="margin:0 0 4px 0;">Hospital SaaS Pricing Plans</h2>
+          <p class="text-muted" style="margin:0; font-size:0.95rem;">
+            Hospitals pay a monthly subscription to utilize GWS queue infrastructure, patient portals, and digital operations.
+          </p>
+        </div>
+        <div>
+          <span class="demo-prototype-badge">Illustrative pricing — subject to pilot validation</span>
+        </div>
+      </div>
+
+      <div class="pricing-cards-grid">
+        
+        <!-- Basic Tier -->
+        <div class="pricing-tier-card">
+          <div>
+            <span class="section-label">GWS BASIC</span>
+            <div style="font-family:var(--font-mono); font-size:2rem; font-weight:700; color:var(--text-main); margin-bottom:4px;">
+              ₹15,000 <span style="font-size:0.9rem; color:var(--text-muted); font-family:var(--font-sans);">/ month</span>
+            </div>
+            <p class="text-xs text-muted" style="margin-bottom:16px;">
+              Ideal for small community clinics and nursing homes looking to digitize their OPD queues.
+            </p>
+            <ul style="list-style:none; padding:0; margin:0 0 20px 0; font-size:0.85rem; line-height:2;">
+              <li>✓ Up to 5 Active OPD Doctor Rooms</li>
+              <li>✓ Real-Time Token Queue & Sound Chimes</li>
+              <li>✓ Basic Patient Appointment Booking</li>
+              <li>✓ Hospital Directory Profile</li>
+              <li>✓ Standard Web Support</li>
+            </ul>
+          </div>
+          <button class="btn btn-secondary btn-block btn-sm">Choose Basic</button>
+        </div>
+
+        <!-- Professional Tier (Featured) -->
+        <div class="pricing-tier-card featured">
+          <div>
+            <span class="section-label">GWS PROFESSIONAL</span>
+            <div style="font-family:var(--font-mono); font-size:2rem; font-weight:700; color:var(--primary-green); margin-bottom:4px;">
+              ₹35,000 <span style="font-size:0.9rem; color:var(--text-muted); font-family:var(--font-sans);">/ month</span>
+            </div>
+            <p class="text-xs text-muted" style="margin-bottom:16px;">
+              For mid-sized multispeciality hospitals managing multi-department loads and diagnostic wings.
+            </p>
+            <ul style="list-style:none; padding:0; margin:0 0 20px 0; font-size:0.85rem; line-height:2;">
+              <li>✓ Up to 20 Active OPD Departments</li>
+              <li>✓ Live Synchronized Patient & Doctor Desk</li>
+              <li>✓ Digital NABL Laboratory Reports Portal</li>
+              <li>✓ Authorized ICU Family Care Module</li>
+              <li>✓ Multilingual Patient Support (EN, HI, MR)</li>
+              <li>✓ Priority Emergency Resource Tracking</li>
+            </ul>
+          </div>
+          <button class="btn btn-primary btn-block btn-sm">Choose Professional</button>
+        </div>
+
+        <!-- Enterprise Tier -->
+        <div class="pricing-tier-card">
+          <div>
+            <span class="section-label">GWS ENTERPRISE</span>
+            <div style="font-family:var(--font-mono); font-size:2rem; font-weight:700; color:var(--text-main); margin-bottom:4px;">
+              Custom <span style="font-size:0.9rem; color:var(--text-muted); font-family:var(--font-sans);">/ quote</span>
+            </div>
+            <p class="text-xs text-muted" style="margin-bottom:16px;">
+              For large tertiary medical institutes, hospital chains, and research universities.
+            </p>
+            <ul style="list-style:none; padding:0; margin:0 0 20px 0; font-size:0.85rem; line-height:2;">
+              <li>✓ Unlimited OPD Departments & Doctors</li>
+              <li>✓ Custom HIS / EMR Database Connectors</li>
+              <li>✓ Dedicated Ambulance Dispatch Engine</li>
+              <li>✓ Multi-Branch Centralized Analytics</li>
+              <li>✓ Dedicated 24×7 Account Engineering</li>
+            </ul>
+          </div>
+          <button class="btn btn-secondary btn-block btn-sm">Contact Enterprise</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Why Hospitals Pay (Value Proposition Table) -->
+    <div style="margin-bottom:48px;">
+      <div class="section-title-wrap">
+        <div>
+          <span class="section-label">Value Proposition</span>
+          <h2 style="margin:0 0 4px 0;">Why Hospitals Subscribe to GWS</h2>
+          <p class="text-muted" style="margin:0; font-size:0.95rem;">
+            Quantifiable operational benefits that justify the SaaS subscription.
+          </p>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
+        
+        <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+          <h4 style="margin:0 0 6px 0; color:var(--primary-green);">1. 70% Less Hallway Crowding</h4>
+          <p class="text-xs text-muted" style="margin:0;">
+            Patients track their token from home, cafeteria, or pharmacy, arriving at the consultation room exactly when called.
+          </p>
+        </div>
+
+        <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+          <h4 style="margin:0 0 6px 0; color:var(--primary-green);">2. Reduced Front-Desk Inquiries</h4>
+          <p class="text-xs text-muted" style="margin:0;">
+            Digital lab reports and ICU family updates cut front-desk phone calls and repetitive status checks by over 60%.
+          </p>
+        </div>
+
+        <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+          <h4 style="margin:0 0 6px 0; color:var(--primary-green);">3. Organic Patient Acquisition</h4>
+          <p class="text-xs text-muted" style="margin:0;">
+            Hospitals with efficient turnaround times naturally attract more patients without paying for search manipulation.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Hackathon Judge FAQ & Pitch Notes -->
+    <div style="background:var(--bg-cream); border:1px solid var(--border-medium); border-radius:var(--radius-md); padding:28px 32px;">
+      <span class="section-label">Hackathon Judge Pitch Script</span>
+      <h3 style="margin:0 0 14px 0;">How to explain GWS in 10 Seconds:</h3>
+      <blockquote style="font-family:var(--font-serif); font-size:1.15rem; line-height:1.6; color:var(--text-main); margin:0 0 16px 0; padding-left:18px; border-left:3px solid var(--primary-green);">
+        "GWS is a multi-hospital digital healthcare platform. Patients use GWS for free to find hospitals and doctors based on their needs, availability and distance. Once they select a hospital, GWS continues throughout their hospital journey — from appointment and live token tracking to navigation, lab reports and family updates. Hospitals pay us a SaaS subscription to provide and manage these digital services."
+      </blockquote>
+      <div class="text-xs text-muted">
+        <strong>Trust Philosophy:</strong> Search rankings on GWS are always transparent, organic, and grounded in real-time OPD availability.
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border:none; padding:0;">
+        <div>GWS Multi-Hospital Digital Network • Healthcare, connected.</div>
+        <div class="demo-prototype-badge">Business Architecture Presentation</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

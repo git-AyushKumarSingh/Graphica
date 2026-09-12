@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ICU Patient Updates & Family Portal | CareFlow Hospital</title>
-  <meta name="description" content="Compassionate, plain-language patient condition updates for family members from the CareFlow Critical Care Unit (ICU).">
+  <title>ICU Family Care Portal | GWS</title>
+  <meta name="description" content="Authorized family access to plain-language patient condition updates from the Intensive Care Unit powered by GWS.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
 <body style="background-color: var(--bg-offwhite);">
 
@@ -15,7 +16,7 @@
     <div class="container top-utility-inner">
       <div class="top-utility-left">
         <span class="utility-item">
-          <strong>ICU Family Liaison Desk:</strong> <a href="tel:+917940002412">+91 (079) 4000 2412</a> (Ext. 12)
+          <strong>ICU Family Liaison Desk:</strong> <a href="tel:+912026002412">+91 (020) 2600 2412</a> (Ext. 12)
         </span>
         <span class="utility-divider"></span>
         <span class="utility-item">
@@ -23,11 +24,17 @@
         </span>
       </div>
       <div class="top-utility-right">
-        <a href="index.html" class="utility-link">Hospital Home</a>
+        <!-- Global Language Switcher -->
+        <div class="global-lang-picker">
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
+        </div>
         <span class="utility-divider"></span>
-        <a href="patient.html" class="utility-link">OPD Token Slip</a>
+        <a href="index.html" class="utility-link">Home</a>
         <span class="utility-divider"></span>
-        <a href="doctor.html" class="utility-link">Staff Console</a>
+        <a href="patient.html" class="utility-link">Patient Dashboard</a>
       </div>
     </div>
   </div>
@@ -36,163 +43,250 @@
   <header class="main-header">
     <div class="container header-container">
       <a href="index.html" class="hospital-brand">
-        <div class="hospital-emblem">
-          <svg viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+        <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div class="brand-text">
-          <span class="brand-title">CareFlow</span>
-          <span class="brand-subtitle">Critical Care & ICU Family Information</span>
+          <span class="brand-title">GWS</span>
+          <span class="brand-subtitle">ICU Family Care Portal</span>
         </div>
       </a>
 
-      <nav class="main-nav">
+      <nav class="main-nav" id="main-nav">
         <a href="index.html" class="nav-link">Home</a>
-        <a href="index.html#departments" class="nav-link">Departments</a>
-        <a href="patient.html" class="nav-link">Live OPD Queue</a>
-        <a href="icu.html" class="nav-link active">ICU Family Care</a>
+        <a href="hospitals.html" class="nav-link">Find Hospitals</a>
+        <a href="appointments.html" class="nav-link">Appointments</a>
+        <a href="patient.html" class="nav-link">Live Queue</a>
+        <a href="reports.html" class="nav-link">Lab Reports</a>
+        <a href="icu.html" class="nav-link active">Family Care (ICU)</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="tel:+917940002412" class="btn btn-secondary btn-sm">
-          Call ICU Nurse Desk
+        <a href="tel:+912026002412" class="btn btn-secondary btn-sm">
+          Call ICU Counselor
         </a>
+        <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
       </div>
     </div>
   </header>
 
-  <!-- ICU Family Main Container -->
-  <main class="icu-page-wrap">
-    <div class="icu-container">
+  <main class="container-narrow" style="padding: 36px 20px 60px;">
+    
+    <div style="text-align:center; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid var(--border-subtle);">
+      <span class="section-label" style="color:var(--secondary-sage-dark);">Authorized Family Communication</span>
+      <h1 style="margin:0 0 6px 0;">ICU Patient Care Summary</h1>
+      <p class="text-sm text-muted" style="max-width:580px; margin:0 auto;">
+        Transparent, plain-language clinical updates directly recorded by the treating critical care team.
+      </p>
+    </div>
+
+    <!-- Patient Main Card -->
+    <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); overflow:hidden; box-shadow:var(--shadow-subtle); margin-bottom:24px;">
       
-      <!-- Gentle Empathetic Heading -->
-      <div class="icu-header-section">
-        <span class="section-label" style="color:var(--secondary-sage-dark);">Patient Family Communication Portal</span>
-        <h1 style="font-size:2.2rem; margin-bottom:8px;">Patient Care Summary</h1>
-        <p class="icu-sub-heading">
-          This portal provides transparent, simplified updates directly recorded by our intensive care medical team following clinical rounds.
-        </p>
+      <!-- Top Banner -->
+      <div style="background:var(--bg-cream); border-bottom:1px solid var(--border-subtle); padding:14px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-family:var(--font-mono); font-weight:700; color:var(--primary-green);">PATIENT ID: GWS-2048</span>
+          <span class="utility-badge" style="background:var(--secondary-sage-light); color:var(--secondary-sage-dark); border-color:rgba(107,143,113,0.4);">
+            ● UNDER CLOSE MONITORING
+          </span>
+        </div>
+        <div class="text-xs text-muted">
+          Last Updated: <strong>10:42 AM Today</strong> (Morning Rounds)
+        </div>
       </div>
 
-      <!-- Patient Information Card -->
-      <div class="icu-patient-card">
+      <div style="padding:22px;">
         
-        <div class="icu-patient-banner">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <span class="icu-id-tag">PATIENT ID: CF-2048</span>
-            <span class="status-monitoring-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-              UNDER CLOSE MONITORING
-            </span>
+        <!-- Info Grid -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:16px; margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid var(--border-subtle);">
+          <div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase;">Patient Name</div>
+            <div style="font-weight:700; font-size:1.1rem;">Rajesh Sharma</div>
+            <div class="text-xs text-muted">64 Yrs • Male</div>
           </div>
-          <div class="text-xs text-muted">
-            Last Updated: <strong>10:42 AM Today</strong> (Morning Consultant Rounds)
+          <div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase;">Hospital & Location</div>
+            <div style="font-weight:700; font-size:0.95rem;">Shantideep Hospital</div>
+            <div class="text-xs text-muted">ICU-A • Bed 12</div>
+          </div>
+          <div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase;">Primary Intensivist</div>
+            <div style="font-weight:700; font-size:0.95rem;">Dr. Suresh Menon</div>
+            <div class="text-xs text-muted">MD, FNB Critical Care</div>
           </div>
         </div>
 
-        <div class="icu-patient-details">
-          
-          <!-- Key Meta Info -->
-          <div class="icu-info-grid">
-            <div class="icu-info-block">
-              <span class="icu-info-label">Patient Name</span>
-              <span class="icu-info-val">Kailashchandra V. Trivedi</span>
-              <span class="text-xs text-muted">64 Yrs • Male</span>
-            </div>
+        <!-- 4 Sub-Tabs for Family Navigation -->
+        <div style="display:flex; gap:8px; border-bottom:2px solid var(--border-subtle); margin-bottom:20px; flex-wrap:wrap;">
+          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn active" data-tab="overview" onclick="switchIcuTab('overview')">Overview</button>
+          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn" data-tab="medicines" onclick="switchIcuTab('medicines')">Medicines</button>
+          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn" data-tab="conditions" onclick="switchIcuTab('conditions')">Conditions</button>
+          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn" data-tab="updates" onclick="switchIcuTab('updates')">Doctor Updates</button>
+        </div>
 
-            <div class="icu-info-block">
-              <span class="icu-info-label">Unit Location</span>
-              <span class="icu-info-val">ICU-A — Bed 12</span>
-              <span class="text-xs text-muted">3rd Floor, Critical Care Block</span>
-            </div>
-
-            <div class="icu-info-block">
-              <span class="icu-info-label">Lead Intensivist</span>
-              <span class="icu-info-val">Dr. Suresh Menon</span>
-              <span class="text-xs text-muted">MD, FNB (Critical Care)</span>
-            </div>
-          </div>
-
-          <!-- Doctor's Formal Clinical Note -->
-          <div class="icu-medical-update">
-            <h4>Update from the Medical Team</h4>
-            <div class="medical-team-quote" id="icu-medical-quote">
+        <!-- TAB 1: OVERVIEW -->
+        <div id="icu-tab-overview" class="icu-tab-content">
+          <div style="background:var(--bg-cream); border-left:3px solid var(--primary-green); padding:16px; border-radius:4px; margin-bottom:20px;">
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase; margin-bottom:4px;">LATEST INTENSIVIST SUMMARY</div>
+            <blockquote style="font-family:var(--font-serif); font-size:1.1rem; color:var(--text-main); margin:0 0 8px 0;">
               "Patient remains stable under current supportive care. The medical team continues close monitoring."
-            </div>
-            <div class="medical-team-meta">
-              Recorded by Dr. Suresh Menon & Dr. Pooja Verma (Senior Resident, Critical Care) • 10:42 AM
-            </div>
+            </blockquote>
+            <div class="text-xs text-muted">— Dr. Suresh Menon (10:42 AM Today)</div>
           </div>
 
-          <!-- Plain-Language Summary Section (with Multi-language tabs) -->
-          <div class="plain-language-panel">
-            <div class="plain-language-header">
-              <h4>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                In Simple Language
-              </h4>
-
-              <div class="language-switcher">
-                <button type="button" class="lang-btn active" data-lang="en" onclick="switchIcuLanguage('en')">English</button>
-                <button type="button" class="lang-btn" data-lang="hi" onclick="switchIcuLanguage('hi')">हिन्दी</button>
-                <button type="button" class="lang-btn" data-lang="gu" onclick="switchIcuLanguage('gu')">ગુજરાતી</button>
-              </div>
-            </div>
-
-            <!-- Translated Plain Text Box -->
-            <div class="plain-language-content" id="icu-simple-text">
-              The patient's condition is currently stable and the medical team is continuing to monitor them closely. Vital signs are within expected supportive ranges, and breathing support remains standard as planned for recovery.
-            </div>
-
-            <!-- Quiet Assisted Explanation Note -->
-            <div class="assisted-disclaimer" id="icu-disclaimer-text">
-              Assisted explanation — This explanation only simplifies information provided by the healthcare team. It does not provide a diagnosis or medical prediction.
+          <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:16px; margin-bottom:16px;">
+            <h4 style="margin:0 0 10px 0;">Authorized Family Contacts</h4>
+            <div class="text-xs text-muted" style="line-height:1.8;">
+              Family Access Code: <strong style="font-family:var(--font-mono);">GWS-4821</strong><br>
+              Authorized Visitors: <strong>Anita Sharma (Wife)</strong>, <strong>Priya Sharma (Daughter)</strong>, <strong>Rahul Sharma (Son)</strong>
             </div>
           </div>
-
-          <!-- Attendant & Visiting Guidelines -->
-          <div class="icu-family-guidelines">
-            <h4>Visiting Guidelines & Support for Family Members</h4>
-            <div class="visiting-grid">
-              <div class="visiting-box">
-                <strong style="display:block; margin-bottom:4px; color:var(--primary-green);">Today's Visiting Slot</strong>
-                <div style="font-family:var(--font-mono); font-size:1.05rem; font-weight:700; margin-bottom:4px;">04:30 PM – 05:30 PM</div>
-                <div class="text-xs text-muted">1 family attendant permitted at bedside with sanitized protective gown & mask.</div>
-              </div>
-
-              <div class="visiting-box">
-                <strong style="display:block; margin-bottom:4px; color:var(--primary-green);">Doctor In-Person Briefing</strong>
-                <div style="font-family:var(--font-mono); font-size:1.05rem; font-weight:700; margin-bottom:4px;">05:30 PM – 06:00 PM</div>
-                <div class="text-xs text-muted">Dr. Suresh Menon will address immediate family members at ICU Counseling Room 2.</div>
-              </div>
-            </div>
-          </div>
-
         </div>
 
-      </div>
+        <!-- TAB 2: MEDICINES -->
+        <div id="icu-tab-medicines" class="icu-tab-content" style="display:none;">
+          <div style="background:var(--accent-amber-light); border:1px solid var(--accent-amber); border-radius:4px; padding:12px 16px; font-size:0.8rem; color:var(--text-main); margin-bottom:16px;">
+            <strong>Medication Information Notice:</strong> Medication information shown here is provided by the healthcare team for family awareness. Please do not change or stop medicines without speaking with the treating doctor.
+          </div>
 
-      <!-- Need Immediate Help Contact Box -->
-      <div style="text-align:center; padding:20px; background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); font-size:0.875rem;">
-        <span>Questions or concerns regarding your family member? Contact our <strong>24×7 ICU Medical Social Worker:</strong></span>
-        <a href="tel:+917940002412" style="font-weight:700; margin-left:8px; color:var(--primary-green);">+91 (079) 4000 2412 (Ext. 12)</a>
+          <table style="width:100%; border-collapse:collapse; font-size:0.875rem;">
+            <thead>
+              <tr style="background:var(--bg-cream); text-align:left; border-bottom:1px solid var(--border-medium);">
+                <th style="padding:8px 12px;">Medicine & Dose</th>
+                <th style="padding:8px 12px;">Schedule</th>
+                <th style="padding:8px 12px;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border-subtle);">
+                <td style="padding:10px 12px; font-weight:600;">IV Noradrenaline Infusion (0.04 mcg/kg/min)</td>
+                <td style="padding:10px 12px; color:var(--text-muted);">Continuous Infusion</td>
+                <td style="padding:10px 12px;"><span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Active</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border-subtle);">
+                <td style="padding:10px 12px; font-weight:600;">Inj. Ceftriaxone 1g IV (in 100ml NS)</td>
+                <td style="padding:10px 12px; color:var(--text-muted);">12 Hourly (08:00 AM / 08:00 PM)</td>
+                <td style="padding:10px 12px;"><span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Active</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border-subtle);">
+                <td style="padding:10px 12px; font-weight:600;">Inj. Pantoprazole 40mg IV Bolus</td>
+                <td style="padding:10px 12px; color:var(--text-muted);">Once Daily (07:00 AM)</td>
+                <td style="padding:10px 12px;"><span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Active</span></td>
+              </tr>
+              <tr>
+                <td style="padding:10px 12px; font-weight:600;">Inj. Heparin 5000 IU Subcut</td>
+                <td style="padding:10px 12px; color:var(--text-muted);">8 Hourly</td>
+                <td style="padding:10px 12px;"><span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Active</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TAB 3: CONDITIONS -->
+        <div id="icu-tab-conditions" class="icu-tab-content" style="display:none;">
+          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;">
+            Plain-language explanations of recorded conditions under medical management:
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:4px; padding:14px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <strong style="color:var(--text-main);">Post-CABG Cardiac Monitoring</strong>
+                <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Under Treatment</span>
+              </div>
+              <p class="text-xs text-muted" style="margin:0;">The patient is recovering from heart bypass surgery with continuous rhythm and heart rate observation.</p>
+            </div>
+
+            <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:4px; padding:14px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <strong style="color:var(--text-main);">Hemodynamic Support</strong>
+                <span class="utility-badge" style="background:var(--accent-amber-light); color:var(--accent-amber);">Being Monitored</span>
+              </div>
+              <p class="text-xs text-muted" style="margin:0;">Blood pressure is being steadily maintained and medications are being gradually tapered as recovery progresses.</p>
+            </div>
+
+            <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:4px; padding:14px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <strong style="color:var(--text-main);">Type 2 Diabetes (Glycemic Balance)</strong>
+                <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Being Monitored</span>
+              </div>
+              <p class="text-xs text-muted" style="margin:0;">Blood sugar is checked every 4 hours to ensure standard healing target levels.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: UPDATES -->
+        <div id="icu-tab-updates" class="icu-tab-content" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <span class="text-xs text-muted" style="font-weight:700;">CHRONOLOGICAL CLINICAL LOG</span>
+            <label style="display:flex; align-items:center; gap:6px; font-size:0.75rem; cursor:pointer;">
+              <input type="checkbox" id="ai-simplify-toggle" onchange="toggleAiExplanation(this.checked)">
+              <span>Assisted Explanation (Plain Language)</span>
+            </label>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:14px;" id="icu-updates-list">
+            
+            <div style="border-left:3px solid var(--primary-green); padding-left:14px;">
+              <div class="text-xs text-muted">10:42 AM Today • Dr. Suresh Menon (Critical Care)</div>
+              <div class="raw-update-text" style="font-size:0.9rem; font-weight:600; margin-top:2px;">
+                "Patient remains stable under current supportive care. The medical team continues close monitoring."
+              </div>
+              <div class="simplified-update-text text-xs" style="display:none; color:var(--primary-green); background:var(--primary-green-light); padding:8px 10px; border-radius:4px; margin-top:6px;">
+                💡 <strong>Assisted Explanation:</strong> The patient's condition is currently stable and the medical team is continuing to monitor them closely. Vital signs are within expected supportive ranges.
+              </div>
+            </div>
+
+            <div style="border-left:3px solid var(--border-medium); padding-left:14px;">
+              <div class="text-xs text-muted">07:30 AM Today • Dr. Neha Shah (Surgery Rounds)</div>
+              <div class="raw-update-text" style="font-size:0.9rem; font-weight:600; margin-top:2px;">
+                "Morning arterial blood gas and electrolyte panels show steady improvement. Tapering vasopressor support as planned."
+              </div>
+              <div class="simplified-update-text text-xs" style="display:none; color:var(--primary-green); background:var(--primary-green-light); padding:8px 10px; border-radius:4px; margin-top:6px;">
+                💡 <strong>Assisted Explanation:</strong> The medical team reports steady improvement. They are carefully reducing supportive medications as the patient's body recovers strength.
+              </div>
+            </div>
+
+          </div>
+
+          <div class="text-xs text-muted" style="margin-top:16px; font-style:italic;">
+            Assisted explanation simplifies information provided by the medical team. It does not provide medical diagnosis, prognosis, or survival estimates.
+          </div>
+        </div>
+
       </div>
 
     </div>
+
   </main>
 
-  <!-- Hospital Footer -->
   <footer class="hospital-footer">
     <div class="container">
       <div class="footer-bottom-bar" style="border:none; padding:0;">
-        <div>
-          CareFlow Memorial Hospital & Research Centre • Department of Critical Care Medicine
-        </div>
-        <div class="demo-prototype-badge">
-          Calm Plain-Language Family Prototype
-        </div>
+        <div>GWS Multi-Hospital Connected Network • ICU Family Care System</div>
+        <div class="demo-prototype-badge">Role Protected • Family Access Code Authenticated</div>
       </div>
     </div>
   </footer>
+
+  <script>
+    function switchIcuTab(tabKey) {
+      document.querySelectorAll('.icu-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.icu-tab-content').forEach(c => c.style.display = 'none');
+
+      const activeBtn = document.querySelector(`.icu-tab-btn[data-tab="${tabKey}"]`);
+      const activeContent = document.getElementById(`icu-tab-${tabKey}`);
+      if (activeBtn) activeBtn.classList.add('active');
+      if (activeContent) activeContent.style.display = 'block';
+    }
+
+    function toggleAiExplanation(isEnabled) {
+      document.querySelectorAll('.simplified-update-text').forEach(el => {
+        el.style.display = isEnabled ? 'block' : 'none';
+      });
+    }
+  </script>
 
 </body>
 </html>

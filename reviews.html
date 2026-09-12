@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Reviews & Verified Feedback | GWS</title>
+  <meta name="description" content="Verified patient reviews and clinical satisfaction ratings for doctors and specialists across connected hospitals on GWS.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container top-utility-inner">
+      <div class="top-utility-left">
+        <span class="utility-item emergency-phone">
+          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a>
+        </span>
+        <span class="utility-divider"></span>
+        <span class="utility-badge">PATIENT SATISFACTION CELL</span>
+      </div>
+      <div class="top-utility-right">
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker">
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
+        </div>
+        <span class="utility-divider"></span>
+        <a href="index.html" class="utility-link">Home</a>
+        <span class="utility-divider"></span>
+        <a href="patient.html" class="utility-link">Patient Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="hospital-brand">
+        <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">GWS</span>
+          <span class="brand-subtitle">Doctor Reviews & Quality of Care</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="hospitals.html" class="nav-link">Find Hospitals</a>
+        <a href="appointments.html" class="nav-link">Appointments</a>
+        <a href="patient.html" class="nav-link">Live Queue</a>
+        <a href="reviews.html" class="nav-link active">Reviews</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="emergency.html" class="btn-emergency-nav">24×7 Emergency</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container-narrow" style="padding: 36px 20px 60px;">
+    
+    <div class="section-title-wrap">
+      <div>
+        <span class="section-label">Verified Patient Feedback</span>
+        <h1 style="margin:0 0 4px 0;">Doctor Reviews & Ratings</h1>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+          Authentic feedback from patients following OPD consultations and treatments across GWS hospitals.
+        </p>
+      </div>
+      <button type="button" class="btn btn-primary btn-sm" onclick="openWriteReviewModal()">
+        ★ Write a Review
+      </button>
+    </div>
+
+    <!-- Doctor Rating Highlight Summary Card -->
+    <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-md); padding:24px; margin-bottom:28px; display:grid; grid-template-columns:220px 1fr; gap:24px; align-items:center;">
+      <div style="text-align:center; border-right:1px solid var(--border-subtle); padding-right:20px;">
+        <div style="font-family:var(--font-mono); font-size:3rem; font-weight:700; color:var(--primary-green); line-height:1;">4.8</div>
+        <div style="color:var(--accent-amber); font-size:1.2rem; margin:4px 0;">★★★★★</div>
+        <div class="text-xs text-muted">Across <strong>1,850+ Verified Visits</strong></div>
+        <div style="font-size:0.85rem; font-weight:700; color:var(--text-main); margin-top:6px;">All Specialists</div>
+      </div>
+
+      <!-- Rating Criteria Breakdown Bars -->
+      <div style="display:flex; flex-direction:column; gap:8px; font-size:0.85rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span>Doctor Communication & Empathy:</span>
+          <strong>★★★★★ 4.9</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span>Waiting Time Transparency (OPD):</span>
+          <strong>★★★★☆ 4.6</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span>Clinical Professionalism & Diagnosis:</span>
+          <strong>★★★★★ 4.9</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span>Overall Consultation Experience:</span>
+          <strong>★★★★★ 4.8</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews List Container -->
+    <div id="reviews-list-container" style="display:flex; flex-direction:column; gap:16px;">
+      <!-- Populated dynamically -->
+    </div>
+
+  </main>
+
+  <!-- Write Review Modal Dialog -->
+  <div class="modal-overlay" id="write-review-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 style="margin:0; font-size:1.15rem;">Write Doctor Consultation Review</h3>
+        <button type="button" class="modal-close-btn" onclick="closeWriteReviewModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handleSubmitReview(event)">
+          <div style="margin-bottom:14px;">
+            <label class="form-label">Doctor & Hospital *</label>
+            <select id="review-doctor-select" class="form-select" required>
+              <option value="Dr. Arjun Mehta (Cardiology, Shantideep)">Dr. Arjun Mehta (Cardiology, Shantideep)</option>
+              <option value="Dr. Neha Shah (Orthopaedics, Shantideep)">Dr. Neha Shah (Orthopaedics, Shantideep)</option>
+              <option value="Dr. Rajesh Kulkarni (Cardiology, Lifeline)">Dr. Rajesh Kulkarni (Cardiology, Lifeline)</option>
+              <option value="Dr. Vikram Ranade (Cardiology, Aarogya Care)">Dr. Vikram Ranade (Cardiology, Aarogya Care)</option>
+            </select>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+            <div>
+              <label class="form-label">Communication</label>
+              <select id="review-comm-rating" class="form-select">
+                <option value="5">★★★★★ (5/5)</option>
+                <option value="4">★★★★☆ (4/5)</option>
+                <option value="3">★★★☆☆ (3/5)</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Waiting Time Accuracy</label>
+              <select id="review-wait-rating" class="form-select">
+                <option value="5">★★★★★ (5/5)</option>
+                <option value="4">★★★★☆ (4/5)</option>
+                <option value="3">★★★☆☆ (3/5)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-bottom:14px;">
+            <label class="form-label">Your Feedback / Experience *</label>
+            <textarea id="review-text" class="form-input" rows="3" placeholder="Share your experience regarding doctor explanation, diagnosis, and queue management..." required></textarea>
+          </div>
+
+          <div class="text-xs text-muted" style="margin-bottom:16px;">
+            🔒 Privacy Protected: Only patient initials and verified appointment badges are displayed publicly. Private medical information is never published.
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; gap:10px;">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="closeWriteReviewModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-sm">Submit Review</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border:none; padding:0;">
+        <div>GWS Multi-Hospital Quality Framework • Patient Satisfaction Cell</div>
+        <div class="demo-prototype-badge">Verified Consultation Feedback</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function renderReviews() {
+      const state = getAppState();
+      const container = document.getElementById('reviews-list-container');
+      if (!container) return;
+
+      container.innerHTML = '';
+      state.reviews.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'hospital-compare-card';
+        card.style.padding = '18px 20px';
+        card.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+            <div>
+              <div style="font-weight:700; font-size:1.05rem;">${r.doctorName}</div>
+              <div class="text-xs text-muted">${r.department} • ${r.hospitalName}</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="color:var(--accent-amber); font-size:1rem;">★★★★★</div>
+              <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success); font-size:0.65rem;">VERIFIED PATIENT</span>
+            </div>
+          </div>
+          <p style="font-size:0.875rem; color:var(--text-main); margin:0 0 8px 0; line-height:1.5;">
+            "${r.comment}"
+          </p>
+          <div class="text-xs text-muted" style="display:flex; justify-content:space-between;">
+            <span>Patient: <strong>${r.patientInitials}</strong></span>
+            <span>${r.date}</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function openWriteReviewModal() {
+      const modal = document.getElementById('write-review-modal');
+      if (modal) modal.classList.add('modal-open');
+    }
+
+    function closeWriteReviewModal() {
+      const modal = document.getElementById('write-review-modal');
+      if (modal) modal.classList.remove('modal-open');
+    }
+
+    function handleSubmitReview(e) {
+      if (e) e.preventDefault();
+      const docSelect = document.getElementById('review-doctor-select').value;
+      const text = document.getElementById('review-text').value;
+
+      const state = getAppState();
+      state.reviews.unshift({
+        id: `REV-${Date.now()}`,
+        doctorName: docSelect.split(' (')[0],
+        hospitalName: docSelect.includes('Shantideep') ? 'Shantideep Multispeciality Hospital' : docSelect.includes('Lifeline') ? 'Lifeline Medical Centre' : 'Aarogya Care Hospital',
+        department: docSelect.includes('Cardiology') ? 'Cardiology' : 'Orthopaedics',
+        patientInitials: 'R.S. (You)',
+        rating: 5,
+        communication: 5,
+        waitingTime: 5,
+        professionalism: 5,
+        comment: text,
+        date: 'Today'
+      });
+
+      saveAppState(state);
+      closeWriteReviewModal();
+      renderReviews();
+      showHospitalToast('Thank you! Your verified doctor review has been published.', 'info');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderReviews();
+    });
+  </script>
+
+</body>
+</html>

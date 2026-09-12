@@ -3,151 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hospital Operations Command | CareFlow Memorial Hospital</title>
-  <meta name="description" content="CareFlow Hospital Operations Command Center - Institutional OPD queue throughput, bed occupancy, and active clinical audit.">
+  <title>Hospital Administrator Dashboard | GWS SaaS Console</title>
+  <meta name="description" content="Hospital-wide operational monitoring and OPD queue management dashboard on GWS SaaS infrastructure.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
-<body style="background-color: var(--bg-offwhite);">
+<body style="background-color: var(--bg-offwhite);" data-require-role="admin">
 
   <!-- Top Utility Bar -->
   <div class="top-utility-bar">
     <div class="container top-utility-inner">
       <div class="top-utility-left">
         <span class="utility-item emergency-phone">
-          24×7 Trauma & Emergency Command: +91 (079) 4000 2400
+          24×7 Emergency Command: +91 (020) 2600 2400 / 108
         </span>
         <span class="utility-divider"></span>
-        <span class="utility-badge">OPERATIONS & CLINICAL BED BOARD</span>
+        <span class="utility-badge">HOSPITAL SAAS SUBSCRIBER CONSOLE</span>
       </div>
       <div class="top-utility-right">
-        <a href="index.html" class="utility-link">Public Hospital Portal</a>
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker">
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
+        </div>
         <span class="utility-divider"></span>
-        <a href="doctor.html" class="utility-link">Doctor OPD Desk</a>
+        <a href="index.html" class="utility-link">Public Portal</a>
         <span class="utility-divider"></span>
-        <a href="patient.html" class="utility-link">Patient Token Slip</a>
+        <button onclick="handleLogout()" class="utility-link" style="color:var(--accent-emergency); font-weight:600;">Sign Out</button>
       </div>
     </div>
   </div>
 
   <!-- Header -->
-  <header class="admin-top-strip">
-    <div class="container admin-header-row">
+  <header style="background:var(--bg-paper); border-bottom:1px solid var(--border-subtle); padding:16px 0;">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
       <div style="display:flex; align-items:center; gap:14px;">
-        <div class="hospital-emblem">
-          <svg viewBox="0 0 24 24"><path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z"/></svg>
+        <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div>
-          <h1 class="font-serif">Hospital Operations</h1>
-          <div class="text-xs text-muted">CareFlow Memorial Hospital & Research Centre • Medical Administration</div>
+          <h1 class="font-serif" style="font-size:1.8rem; margin:0;" id="admin-hospital-name">Shantideep Multispeciality Hospital</h1>
+          <div class="text-xs text-muted">Hospital Operations & Resource Dashboard • Powered by GWS SaaS</div>
         </div>
       </div>
 
       <div style="display:flex; align-items:center; gap:12px;">
-        <span class="live-indicator"><span class="live-dot"></span> REAL-TIME TELEMETRY</span>
-        <div class="admin-date-badge">Saturday, 12 September 2026</div>
+        <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">SUBSCRIPTION: PROFESSIONAL TIER</span>
+        <button onclick="resetDemoState()" class="btn btn-secondary btn-sm">Reset Demo State</button>
       </div>
     </div>
   </header>
 
-  <!-- Clean Horizontal Statistics Strip (No giant SaaS cards) -->
-  <section class="ops-stats-strip">
+  <!-- Key Operational KPI Metrics Strip -->
+  <section style="background-color: var(--bg-cream); border-bottom: 1px solid var(--border-subtle); padding: 24px 0;">
     <div class="container">
-      <div class="ops-stats-grid">
-        <div class="ops-stat-col">
-          <div class="ops-stat-number" id="admin-stat-waiting">47</div>
-          <div class="ops-stat-label">Patients Waiting</div>
-          <div class="ops-stat-sub">Across all 4 active OPD clinics</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;">
+        
+        <div style="border-right: 1px solid var(--border-subtle); padding-right: 16px;">
+          <div style="font-family:var(--font-mono); font-size:2.2rem; font-weight:700; color:var(--primary-green); line-height:1; margin-bottom:4px;">
+            47
+          </div>
+          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;">
+            Patients Waiting
+          </div>
+          <div class="text-xs text-muted" style="margin-top:2px;">Across all OPD clinics</div>
         </div>
 
-        <div class="ops-stat-col">
-          <div class="ops-stat-number">12</div>
-          <div class="ops-stat-label">Doctors Active</div>
-          <div class="ops-stat-sub">OPD & Inpatient rounds</div>
+        <div style="border-right: 1px solid var(--border-subtle); padding-right: 16px;">
+          <div style="font-family:var(--font-mono); font-size:2.2rem; font-weight:700; color:var(--primary-green); line-height:1; margin-bottom:4px;">
+            12
+          </div>
+          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;">
+            Doctors Active
+          </div>
+          <div class="text-xs text-muted" style="margin-top:2px;">OPD & Inpatient rounds</div>
         </div>
 
-        <div class="ops-stat-col">
-          <div class="ops-stat-number" id="admin-stat-avgwait">28 min</div>
-          <div class="ops-stat-label">Average OPD Wait</div>
-          <div class="ops-stat-sub">Target: &lt; 35 minutes</div>
+        <div style="border-right: 1px solid var(--border-subtle); padding-right: 16px;">
+          <div style="font-family:var(--font-mono); font-size:2.2rem; font-weight:700; color:var(--primary-green); line-height:1; margin-bottom:4px;">
+            28 min
+          </div>
+          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;">
+            Average OPD Wait
+          </div>
+          <div class="text-xs text-muted" style="margin-top:2px;">Target: &lt; 35 minutes</div>
         </div>
 
-        <div class="ops-stat-col">
-          <div class="ops-stat-number" style="color:var(--accent-terracotta);">82%</div>
-          <div class="ops-stat-label">ICU Occupancy</div>
-          <div class="ops-stat-sub">19 of 24 critical beds occupied</div>
+        <div style="border-right: 1px solid var(--border-subtle); padding-right: 16px;">
+          <div style="font-family:var(--font-mono); font-size:2.2rem; font-weight:700; color:var(--accent-terracotta); line-height:1; margin-bottom:4px;">
+            82%
+          </div>
+          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;">
+            ICU Occupancy
+          </div>
+          <div class="text-xs text-muted" style="margin-top:2px;">15 of 18 beds occupied</div>
         </div>
 
-        <div class="ops-stat-col">
-          <div class="ops-stat-number" style="color:var(--accent-success);">4</div>
-          <div class="ops-stat-label">Emergency Beds</div>
-          <div class="ops-stat-sub">Trauma bay ready for triage</div>
+        <div>
+          <div style="font-family:var(--font-mono); font-size:2.2rem; font-weight:700; color:var(--accent-success); line-height:1; margin-bottom:4px;">
+            2 Ready
+          </div>
+          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;">
+            Ambulances
+          </div>
+          <div class="text-xs text-muted" style="margin-top:2px;">1 currently on dispatch</div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Admin Main Content Grid -->
-  <main class="container">
-    <div class="admin-sections-grid">
+  <!-- Department Live Load Register -->
+  <main class="container" style="padding: 36px 24px 60px;">
+    
+    <div class="section-title-wrap">
+      <div>
+        <span class="section-label">Department Telemetry</span>
+        <h2 style="margin:0 0 4px 0;">Live Department OPD Load & Queue Control</h2>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+          Real-time queue length, consultant status, and load indicators across departments.
+        </p>
+      </div>
+      <div>
+        <button class="btn btn-secondary btn-sm" onclick="renderHospitalOperations()">🔄 Refresh Telemetry</button>
+      </div>
+    </div>
+
+    <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-md); overflow-x:auto; margin-bottom:32px;">
+      <table class="data-table" style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:var(--bg-cream); text-align:left; border-bottom:2px solid var(--border-medium);">
+            <th style="padding:12px 16px;">Department</th>
+            <th style="padding:12px 16px;">Consulting Doctor</th>
+            <th style="padding:12px 16px;">Active Token</th>
+            <th style="padding:12px 16px;">Waiting Count</th>
+            <th style="padding:12px 16px;">Avg Turnaround</th>
+            <th style="padding:12px 16px;">Load Status</th>
+            <th style="padding:12px 16px; text-align:right;">Quick Action</th>
+          </tr>
+        </thead>
+        <tbody id="admin-departments-tbody">
+          <!-- Populated dynamically by app.js renderHospitalOperations() -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Quick Links for Hospital Staff -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
       
-      <!-- Department Flow Status Table -->
-      <section class="admin-card">
-        <div class="admin-card-header">
-          <h3>Department Queue Throughput</h3>
-          <span class="text-xs text-muted">OPD Shift 1: 08:30 AM – 02:00 PM</span>
-        </div>
+      <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+        <h4 style="margin:0 0 8px 0;">Doctor Consultation Desk</h4>
+        <p class="text-xs text-muted" style="margin-bottom:12px;">
+          Access the live consultation screen for Dr. Arjun Mehta or other specialists.
+        </p>
+        <a href="doctor.html" class="btn btn-secondary btn-sm">Open Doctor Desk →</a>
+      </div>
 
-        <div style="overflow-x: auto;">
-          <table class="hospital-table">
-            <thead>
-              <tr>
-                <th>DEPARTMENT</th>
-                <th>ACTIVE CONSULTANT</th>
-                <th>NOW SERVING</th>
-                <th>WAITING</th>
-                <th>AVG. WAIT</th>
-                <th>STATUS</th>
-              </tr>
-            </thead>
-            <tbody id="admin-dept-tbody">
-              <!-- Rendered via script.js -->
-            </tbody>
-          </table>
-        </div>
+      <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+        <h4 style="margin:0 0 8px 0;">Emergency Resource Dispatch</h4>
+        <p class="text-xs text-muted" style="margin-bottom:12px;">
+          Manage ambulance fleet status, trauma stretchers, and incoming emergency SOS requests.
+        </p>
+        <a href="emergency.html" class="btn btn-secondary btn-sm">Emergency Dispatch →</a>
+      </div>
 
-        <div style="padding:14px 20px; background:var(--bg-offwhite); border-top:1px solid var(--border-subtle); font-size:0.8rem; color:var(--text-muted); display:flex; justify-content:space-between; align-items:center;">
-          <span>* Wait time metrics dynamically recalculate as doctors call tokens</span>
-          <button onclick="doctorCallNextPatient()" class="btn btn-sm btn-secondary">Simulate Doctor Call</button>
-        </div>
-      </section>
-
-      <!-- Live Clinical Audit Log -->
-      <section class="admin-card">
-        <div class="admin-card-header">
-          <h3>Live Patient Flow Audit</h3>
-          <span class="live-indicator"><span class="live-dot"></span> LIVE FEED</span>
-        </div>
-
-        <ul class="audit-log-list" id="admin-audit-log-list">
-          <!-- Dynamically populated by script.js -->
-        </ul>
-
-        <div style="padding:12px 20px; background:var(--bg-offwhite); border-top:1px solid var(--border-subtle); font-size:0.775rem; color:var(--text-muted);">
-          Audit trail stored according to NABH Hospital Information System protocols.
-        </div>
-      </section>
+      <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+        <h4 style="margin:0 0 8px 0;">GWS Commercial Plan</h4>
+        <p class="text-xs text-muted" style="margin-bottom:12px;">
+          View SaaS subscription tiers, billing cycles, and platform feature matrix.
+        </p>
+        <a href="business.html#pricing" class="btn btn-secondary btn-sm">View Subscription →</a>
+      </div>
 
     </div>
+
   </main>
 
-  <!-- Footer -->
-  <footer style="border-top:1px solid var(--border-subtle); padding:16px 0; background:var(--bg-paper); font-size:0.8rem; color:var(--text-muted);">
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
-      <div>CareFlow Hospital Administration • Internal Facility Management System</div>
-      <div class="demo-prototype-badge">Prototype Operations Console</div>
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border:none; padding:0;">
+        <div>GWS Multi-Hospital Connected Network • Hospital Staff Console</div>
+        <div class="demo-prototype-badge">Admin Authenticated • SaaS Node</div>
+      </div>
     </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHospitalOperations();
+    });
+  </script>
 
 </body>
 </html>
