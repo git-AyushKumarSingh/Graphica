@@ -16,13 +16,21 @@
     <div class="container top-utility-inner">
       <div class="top-utility-left">
         <span class="utility-item emergency-phone">
-          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a>
+          <span data-i18n="global.emergencyPhone">24×7 Emergency: +91 (020) 2600 2400 / 108</span>
         </span>
         <span class="utility-divider"></span>
         <span class="utility-badge">SECURE GWS PLATFORM GATEWAY</span>
       </div>
       <div class="top-utility-right">
-        <a href="index.html" class="utility-link">Return to Public Platform</a>
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker">
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;" data-i18n="global.langLabel">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
+        </div>
+        <span class="utility-divider"></span>
+        <a href="index.html" class="utility-link" data-i18n="global.returnPublic">Return to Public Platform</a>
       </div>
     </div>
   </div>
@@ -35,8 +43,8 @@
           <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div class="brand-text">
-          <span class="brand-title">GWS</span>
-          <span class="brand-subtitle">Healthcare, connected.</span>
+          <span class="brand-title" data-i18n="global.appName">GWS</span>
+          <span class="brand-subtitle" data-i18n="global.brandTagline">Healthcare, connected.</span>
         </div>
       </a>
     </div>
@@ -49,13 +57,13 @@
       
       <!-- Role Tabs Header -->
       <div class="login-tabs-header">
-        <button type="button" class="login-tab-btn active" id="tab-patient-btn" onclick="selectLoginTab('patient')">
+        <button type="button" class="login-tab-btn active" id="tab-patient-btn" onclick="selectLoginTab('patient')" data-i18n="login.patientPortal">
           Patient Portal
         </button>
-        <button type="button" class="login-tab-btn" id="tab-doctor-btn" onclick="selectLoginTab('doctor')">
+        <button type="button" class="login-tab-btn" id="tab-doctor-btn" onclick="selectLoginTab('doctor')" data-i18n="login.doctorDesk">
           Doctor Desk
         </button>
-        <button type="button" class="login-tab-btn" id="tab-admin-btn" onclick="selectLoginTab('admin')">
+        <button type="button" class="login-tab-btn" id="tab-admin-btn" onclick="selectLoginTab('admin')" data-i18n="login.hospitalAdmin">
           Hospital Admin
         </button>
       </div>
@@ -63,31 +71,31 @@
       <div class="login-card-body">
         
         <div style="text-align:center; margin-bottom:20px;">
-          <h3 id="login-title-text" style="margin:0 0 4px 0;">Patient Portal Login</h3>
-          <p class="text-xs text-muted" id="login-sub-text" style="margin:0;">
+          <h3 id="login-title-text" style="margin:0 0 4px 0;" data-i18n="login.patientPortal">Patient Portal Login</h3>
+          <p class="text-xs text-muted" id="login-sub-text" style="margin:0;" data-i18n="login.patientSub">
             Access your OPD queue token, laboratory reports, and prescription reminders.
           </p>
         </div>
 
         <form id="login-form" onsubmit="onLoginFormSubmit(event)">
           <div class="form-group" style="margin-bottom:14px;">
-            <label class="form-label" for="login-email">Registered Email Address:</label>
+            <label class="form-label" for="login-email" data-i18n="login.emailLabel">Registered Email Address:</label>
             <input type="email" id="login-email" class="form-input" required value="patient@demo.com">
           </div>
 
           <div class="form-group" style="margin-bottom:16px;">
-            <label class="form-label" for="login-password">Password:</label>
+            <label class="form-label" for="login-password" data-i18n="login.passLabel">Password:</label>
             <input type="password" id="login-password" class="form-input" required value="patient123">
           </div>
 
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; font-size:0.8rem;">
             <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-              <input type="checkbox" checked> Remember Session
+              <input type="checkbox" checked> <span data-i18n="login.rememberSession">Remember Session</span>
             </label>
-            <span class="text-xs text-muted">Hackathon Prototype Demo</span>
+            <span class="text-xs text-muted" data-i18n="global.prototypeBadge">Hackathon Prototype Demo</span>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block btn-lg" id="login-submit-btn">
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="login-submit-btn" data-i18n="login.signInPatient">
             Log In as Patient →
           </button>
         </form>
@@ -117,8 +125,8 @@
   <footer class="hospital-footer">
     <div class="container">
       <div class="footer-bottom-bar" style="border:none; padding:0;">
-        <div>GWS Multi-Hospital Connected Platform • Secure Access</div>
-        <div class="demo-prototype-badge">Client-Side Role Authorization</div>
+        <div data-i18n="footer.copyright">© 2026 GWS Platform • Healthcare, connected. All rights reserved.</div>
+        <div class="demo-prototype-badge" data-i18n="global.prototypeBadge">Client-Side Role Authorization</div>
       </div>
     </div>
   </footer>
@@ -136,23 +144,23 @@
 
       if (role === 'patient') {
         document.getElementById('tab-patient-btn').classList.add('active');
-        titleEl.textContent = 'Patient Portal Sign In';
-        subEl.textContent = 'Access your OPD queue token, laboratory reports, and prescription reminders.';
-        submitBtn.textContent = 'Log In as Patient →';
+        titleEl.textContent = t('login.patientPortal');
+        subEl.textContent = t('login.patientSub');
+        submitBtn.textContent = t('login.signInPatient');
         document.getElementById('login-email').value = 'patient@demo.com';
         document.getElementById('login-password').value = 'patient123';
       } else if (role === 'doctor') {
         document.getElementById('tab-doctor-btn').classList.add('active');
-        titleEl.textContent = 'Doctor Consultation Desk Sign In';
-        subEl.textContent = 'Access the clinical queue controller and advance patient consultation tokens.';
-        submitBtn.textContent = 'Log In as Doctor →';
+        titleEl.textContent = t('login.doctorDesk');
+        subEl.textContent = t('login.doctorSub');
+        submitBtn.textContent = t('login.signInDoctor');
         document.getElementById('login-email').value = 'doctor@demo.com';
         document.getElementById('login-password').value = 'doctor123';
       } else if (role === 'admin') {
         document.getElementById('tab-admin-btn').classList.add('active');
-        titleEl.textContent = 'Hospital Staff / Administrator Sign In';
-        subEl.textContent = 'Access department load telemetry, operational capacity, and resource dispatch.';
-        submitBtn.textContent = 'Log In as Staff Administrator →';
+        titleEl.textContent = t('login.hospitalAdmin');
+        subEl.textContent = t('login.hospitalSub');
+        submitBtn.textContent = t('login.signInHospital');
         document.getElementById('login-email').value = 'admin@demo.com';
         document.getElementById('login-password').value = 'admin123';
       }
@@ -162,14 +170,14 @@
       selectLoginTab(role);
       document.getElementById('login-email').value = email;
       document.getElementById('login-password').value = pass;
-      handleLoginSubmit(role, email, pass);
+      GWS_Auth.login(role, email, pass);
     }
 
     function onLoginFormSubmit(e) {
       if (e) e.preventDefault();
       const email = document.getElementById('login-email').value;
       const pass = document.getElementById('login-password').value;
-      handleLoginSubmit(activeRole, email, pass);
+      GWS_Auth.login(activeRole, email, pass);
     }
 
     document.addEventListener('DOMContentLoaded', () => {

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Your Hospital | GWS Multi-Hospital Platform</title>
+  <meta name="description" content="Bring your hospital onto GWS. Connect your hospital to patients looking for care nearby, manage live OPD queues, digital lab reports, and appointments.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container top-utility-inner">
+      <div class="top-utility-left">
+        <span class="utility-item">
+          <strong data-i18n="hospitalRegister.enterpriseSolutions">GWS Enterprise Solutions:</strong> <span data-i18n="hospitalRegister.onboardingDesk">Hospital Onboarding Desk</span>
+        </span>
+        <span class="utility-divider"></span>
+        <span class="utility-badge">INSTITUTIONAL SAAS PLATFORM</span>
+      </div>
+      <div class="top-utility-right">
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker">
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;" data-i18n="global.langLabel">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
+        </div>
+        <span class="utility-divider"></span>
+        <a href="index.html" class="utility-link" data-i18n="nav.home">Home</a>
+        <span class="utility-divider"></span>
+        <a href="hospitals.html" class="utility-link" data-i18n="nav.hospitals">Hospital Directory</a>
+        <span class="utility-divider"></span>
+        <a href="login.html" class="utility-link" data-i18n="global.signIn">Staff Login</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="hospital-brand">
+        <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title" data-i18n="global.appName">GWS</span>
+          <span class="brand-subtitle" data-i18n="nav.registerHospital">Hospital Partnership & SaaS Onboarding</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="hospitals.html" class="nav-link" data-i18n="nav.hospitals">Find Hospitals</a>
+        <a href="doctors.html" class="nav-link" data-i18n="nav.doctors">Doctors</a>
+        <a href="hospital-register.html" class="nav-link active" data-i18n="nav.registerHospital">Register Hospital</a>
+        <a href="hospital.html" class="nav-link" data-i18n="nav.hospitalOps">Hospital Ops Demo</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-secondary btn-sm" data-i18n="global.signIn">Hospital Login</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 40px 24px 80px;">
+    
+    <!-- Hero / Intro -->
+    <div class="section-title-wrap">
+      <div>
+        <span class="section-label" data-i18n="hospitalRegister.onboardingDesk">Hospital Network Partnership</span>
+        <h1 style="margin:0 0 4px 0;" data-i18n="hospitalRegister.bringHospitalTitle">Bring your hospital onto GWS</h1>
+        <p class="text-muted" style="margin:0; font-size:1.05rem;" data-i18n="hospitalRegister.bringHospitalSub">
+          Connect your hospital to patients looking for care nearby. Digital appointment scheduling, live OPD queue transparency, electronic lab reports, and emergency resource management.
+        </p>
+      </div>
+      <div>
+        <span class="utility-badge" style="font-size:0.8rem;" data-i18n="hospitalRegister.freeForPatients">PATIENTS: FREE • HOSPITALS: SAAS SUBSCRIPTION</span>
+      </div>
+    </div>
+
+    <!-- Onboarding Flow Diagram -->
+    <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:24px; margin-bottom:36px;">
+      <h3 style="margin-top:0; margin-bottom:16px;">How Hospital Onboarding Works on GWS</h3>
+      <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:16px;">
+        <div style="background:var(--bg-cream); padding:14px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle);">
+          <div style="font-weight:700; color:var(--primary-green); font-size:0.85rem; margin-bottom:4px;">1. Submit Details</div>
+          <p class="text-xs text-muted" style="margin:0;">Register hospital licensing, bed capacity, departments & administrator profile.</p>
+        </div>
+        <div style="background:var(--bg-cream); padding:14px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle);">
+          <div style="font-weight:700; color:var(--primary-green); font-size:0.85rem; margin-bottom:4px;">2. Instant Verification</div>
+          <p class="text-xs text-muted" style="margin:0;">NABH / State health registration review & onboarding confirmation ID.</p>
+        </div>
+        <div style="background:var(--bg-cream); padding:14px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle);">
+          <div style="font-weight:700; color:var(--primary-green); font-size:0.85rem; margin-bottom:4px;">3. Configure OPD & Doctors</div>
+          <p class="text-xs text-muted" style="margin:0;">Set consulting rooms, live token queues, and diagnostic lab endpoints.</p>
+        </div>
+        <div style="background:var(--bg-cream); padding:14px; border-radius:var(--radius-sm); border:1px solid var(--border-subtle);">
+          <div style="font-weight:700; color:var(--primary-green); font-size:0.85rem; margin-bottom:4px;">4. Go Live on GWS</div>
+          <p class="text-xs text-muted" style="margin:0;">Hospital appears live across public search, nearby maps, and doctor directory.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2-Column: Registration Form & Pricing Plans -->
+    <div style="display:grid; grid-template-columns: 1.2fr 0.8fr; gap:36px; align-items:flex-start;">
+      
+      <!-- Hospital Registration Form -->
+      <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:28px;">
+        <h3 style="margin-top:0; margin-bottom:4px;" data-i18n="hospitalRegister.applicationTitle">Hospital Registration Application</h3>
+        <p class="text-xs text-muted" style="margin-bottom:20px;" data-i18n="hospitalRegister.applicationSub">Fill in your institutional credentials to register on the GWS platform.</p>
+
+        <form onsubmit="handleHospitalRegisterSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="hosp-name" data-i18n="hospitalRegister.hospitalName">Hospital Name:</label>
+            <input type="text" id="hosp-name" class="form-input" placeholder="e.g. Apex Multispeciality Hospital & Trauma Care" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="hosp-regno" data-i18n="hospitalRegister.regLicenseNo">Hospital Registration / License #:</label>
+              <input type="text" id="hosp-regno" class="form-input" placeholder="e.g. MH/PUN/2019/8821" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="hosp-beds" data-i18n="hospitalRegister.bedCapacity">Bed Capacity:</label>
+              <input type="number" id="hosp-beds" class="form-input" placeholder="e.g. 150" required value="120">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="hosp-city" data-i18n="hospitalRegister.cityDistrict">City / District:</label>
+              <input type="text" id="hosp-city" class="form-input" value="Pune" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="hosp-location" data-i18n="hospitalRegister.localityAddress">Locality / Landmark Address:</label>
+              <input type="text" id="hosp-location" class="form-input" placeholder="e.g. Baner High Street, Pune" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="hosp-phone" data-i18n="hospitalRegister.emergencyPhoneLabel">Emergency Helpdesk Phone:</label>
+              <input type="tel" id="hosp-phone" class="form-input" placeholder="+91 (020) 2700 8800" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="hosp-email" data-i18n="hospitalRegister.adminEmail">Administrative Email:</label>
+              <input type="email" id="hosp-email" class="form-input" placeholder="admin@hospital.org" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Key Clinical Departments (Comma Separated):</label>
+            <input type="text" id="hosp-depts" class="form-input" value="Cardiology, Orthopaedics, General Medicine, Paediatrics" required>
+          </div>
+
+          <!-- Facilities Checkboxes -->
+          <div class="form-group">
+            <label class="form-label">Institutional Facilities Available:</label>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; font-size:0.85rem; margin-top:6px;">
+              <label style="display:flex; align-items:center; gap:6px;">
+                <input type="checkbox" id="fac-emergency" checked> 24×7 Emergency & Trauma
+              </label>
+              <label style="display:flex; align-items:center; gap:6px;">
+                <input type="checkbox" id="fac-ambulance" checked> Cardiac Ambulance Fleet
+              </label>
+              <label style="display:flex; align-items:center; gap:6px;">
+                <input type="checkbox" id="fac-lab" checked> Diagnostic & Pathology Lab
+              </label>
+              <label style="display:flex; align-items:center; gap:6px;">
+                <input type="checkbox" id="fac-pharmacy" checked> 24h In-House Pharmacy
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="hosp-plan" data-i18n="hospitalRegister.subscriptionTier">Selected GWS Subscription Plan:</label>
+            <select id="hosp-plan" class="form-select">
+              <option value="GWS Basic" data-price="₹10,000/month">GWS Basic (₹10,000/month)</option>
+              <option value="GWS Professional" data-price="₹30,000/month" selected>GWS Professional (₹30,000/month — Recommended)</option>
+              <option value="GWS Enterprise" data-price="Custom Plan">GWS Enterprise (Custom Institutional Plan)</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="hosp-pass">Create Admin Password:</label>
+              <input type="password" id="hosp-pass" class="form-input" required value="hospital123">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="hosp-pass-confirm">Confirm Password:</label>
+              <input type="password" id="hosp-pass-confirm" class="form-input" required value="hospital123">
+            </div>
+          </div>
+
+          <div style="margin-bottom:18px; font-size:0.8rem; color:var(--text-muted);">
+            <label style="display:flex; align-items:flex-start; gap:8px;">
+              <input type="checkbox" required checked style="margin-top:3px;">
+              <span>I confirm that I am authorized by the hospital management to register this healthcare institution on the GWS platform.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="font-weight:700;" data-i18n="hospitalRegister.submitApplication">
+            REGISTER HOSPITAL ON GWS →
+          </button>
+        </form>
+
+        <!-- Dynamic Success Confirmation Modal -->
+        <div id="hosp-register-success-box" style="display:none; margin-top:20px;"></div>
+
+      </div>
+
+      <!-- Right Column: Subscription Plans & Value Proposition -->
+      <div>
+        
+        <h3 style="margin-top:0; margin-bottom:12px;">GWS Subscription Plans</h3>
+        <p class="text-xs text-muted" style="margin-bottom:16px;">
+          Patients access GWS for free. Hospitals subscribe monthly to modernize outpatient flow and digital patient engagement.
+        </p>
+
+        <!-- Plan 1: Basic -->
+        <div class="plan-card" style="margin-bottom:16px;">
+          <div>
+            <span class="room-type-tag">Entry Plan</span>
+            <h4 style="margin:2px 0;">GWS Basic</h4>
+            <div class="plan-price-tag">₹10,000 <span style="font-size:0.85rem; font-weight:400; color:var(--text-muted);">/ month</span></div>
+            <ul class="plan-features-list">
+              <li>Hospital directory listing</li>
+              <li>Doctor & specialist profiles</li>
+              <li>Online appointment booking</li>
+              <li>Basic queue counter</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Plan 2: Professional (Featured) -->
+        <div class="plan-card plan-featured" style="margin-bottom:16px; background:#fefdfb;">
+          <div class="best-match-badge" style="position:absolute; top:12px; right:12px;">MOST POPULAR</div>
+          <div>
+            <span class="room-type-tag">Full Clinical Suite</span>
+            <h4 style="margin:2px 0;">GWS Professional</h4>
+            <div class="plan-price-tag" style="color:var(--accent-terracotta);">₹30,000 <span style="font-size:0.85rem; font-weight:400; color:var(--text-muted);">/ month</span></div>
+            <ul class="plan-features-list">
+              <li>Everything in Basic plan</li>
+              <li>Real-time multi-tab Live OPD Queue</li>
+              <li>Digital Laboratory Report dispatch</li>
+              <li>ICU Family Care communication portal</li>
+              <li>Emergency & Ambulance fleet dispatch</li>
+              <li>Hospital operational analytics</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Plan 3: Enterprise -->
+        <div class="plan-card">
+          <div>
+            <span class="room-type-tag">Multi-Branch Networks</span>
+            <h4 style="margin:2px 0;">GWS Enterprise</h4>
+            <div class="plan-price-tag">Custom <span style="font-size:0.85rem; font-weight:400; color:var(--text-muted);">/ tailored</span></div>
+            <ul class="plan-features-list">
+              <li>Everything in Professional</li>
+              <li>Multi-campus hospital networks</li>
+              <li>Hospital Information System (HIS) APIs</li>
+              <li>Dedicated account manager & 24/7 SLA</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="text-xs text-muted" style="margin-top:10px; text-align:center;">
+          * Illustrative pricing for prototype demonstration.
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border:none; padding:0;">
+        <div data-i18n="footer.copyright">© 2026 GWS Platform • Healthcare, connected. All rights reserved.</div>
+        <div class="demo-prototype-badge" data-i18n="global.prototypeBadge">College Hackathon Prototype</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function handleHospitalRegisterSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('hosp-name').value;
+      const city = document.getElementById('hosp-city').value;
+      const location = document.getElementById('hosp-location').value;
+      const phone = document.getElementById('hosp-phone').value;
+      const email = document.getElementById('hosp-email').value;
+      const beds = document.getElementById('hosp-beds').value;
+      const depts = document.getElementById('hosp-depts').value.split(',').map(s => s.trim());
+      const plan = document.getElementById('hosp-plan').value;
+
+      const res = registerHospital({
+        name,
+        city,
+        location,
+        phone,
+        email,
+        beds,
+        departments: depts,
+        plan
+      });
+
+      const successBox = document.getElementById('hosp-register-success-box');
+      if (successBox) {
+        successBox.style.display = 'block';
+        successBox.innerHTML = `
+          <div style="background:var(--accent-success-light); border:1px solid var(--accent-success); padding:20px; border-radius:var(--radius-sm);">
+            <span class="section-label" style="color:var(--accent-success);">Application Received</span>
+            <h3 style="color:var(--accent-success); margin:2px 0 6px 0;">Hospital Registered Successfully!</h3>
+            <p style="margin:0 0 10px 0; font-size:0.9rem;">
+              <strong>${res.hospital.name}</strong> has been assigned Application ID: <strong>${res.applicationId}</strong>.
+            </p>
+            <div class="text-xs text-muted" style="margin-bottom:14px;">
+              Status: <strong>ACTIVE ON GWS DIRECTORY</strong>. Your hospital is now discoverable in the public directory and map!
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a href="hospitals.html" class="btn btn-primary btn-sm">View in Hospital Directory →</a>
+              <a href="hospital.html" class="btn btn-secondary btn-sm">Open Hospital Operations Demo</a>
+            </div>
+          </div>
+        `;
+        successBox.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      showHospitalToast(`Registered ${name}! Application ID: ${res.applicationId}`, 'info');
+    }
+  </script>
+
+</body>
+</html>

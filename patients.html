@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assigned Patients Directory | GWS Doctor Portal</title>
+  <meta name="description" content="Doctor clinical directory of assigned patients, consultation histories, and follow-ups on GWS.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body style="background-color: var(--bg-cream);" data-require-role="doctor">
+
+  <!-- Staff Portal Top Header -->
+  <header style="background-color: var(--primary-green); color: #ffffff; padding: 14px 0; border-bottom: 3px solid var(--primary-green-dark);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="hospital-emblem" style="background:#FCFBF9; width:36px; height:36px; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
+        </div>
+        <div>
+          <h2 style="color:#ffffff; margin:0; font-size:1.2rem; font-family:var(--font-sans); font-weight:700;">
+            Shantideep Multispeciality Hospital • GWS Doctor Portal
+          </h2>
+          <div class="text-xs" style="color:#A7D0B4;">Dr. Arjun Mehta (Cardiology) • Assigned Patient Register</div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker" style="background:rgba(255,255,255,0.15); padding:2px 6px; border-radius:4px;">
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')" style="color:#fff;">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')" style="color:#fff;">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')" style="color:#fff;">मराठी</button>
+        </div>
+        <a href="doctor.html" class="btn btn-secondary btn-sm" style="color:var(--text-main); background:#ffffff;" data-i18n="nav.liveQueue">
+          ← Live OPD Desk
+        </a>
+        <button onclick="handleLogout()" style="color:#ffffff; font-size:0.85rem; text-decoration:underline; background:none; border:none; cursor:pointer;" data-i18n="global.signOut">
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Patient Directory Container -->
+  <main class="container" style="padding: 36px 20px 60px;">
+    
+    <div class="section-title-wrap">
+      <div>
+        <span class="section-label" data-i18n="patientsRegister.clinicalRoster">Clinical Roster</span>
+        <h1 style="margin:0 0 4px 0;" data-i18n="patientsRegister.assignedRegisterTitle">Assigned Patients Register</h1>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;" data-i18n="patientsRegister.assignedRegisterSub">
+          Search active consultations, inspect past clinical notes, and access diagnostic records.
+        </p>
+      </div>
+      <div style="text-align:right;">
+        <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">
+          3 ACTIVE ASSIGNED PATIENTS
+        </span>
+      </div>
+    </div>
+
+    <!-- Filter & Search Bar -->
+    <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:18px 20px; margin-bottom:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      
+      <!-- Filter Tabs -->
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button type="button" class="btn btn-secondary btn-sm active filter-btn" data-filter="all" onclick="setPatientFilter(this, 'all')" data-i18n="patientsRegister.allPatients">All Patients</button>
+        <button type="button" class="btn btn-secondary btn-sm filter-btn" data-filter="today" onclick="setPatientFilter(this, 'today')" data-i18n="patientsRegister.todayConsultations">Today's Consultations</button>
+        <button type="button" class="btn btn-secondary btn-sm filter-btn" data-filter="followup" onclick="setPatientFilter(this, 'followup')" data-i18n="patientsRegister.followupsScheduled">Follow-ups Scheduled</button>
+      </div>
+
+      <!-- Live Search Input -->
+      <div style="max-width:340px; width:100%;">
+        <input type="text" id="patient-search-input" class="form-input" placeholder="Search patient by name or ID (e.g. Rahul, GWS-1024)..." data-i18n-placeholder="patientsRegister.searchPatientPlaceholder" style="padding:8px 12px; font-size:0.875rem;" oninput="onPatientSearch(this.value)">
+      </div>
+
+    </div>
+
+    <!-- Patients Data Table -->
+    <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); overflow-x:auto;">
+      <table class="data-table" style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:var(--bg-cream); text-align:left; border-bottom:2px solid var(--border-medium);">
+            <th style="padding:12px 16px;" data-i18n="patientsRegister.patientIdCol">Patient ID</th>
+            <th style="padding:12px 16px;" data-i18n="patientsRegister.patientNameCol">Patient Name & Contact</th>
+            <th style="padding:12px 16px;" data-i18n="patientsRegister.demographicsCol">Demographics</th>
+            <th style="padding:12px 16px;" data-i18n="patientsRegister.bloodGroupCol">Blood Group</th>
+            <th style="padding:12px 16px;" data-i18n="patientsRegister.lastConsultationCol">Last Consultation</th>
+            <th style="padding:12px 16px; text-align:right;" data-i18n="patientsRegister.actionCol">Action</th>
+          </tr>
+        </thead>
+        <tbody id="doctor-patients-tbody">
+          <!-- Dynamically populated by app.js renderDoctorPatients() -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Help Banner -->
+    <div style="margin-top:28px; background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:16px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div>
+        <strong style="font-size:0.9rem;">Need to transfer or refer a patient to another department?</strong>
+        <p class="text-xs text-muted" style="margin:2px 0 0 0;">Open the patient's record profile to generate intra-hospital referral or cross-consultation token.</p>
+      </div>
+      <a href="doctor.html" class="btn btn-secondary btn-sm" data-i18n="doctorDesk.activeClinicalSession">Return to OPD Queue</a>
+    </div>
+
+  </main>
+
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border:none; padding:0;">
+        <div data-i18n="footer.copyright">© 2026 GWS Platform • Healthcare, connected. All rights reserved.</div>
+        <div class="demo-prototype-badge" data-i18n="global.prototypeBadge">Doctor Authenticated • Internal Access</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let currentFilter = 'all';
+    let currentTerm = '';
+
+    function setPatientFilter(btn, filter) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = filter;
+      renderDoctorPatients(currentTerm, currentFilter);
+    }
+
+    function onPatientSearch(term) {
+      currentTerm = term;
+      renderDoctorPatients(currentTerm, currentFilter);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderDoctorPatients('', 'all');
+    });
+  </script>
+
+</body>
+</html>

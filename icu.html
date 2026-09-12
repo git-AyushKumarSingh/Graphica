@@ -16,25 +16,25 @@
     <div class="container top-utility-inner">
       <div class="top-utility-left">
         <span class="utility-item">
-          <strong>ICU Family Liaison Desk:</strong> <a href="tel:+912026002412">+91 (020) 2600 2412</a> (Ext. 12)
+          <strong data-i18n="icu.liaisonDesk">ICU Family Liaison Desk:</strong> <a href="tel:+912026002412">+91 (020) 2600 2412</a> (Ext. 12)
         </span>
         <span class="utility-divider"></span>
-        <span class="utility-item">
+        <span class="utility-item" data-i18n="icu.visitingHours">
           Visiting Hours: 04:30 PM – 05:30 PM
         </span>
       </div>
       <div class="top-utility-right">
         <!-- Global Language Switcher -->
         <div class="global-lang-picker">
-          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;" data-i18n="global.langLabel">Lang:</span>
           <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
           <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
           <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
         </div>
         <span class="utility-divider"></span>
-        <a href="index.html" class="utility-link">Home</a>
+        <a href="index.html" class="utility-link" data-i18n="nav.home">Home</a>
         <span class="utility-divider"></span>
-        <a href="patient.html" class="utility-link">Patient Dashboard</a>
+        <a href="patient.html" class="utility-link" data-i18n="global.myDashboard">Patient Dashboard</a>
       </div>
     </div>
   </div>
@@ -47,22 +47,22 @@
           <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div class="brand-text">
-          <span class="brand-title">GWS</span>
-          <span class="brand-subtitle">ICU Family Care Portal</span>
+          <span class="brand-title" data-i18n="global.appName">GWS</span>
+          <span class="brand-subtitle" data-i18n="nav.familyCare">ICU Family Care Portal</span>
         </div>
       </a>
 
       <nav class="main-nav" id="main-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="hospitals.html" class="nav-link">Find Hospitals</a>
-        <a href="appointments.html" class="nav-link">Appointments</a>
-        <a href="patient.html" class="nav-link">Live Queue</a>
-        <a href="reports.html" class="nav-link">Lab Reports</a>
-        <a href="icu.html" class="nav-link active">Family Care (ICU)</a>
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="hospitals.html" class="nav-link" data-i18n="nav.hospitals">Find Hospitals</a>
+        <a href="appointments.html" class="nav-link" data-i18n="nav.appointments">Appointments</a>
+        <a href="patient.html" class="nav-link" data-i18n="nav.liveQueue">Live Queue</a>
+        <a href="reports.html" class="nav-link" data-i18n="nav.reports">Lab Reports</a>
+        <a href="icu.html" class="nav-link active" data-i18n="nav.familyCare">Family Care (ICU)</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="tel:+912026002412" class="btn btn-secondary btn-sm">
+        <a href="tel:+912026002412" class="btn btn-secondary btn-sm" data-i18n="icu.callCounselor">
           Call ICU Counselor
         </a>
         <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
@@ -73,9 +73,9 @@
   <main class="container-narrow" style="padding: 36px 20px 60px;">
     
     <div style="text-align:center; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid var(--border-subtle);">
-      <span class="section-label" style="color:var(--secondary-sage-dark);">Authorized Family Communication</span>
-      <h1 style="margin:0 0 6px 0;">ICU Patient Care Summary</h1>
-      <p class="text-sm text-muted" style="max-width:580px; margin:0 auto;">
+      <span class="section-label" style="color:var(--secondary-sage-dark);" data-i18n="icu.authorizedFamilyComm">Authorized Family Communication</span>
+      <h1 style="margin:0 0 6px 0;" data-i18n="icu.title">ICU Patient Care Summary</h1>
+      <p class="text-sm text-muted" style="max-width:580px; margin:0 auto;" data-i18n="icu.subtitle">
         Transparent, plain-language clinical updates directly recorded by the treating critical care team.
       </p>
     </div>
@@ -87,12 +87,12 @@
       <div style="background:var(--bg-cream); border-bottom:1px solid var(--border-subtle); padding:14px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
         <div style="display:flex; align-items:center; gap:12px;">
           <span style="font-family:var(--font-mono); font-weight:700; color:var(--primary-green);">PATIENT ID: GWS-2048</span>
-          <span class="utility-badge" style="background:var(--secondary-sage-light); color:var(--secondary-sage-dark); border-color:rgba(107,143,113,0.4);">
+          <span class="utility-badge" style="background:var(--secondary-sage-light); color:var(--secondary-sage-dark); border-color:rgba(107,143,113,0.4);" data-i18n="icu.underCloseMonitoring">
             ● UNDER CLOSE MONITORING
           </span>
         </div>
-        <div class="text-xs text-muted">
-          Last Updated: <strong>10:42 AM Today</strong> (Morning Rounds)
+        <div class="text-xs text-muted" data-i18n="icu.lastUpdated">
+          Last Updated: 10:42 AM Today (Morning Rounds)
         </div>
       </div>
 
@@ -101,17 +101,17 @@
         <!-- Info Grid -->
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:16px; margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid var(--border-subtle);">
           <div>
-            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase;">Patient Name</div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase;" data-i18n="icu.patientName">Patient Name</div>
             <div style="font-weight:700; font-size:1.1rem;">Rajesh Sharma</div>
             <div class="text-xs text-muted">64 Yrs • Male</div>
           </div>
           <div>
-            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase;">Hospital & Location</div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase;" data-i18n="icu.hospitalLocation">Hospital & Location</div>
             <div style="font-weight:700; font-size:0.95rem;">Shantideep Hospital</div>
             <div class="text-xs text-muted">ICU-A • Bed 12</div>
           </div>
           <div>
-            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase;">Primary Intensivist</div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase;" data-i18n="icu.primaryIntensivist">Primary Intensivist</div>
             <div style="font-weight:700; font-size:0.95rem;">Dr. Suresh Menon</div>
             <div class="text-xs text-muted">MD, FNB Critical Care</div>
           </div>
@@ -119,16 +119,16 @@
 
         <!-- 4 Sub-Tabs for Family Navigation -->
         <div style="display:flex; gap:8px; border-bottom:2px solid var(--border-subtle); margin-bottom:20px; flex-wrap:wrap;">
-          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn active" data-tab="overview" onclick="switchIcuTab('overview')">Overview</button>
-          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn" data-tab="medicines" onclick="switchIcuTab('medicines')">Medicines</button>
-          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn" data-tab="conditions" onclick="switchIcuTab('conditions')">Conditions</button>
-          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn" data-tab="updates" onclick="switchIcuTab('updates')">Doctor Updates</button>
+          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn active" data-tab="overview" onclick="switchIcuTab('overview')" data-i18n="icu.tabOverview">Overview</button>
+          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn" data-tab="medicines" onclick="switchIcuTab('medicines')" data-i18n="icu.tabMedicines">Medicines</button>
+          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn" data-tab="conditions" onclick="switchIcuTab('conditions')" data-i18n="icu.tabConditions">Conditions</button>
+          <button type="button" class="btn btn-secondary btn-sm icu-tab-btn" data-tab="updates" onclick="switchIcuTab('updates')" data-i18n="icu.tabUpdates">Doctor Updates</button>
         </div>
 
         <!-- TAB 1: OVERVIEW -->
         <div id="icu-tab-overview" class="icu-tab-content">
           <div style="background:var(--bg-cream); border-left:3px solid var(--primary-green); padding:16px; border-radius:4px; margin-bottom:20px;">
-            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase; margin-bottom:4px;">LATEST INTENSIVIST SUMMARY</div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase; margin-bottom:4px;" data-i18n="icu.latestSummaryTitle">LATEST INTENSIVIST SUMMARY</div>
             <blockquote style="font-family:var(--font-serif); font-size:1.1rem; color:var(--text-main); margin:0 0 8px 0;">
               "Patient remains stable under current supportive care. The medical team continues close monitoring."
             </blockquote>
@@ -136,17 +136,17 @@
           </div>
 
           <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:16px; margin-bottom:16px;">
-            <h4 style="margin:0 0 10px 0;">Authorized Family Contacts</h4>
+            <h4 style="margin:0 0 10px 0;" data-i18n="icu.authorizedFamilyContacts">Authorized Family Contacts</h4>
             <div class="text-xs text-muted" style="line-height:1.8;">
-              Family Access Code: <strong style="font-family:var(--font-mono);">GWS-4821</strong><br>
-              Authorized Visitors: <strong>Anita Sharma (Wife)</strong>, <strong>Priya Sharma (Daughter)</strong>, <strong>Rahul Sharma (Son)</strong>
+              <span data-i18n="icu.familyAccessCode">Family Access Code:</span> <strong style="font-family:var(--font-mono);">GWS-4821</strong><br>
+              <span data-i18n="icu.authorizedVisitors">Authorized Visitors:</span> <strong>Anita Sharma (Wife)</strong>, <strong>Priya Sharma (Daughter)</strong>, <strong>Rahul Sharma (Son)</strong>
             </div>
           </div>
         </div>
 
         <!-- TAB 2: MEDICINES -->
         <div id="icu-tab-medicines" class="icu-tab-content" style="display:none;">
-          <div style="background:var(--accent-amber-light); border:1px solid var(--accent-amber); border-radius:4px; padding:12px 16px; font-size:0.8rem; color:var(--text-main); margin-bottom:16px;">
+          <div style="background:var(--accent-amber-light); border:1px solid var(--accent-amber); border-radius:4px; padding:12px 16px; font-size:0.8rem; color:var(--text-main); margin-bottom:16px;" data-i18n="icu.medicationNotice">
             <strong>Medication Information Notice:</strong> Medication information shown here is provided by the healthcare team for family awareness. Please do not change or stop medicines without speaking with the treating doctor.
           </div>
 
@@ -264,8 +264,8 @@
   <footer class="hospital-footer">
     <div class="container">
       <div class="footer-bottom-bar" style="border:none; padding:0;">
-        <div>GWS Multi-Hospital Connected Network • ICU Family Care System</div>
-        <div class="demo-prototype-badge">Role Protected • Family Access Code Authenticated</div>
+        <div data-i18n="footer.copyright">© 2026 GWS Platform • Healthcare, connected. All rights reserved.</div>
+        <div class="demo-prototype-badge" data-i18n="global.prototypeBadge">College Hackathon Prototype</div>
       </div>
     </div>
   </footer>

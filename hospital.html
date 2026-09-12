@@ -16,23 +16,23 @@
     <div class="container top-utility-inner">
       <div class="top-utility-left">
         <span class="utility-item emergency-phone">
-          24×7 Emergency Command: +91 (020) 2600 2400 / 108
+          <span data-i18n="global.emergencyPhone">24×7 Emergency Command: +91 (020) 2600 2400 / 108</span>
         </span>
         <span class="utility-divider"></span>
-        <span class="utility-badge">HOSPITAL SAAS SUBSCRIBER CONSOLE</span>
+        <span class="utility-badge" data-i18n="nav.hospitalOps">HOSPITAL SAAS SUBSCRIBER CONSOLE</span>
       </div>
       <div class="top-utility-right">
         <!-- Global Language Selector -->
         <div class="global-lang-picker">
-          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;" data-i18n="global.langLabel">Lang:</span>
           <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
           <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
           <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
         </div>
         <span class="utility-divider"></span>
-        <a href="index.html" class="utility-link">Public Portal</a>
+        <a href="index.html" class="utility-link" data-i18n="global.returnHome">Public Portal</a>
         <span class="utility-divider"></span>
-        <button onclick="handleLogout()" class="utility-link" style="color:var(--accent-emergency); font-weight:600;">Sign Out</button>
+        <button onclick="handleLogout()" class="utility-link" style="color:var(--accent-emergency); font-weight:600;" data-i18n="global.signOut">Sign Out</button>
       </div>
     </div>
   </div>
@@ -46,13 +46,13 @@
         </div>
         <div>
           <h1 class="font-serif" style="font-size:1.8rem; margin:0;" id="admin-hospital-name">Shantideep Multispeciality Hospital</h1>
-          <div class="text-xs text-muted">Hospital Operations & Resource Dashboard • Powered by GWS SaaS</div>
+          <div class="text-xs text-muted" data-i18n="hospitalAdmin.operationsDashboard">Hospital Operations & Resource Dashboard • Powered by GWS SaaS</div>
         </div>
       </div>
 
       <div style="display:flex; align-items:center; gap:12px;">
-        <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">SUBSCRIPTION: PROFESSIONAL TIER</span>
-        <button onclick="resetDemoState()" class="btn btn-secondary btn-sm">Reset Demo State</button>
+        <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);" data-i18n="hospitalAdmin.professionalTier">SUBSCRIPTION: PROFESSIONAL TIER</span>
+        <button onclick="resetDemoState()" class="btn btn-secondary btn-sm" data-i18n="global.resetDemo">Reset Demo State</button>
       </div>
     </div>
   </header>
@@ -66,50 +66,50 @@
           <div style="font-family:var(--font-mono); font-size:2.2rem; font-weight:700; color:var(--primary-green); line-height:1; margin-bottom:4px;">
             47
           </div>
-          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;">
+          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;" data-i18n="hospitalAdmin.patientsWaitingMetric">
             Patients Waiting
           </div>
-          <div class="text-xs text-muted" style="margin-top:2px;">Across all OPD clinics</div>
+          <div class="text-xs text-muted" style="margin-top:2px;" data-i18n="hospitalAdmin.acrossAllOpd">Across all OPD clinics</div>
         </div>
 
         <div style="border-right: 1px solid var(--border-subtle); padding-right: 16px;">
           <div style="font-family:var(--font-mono); font-size:2.2rem; font-weight:700; color:var(--primary-green); line-height:1; margin-bottom:4px;">
             12
           </div>
-          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;">
+          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;" data-i18n="hospitalAdmin.doctorsActiveMetric">
             Doctors Active
           </div>
-          <div class="text-xs text-muted" style="margin-top:2px;">OPD & Inpatient rounds</div>
+          <div class="text-xs text-muted" style="margin-top:2px;" data-i18n="hospitalAdmin.opdInpatientRounds">OPD & Inpatient rounds</div>
         </div>
 
         <div style="border-right: 1px solid var(--border-subtle); padding-right: 16px;">
           <div style="font-family:var(--font-mono); font-size:2.2rem; font-weight:700; color:var(--primary-green); line-height:1; margin-bottom:4px;">
             28 min
           </div>
-          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;">
+          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;" data-i18n="hospitalAdmin.avgOpdWaitMetric">
             Average OPD Wait
           </div>
-          <div class="text-xs text-muted" style="margin-top:2px;">Target: &lt; 35 minutes</div>
+          <div class="text-xs text-muted" style="margin-top:2px;" data-i18n="hospitalAdmin.targetWait">Target: &lt; 35 minutes</div>
         </div>
 
         <div style="border-right: 1px solid var(--border-subtle); padding-right: 16px;">
           <div style="font-family:var(--font-mono); font-size:2.2rem; font-weight:700; color:var(--accent-terracotta); line-height:1; margin-bottom:4px;">
             82%
           </div>
-          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;">
+          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;" data-i18n="hospitalAdmin.icuOccupancyMetric">
             ICU Occupancy
           </div>
-          <div class="text-xs text-muted" style="margin-top:2px;">15 of 18 beds occupied</div>
+          <div class="text-xs text-muted" style="margin-top:2px;" data-i18n="hospitalAdmin.bedsOccupied">15 of 18 beds occupied</div>
         </div>
 
         <div>
           <div style="font-family:var(--font-mono); font-size:2.2rem; font-weight:700; color:var(--accent-success); line-height:1; margin-bottom:4px;">
             2 Ready
           </div>
-          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;">
+          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:600;" data-i18n="hospitalAdmin.ambulancesMetric">
             Ambulances
           </div>
-          <div class="text-xs text-muted" style="margin-top:2px;">1 currently on dispatch</div>
+          <div class="text-xs text-muted" style="margin-top:2px;" data-i18n="hospitalAdmin.onDispatch">1 currently on dispatch</div>
         </div>
 
       </div>
@@ -121,14 +121,14 @@
     
     <div class="section-title-wrap">
       <div>
-        <span class="section-label">Department Telemetry</span>
-        <h2 style="margin:0 0 4px 0;">Live Department OPD Load & Queue Control</h2>
-        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+        <span class="section-label" data-i18n="hospitalAdmin.departmentTelemetry">Department Telemetry</span>
+        <h2 style="margin:0 0 4px 0;" data-i18n="hospitalAdmin.liveLoadControl">Live Department OPD Load & Queue Control</h2>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;" data-i18n="hospitalAdmin.realtimeQueueLength">
           Real-time queue length, consultant status, and load indicators across departments.
         </p>
       </div>
       <div>
-        <button class="btn btn-secondary btn-sm" onclick="renderHospitalOperations()">🔄 Refresh Telemetry</button>
+        <button class="btn btn-secondary btn-sm" onclick="renderHospitalOperations()" data-i18n="hospitalAdmin.refreshTelemetry">🔄 Refresh Telemetry</button>
       </div>
     </div>
 
@@ -136,13 +136,13 @@
       <table class="data-table" style="width:100%; border-collapse:collapse;">
         <thead>
           <tr style="background:var(--bg-cream); text-align:left; border-bottom:2px solid var(--border-medium);">
-            <th style="padding:12px 16px;">Department</th>
-            <th style="padding:12px 16px;">Consulting Doctor</th>
-            <th style="padding:12px 16px;">Active Token</th>
+            <th style="padding:12px 16px;" data-i18n="hospitalDetails.tableDept">Department</th>
+            <th style="padding:12px 16px;" data-i18n="hospitalDetails.tableDoctor">Consulting Doctor</th>
+            <th style="padding:12px 16px;" data-i18n="hospitalDetails.tableServing">Active Token</th>
             <th style="padding:12px 16px;">Waiting Count</th>
             <th style="padding:12px 16px;">Avg Turnaround</th>
             <th style="padding:12px 16px;">Load Status</th>
-            <th style="padding:12px 16px; text-align:right;">Quick Action</th>
+            <th style="padding:12px 16px; text-align:right;" data-i18n="hospitalDetails.tableAction">Quick Action</th>
           </tr>
         </thead>
         <tbody id="admin-departments-tbody">
@@ -151,42 +151,169 @@
       </table>
     </div>
 
+    <!-- Subscription & Doctor Management Row -->
+    <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:24px; margin-bottom:32px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+        <div>
+          <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success); margin-bottom:6px; display:inline-block;">
+            SAAS STATUS: ACTIVE (RENWAL: 31 OCT 2026)
+          </span>
+          <h3 style="margin:0 0 4px 0;">GWS Professional Subscription</h3>
+          <p class="text-xs text-muted" style="margin:0;">
+            Includes Multi-Hospital Routing, ABHA Longitudinal Records, OPD Live Queue Chime, and 20 Doctor Seats (15 Used).
+          </p>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="openManageSubscriptionModal()">
+            ⚙️ Manage Subscription
+          </button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="openAddDoctorModal()">
+            + Register New Doctor
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Quick Links for Hospital Staff -->
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
       
       <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
-        <h4 style="margin:0 0 8px 0;">Doctor Consultation Desk</h4>
+        <h4 style="margin:0 0 8px 0;" data-i18n="doctorDesk.activeClinicalSession">Doctor Consultation Desk</h4>
         <p class="text-xs text-muted" style="margin-bottom:12px;">
           Access the live consultation screen for Dr. Arjun Mehta or other specialists.
         </p>
-        <a href="doctor.html" class="btn btn-secondary btn-sm">Open Doctor Desk →</a>
+        <a href="doctor.html" class="btn btn-secondary btn-sm" data-i18n="patient.openDoctorPortal">Open Doctor Desk →</a>
       </div>
 
       <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
-        <h4 style="margin:0 0 8px 0;">Emergency Resource Dispatch</h4>
+        <h4 style="margin:0 0 8px 0;" data-i18n="patientsRegister.assignedRegisterTitle">Doctor Patients Register</h4>
+        <p class="text-xs text-muted" style="margin-bottom:12px;">
+          Inspect longitudinal clinical history, consultation timelines, and patient notes.
+        </p>
+        <a href="patients.html" class="btn btn-secondary btn-sm">Open Patient Directory →</a>
+      </div>
+
+      <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
+        <h4 style="margin:0 0 8px 0;" data-i18n="emergency.emergencyReadiness">Emergency Resource Dispatch</h4>
         <p class="text-xs text-muted" style="margin-bottom:12px;">
           Manage ambulance fleet status, trauma stretchers, and incoming emergency SOS requests.
         </p>
-        <a href="emergency.html" class="btn btn-secondary btn-sm">Emergency Dispatch →</a>
-      </div>
-
-      <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
-        <h4 style="margin:0 0 8px 0;">GWS Commercial Plan</h4>
-        <p class="text-xs text-muted" style="margin-bottom:12px;">
-          View SaaS subscription tiers, billing cycles, and platform feature matrix.
-        </p>
-        <a href="business.html#pricing" class="btn btn-secondary btn-sm">View Subscription →</a>
+        <a href="emergency.html" class="btn btn-secondary btn-sm" data-i18n="emergency.rapidDispatch">Emergency Dispatch →</a>
       </div>
 
     </div>
 
   </main>
 
+  <!-- Manage Subscription Modal -->
+  <div class="modal-overlay" id="manage-subscription-modal">
+    <div class="modal-dialog" style="max-width:700px;">
+      <div class="modal-header">
+        <h3 style="margin:0; font-size:1.15rem;">GWS SaaS Subscription Management</h3>
+        <button class="modal-close-btn" onclick="closeManageSubscriptionModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-xs text-muted" style="margin-top:0;">
+          Select your hospital subscription plan. Upgrades take effect immediately with zero downtime.
+        </p>
+
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin:18px 0;">
+          <!-- Basic Plan -->
+          <div style="background:var(--bg-cream); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:16px; text-align:center;">
+            <strong style="font-size:0.9rem;">GWS Basic</strong>
+            <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:var(--primary-green); margin:6px 0;">₹10,000<span style="font-size:0.75rem; font-weight:normal;">/mo</span></div>
+            <div class="text-xs text-muted" style="margin-bottom:12px;">Up to 5 Doctors • Queue & Map listing</div>
+            <button class="btn btn-secondary btn-sm btn-block" onclick="saveSubscriptionTier('GWS Basic', '₹10,000/month')">Switch to Basic</button>
+          </div>
+
+          <!-- Professional Plan -->
+          <div style="background:var(--bg-paper); border:2px solid var(--primary-green); border-radius:var(--radius-sm); padding:16px; text-align:center; box-shadow:var(--shadow-small);">
+            <span class="utility-badge" style="font-size:0.65rem; background:var(--accent-success-light); color:var(--accent-success); margin-bottom:4px;">CURRENT PLAN</span>
+            <strong style="display:block; font-size:0.9rem;">GWS Professional</strong>
+            <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:var(--primary-green); margin:6px 0;">₹30,000<span style="font-size:0.75rem; font-weight:normal;">/mo</span></div>
+            <div class="text-xs text-muted" style="margin-bottom:12px;">Up to 20 Doctors • ABHA & Lab Reports</div>
+            <button class="btn btn-primary btn-sm btn-block" disabled>Active Plan</button>
+          </div>
+
+          <!-- Enterprise Plan -->
+          <div style="background:var(--bg-cream); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:16px; text-align:center;">
+            <strong style="font-size:0.9rem;">GWS Enterprise</strong>
+            <div style="font-family:var(--font-mono); font-size:1.3rem; font-weight:700; color:var(--primary-green); margin:6px 0;">Custom Plan</div>
+            <div class="text-xs text-muted" style="margin-bottom:12px;">Unlimited Doctors • Dedicated SLA</div>
+            <button class="btn btn-secondary btn-sm btn-block" onclick="saveSubscriptionTier('GWS Enterprise', 'Custom Enterprise Plan')">Switch to Enterprise</button>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end;">
+          <button type="button" class="btn btn-secondary" onclick="closeManageSubscriptionModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Doctor Modal -->
+  <div class="modal-overlay" id="add-doctor-modal">
+    <div class="modal-dialog" style="max-width:540px;">
+      <div class="modal-header">
+        <h3 style="margin:0; font-size:1.15rem;">Register New Specialist Doctor</h3>
+        <button class="modal-close-btn" onclick="closeAddDoctorModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="saveNewDoctorFromForm(event)">
+          <div class="form-group">
+            <label class="form-label" for="doc-name">Doctor Full Name:</label>
+            <input type="text" id="doc-name" class="form-input" placeholder="e.g. Dr. Sunita Kulkarni" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="doc-dept">Department / Specialty:</label>
+            <select id="doc-dept" class="form-input" required>
+              <option value="Cardiology">Cardiology</option>
+              <option value="Orthopaedics">Orthopaedics</option>
+              <option value="General Medicine">General Medicine</option>
+              <option value="Paediatrics">Paediatrics</option>
+              <option value="Neurology">Neurology</option>
+              <option value="Gynaecology">Gynaecology</option>
+            </select>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="form-group">
+              <label class="form-label" for="doc-qual">Qualifications:</label>
+              <input type="text" id="doc-qual" class="form-input" placeholder="MBBS, MS, DNB" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="doc-exp">Experience (Years):</label>
+              <input type="number" id="doc-exp" class="form-input" placeholder="10" required min="1">
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="form-group">
+              <label class="form-label" for="doc-room">OPD Room No:</label>
+              <input type="text" id="doc-room" class="form-input" placeholder="Room 108" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="doc-fee">Consultation Fee:</label>
+              <input type="text" id="doc-fee" class="form-input" placeholder="₹500" required>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+            <button type="button" class="btn btn-secondary" onclick="closeAddDoctorModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary">Add Doctor to Hospital</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <footer class="hospital-footer">
     <div class="container">
       <div class="footer-bottom-bar" style="border:none; padding:0;">
-        <div>GWS Multi-Hospital Connected Network • Hospital Staff Console</div>
-        <div class="demo-prototype-badge">Admin Authenticated • SaaS Node</div>
+        <div data-i18n="footer.copyright">© 2026 GWS Platform • Healthcare, connected. All rights reserved.</div>
+        <div class="demo-prototype-badge" data-i18n="global.prototypeBadge">Admin Authenticated • SaaS Node</div>
       </div>
     </div>
   </footer>

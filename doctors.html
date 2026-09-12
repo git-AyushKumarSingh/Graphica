@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specialist Doctors Directory | GWS Connected Network</title>
+  <meta name="description" content="Search qualified medical consultants and specialists across connected hospitals on GWS. Check OPD timings, estimated wait times, and book consultations directly.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar">
+    <div class="container top-utility-inner">
+      <div class="top-utility-left">
+        <span class="utility-item emergency-phone" data-i18n="global.emergencyPhone">
+          24×7 Emergency: +91 (020) 2600 2400 / 108
+        </span>
+        <span class="utility-divider"></span>
+        <span class="utility-badge" data-i18n="global.verifiedNetwork">GWS VERIFIED SPECIALIST DOCTOR NETWORK</span>
+      </div>
+      <div class="top-utility-right">
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker">
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;" data-i18n="global.langLabel">Lang:</span>
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
+        </div>
+        <span class="utility-divider"></span>
+        <a href="hospitals.html" class="utility-link" data-i18n="nav.hospitals">Find Hospitals</a>
+        <span class="utility-divider"></span>
+        <a href="login.html" class="utility-link" data-i18n="global.signIn">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="hospital-brand">
+        <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title" data-i18n="global.appName">GWS</span>
+          <span class="brand-subtitle" data-i18n="doctors.title">Specialist Doctors Directory</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="hospitals.html" class="nav-link" data-i18n="nav.hospitals">Find Hospitals</a>
+        <a href="doctors.html" class="nav-link active" data-i18n="nav.doctors">Doctors</a>
+        <a href="appointments.html" class="nav-link" data-i18n="nav.appointments">Appointments</a>
+        <a href="patient.html" class="nav-link" data-i18n="nav.liveQueue">Live Queue</a>
+        <a href="reports.html" class="nav-link" data-i18n="nav.reports">Lab Reports</a>
+        <a href="icu.html" class="nav-link" data-i18n="nav.familyCare">Family Care</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="emergency.html" class="btn-emergency-nav" data-i18n="nav.emergency">24×7 Emergency</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Directory Body -->
+  <main class="container" style="padding: 36px 20px 60px;">
+    
+    <div class="section-title-wrap">
+      <div>
+        <span class="section-label" data-i18n="nav.doctors">Medical Specialists</span>
+        <h1 style="margin:0 0 4px 0;" data-i18n="doctors.title">Specialist Doctors Directory</h1>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;" data-i18n="doctors.subtitle">
+          Consult verified medical specialists across connected hospitals with live OPD queues and advance appointment booking.
+        </p>
+      </div>
+      <div style="text-align:right;">
+        <span class="utility-badge" style="background:var(--bg-cream); font-size:0.8rem;" data-i18n="doctors.verifiedOnline">
+          5 VERIFIED SPECIALISTS ONLINE
+        </span>
+      </div>
+    </div>
+
+    <!-- Filters & Search Bar -->
+    <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:20px; margin-bottom:28px;">
+      
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-bottom:16px;">
+        <div>
+          <label class="form-label" for="doc-hosp-filter" data-i18n="doctors.filterByHospital">Filter by Hospital:</label>
+          <select id="doc-hosp-filter" class="form-input" onchange="onDoctorFilterChange()">
+            <option value="all" data-i18n="doctors.allHospitals">All Connected Hospitals</option>
+            <option value="H001">Shantideep Multispeciality Hospital (Pune)</option>
+            <option value="H002">Aarogya Care Hospital (Kothrud)</option>
+            <option value="H003">Lifeline Medical Centre (Aundh)</option>
+            <option value="H004">Sahyadri City Hospital (Deccan)</option>
+            <option value="H005">Nirmal Healthcare Institute (Viman Nagar)</option>
+            <option value="H006">Jeevan Jyoti Hospital (Hadapsar)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="form-label" for="doc-dept-filter" data-i18n="doctors.specialtyDept">Specialty / Department:</label>
+          <select id="doc-dept-filter" class="form-input" onchange="onDoctorFilterChange()">
+            <option value="all" data-i18n="doctors.allSpecialities">All Specialties</option>
+            <option value="cardiology" data-i18n="search.cardiology">Cardiology</option>
+            <option value="orthopaedics" data-i18n="search.orthopaedics">Orthopaedics</option>
+            <option value="general medicine" data-i18n="search.generalMedicine">General Medicine</option>
+            <option value="paediatrics" data-i18n="search.paediatrics">Paediatrics</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="form-label" for="doc-search-text" data-i18n="doctors.searchDoctorName">Search Doctor Name:</label>
+          <input type="text" id="doc-search-text" class="form-input" placeholder="Search doctor name, specialization, department or hospital..." data-i18n-placeholder="doctors.searchPlaceholder" oninput="onDoctorFilterChange()">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Doctors Cards Grid -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;" id="public-doctors-grid">
+      <!-- Dynamically populated by app.js renderPublicDoctorDirectory() -->
+    </div>
+
+  </main>
+
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">
+            <div class="hospital-emblem" style="background:#FCFBF9; padding:2px; overflow:hidden;">
+              <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
+            </div>
+            <div>
+              <div class="footer-title" data-i18n="global.appName">GWS Healthcare Platform</div>
+              <div class="footer-subtitle" data-i18n="global.brandTagline">Healthcare, connected.</div>
+            </div>
+          </div>
+          <p class="footer-text" data-i18n="global.disclaimer">
+            Standardizing hospital operational discovery, OPD queue visibility, and patient-centered clinical companion workflows across India.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-heading" data-i18n="footer.forPatients">For Patients</div>
+          <ul class="footer-links">
+            <li><a href="hospitals.html" data-i18n="footer.searchHospitals">Search Hospitals</a></li>
+            <li><a href="doctors.html" data-i18n="footer.findDoctors">Find Specialist Doctors</a></li>
+            <li><a href="appointments.html" data-i18n="footer.bookOpd">Book OPD Consultations</a></li>
+            <li><a href="reports.html" data-i18n="footer.labReports">Diagnostic Lab Reports</a></li>
+            <li><a href="icu.html" data-i18n="footer.familyIcu">Family ICU Tracker</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-heading" data-i18n="footer.forHospitals">For Hospitals & Doctors</div>
+          <ul class="footer-links">
+            <li><a href="hospital-register.html" data-i18n="footer.registerHospital">Register Hospital (SaaS)</a></li>
+            <li><a href="doctor.html" data-i18n="footer.doctorDesk">Doctor OPD Desk</a></li>
+            <li><a href="patients.html" data-i18n="footer.patientsRegister">Doctor Patients Register</a></li>
+            <li><a href="hospital.html" data-i18n="footer.hospitalAdmin">Hospital Admin Dashboard</a></li>
+            <li><a href="business.html" data-i18n="footer.subscriptionPlans">Subscription Plans</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-heading" data-i18n="footer.emergencyServices">Emergency Services</div>
+          <p class="footer-text" data-i18n="footer.emergencyText">
+            Immediate 24×7 casualty and cardiac ambulance dispatch across city network.
+          </p>
+          <div class="emergency-contact-box" style="margin-top:12px;">
+            <div class="emergency-contact-label" data-i18n="footer.emergencyHelpline">24×7 Central Control:</div>
+            <a href="tel:+912026002400" class="emergency-contact-number">+91 (020) 2600 2400</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div data-i18n="global.copyright">© 2026 GWS Connected Healthcare Network • Public Healthcare Directory</div>
+        <div class="demo-prototype-badge" data-i18n="global.prototypeBadge">Free Public Discovery • No Account Required</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function onDoctorFilterChange() {
+      const hosp = document.getElementById('doc-hosp-filter').value;
+      const dept = document.getElementById('doc-dept-filter').value;
+      const term = document.getElementById('doc-search-text').value;
+      renderPublicDoctorDirectory(hosp, dept, term);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPublicDoctorDirectory('all', 'all', '');
+    });
+  </script>
+
+</body>
+</html>

@@ -16,23 +16,23 @@
     <div class="container top-utility-inner">
       <div class="top-utility-left">
         <span class="utility-item emergency-phone">
-          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a>
+          <span data-i18n="global.emergencyPhone">24×7 Emergency: +91 (020) 2600 2400 / 108</span>
         </span>
         <span class="utility-divider"></span>
-        <span class="utility-badge">PATIENT MEDICATION SCHEDULE</span>
+        <span class="utility-badge" data-i18n="medicines.prescriptionSchedule">PATIENT MEDICATION SCHEDULE</span>
       </div>
       <div class="top-utility-right">
         <!-- Global Language Selector -->
         <div class="global-lang-picker">
-          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;" data-i18n="global.langLabel">Lang:</span>
           <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
           <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
           <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
         </div>
         <span class="utility-divider"></span>
-        <a href="index.html" class="utility-link">Home</a>
+        <a href="index.html" class="utility-link" data-i18n="nav.home">Home</a>
         <span class="utility-divider"></span>
-        <a href="patient.html" class="utility-link">Patient Dashboard</a>
+        <a href="patient.html" class="utility-link" data-i18n="global.myDashboard">Patient Dashboard</a>
       </div>
     </div>
   </div>
@@ -45,22 +45,22 @@
           <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div class="brand-text">
-          <span class="brand-title">GWS</span>
-          <span class="brand-subtitle">Medicine Reminders & Prescriptions</span>
+          <span class="brand-title" data-i18n="global.appName">GWS</span>
+          <span class="brand-subtitle" data-i18n="hospitalDetails.medicineRemindersTitle">Medicine Reminders & Prescriptions</span>
         </div>
       </a>
 
       <nav class="main-nav" id="main-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="patient.html" class="nav-link">Patient Dashboard</a>
-        <a href="medicines.html" class="nav-link active">Medicines</a>
-        <a href="reports.html" class="nav-link">Lab Reports</a>
-        <a href="appointments.html" class="nav-link">Appointments</a>
-        <a href="icu.html" class="nav-link">Family Care</a>
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="patient.html" class="nav-link" data-i18n="nav.liveQueue">Patient Dashboard</a>
+        <a href="medicines.html" class="nav-link active" data-i18n="nav.medicines">Medicines</a>
+        <a href="reports.html" class="nav-link" data-i18n="nav.reports">Lab Reports</a>
+        <a href="appointments.html" class="nav-link" data-i18n="nav.appointments">Appointments</a>
+        <a href="icu.html" class="nav-link" data-i18n="nav.familyCare">Family Care</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="emergency.html" class="btn-emergency-nav">24×7 Emergency</a>
+        <a href="emergency.html" class="btn-emergency-nav" data-i18n="nav.emergency">24×7 Emergency</a>
         <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
       </div>
     </div>
@@ -70,13 +70,13 @@
     
     <div class="section-title-wrap">
       <div>
-        <span class="section-label">Prescription Schedule</span>
-        <h1 style="margin:0 0 4px 0;">Today's Medicine Schedule</h1>
-        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+        <span class="section-label" data-i18n="medicines.prescriptionSchedule">Prescription Schedule</span>
+        <h1 style="margin:0 0 4px 0;" data-i18n="medicines.title">Today's Medicine Schedule</h1>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;" data-i18n="medicines.subtitle">
           Track your prescribed daily dosages, mark medications as taken, and stay on schedule.
         </p>
       </div>
-      <button type="button" class="btn btn-primary btn-sm" onclick="openAddMedicineModal()">
+      <button type="button" class="btn btn-primary btn-sm" onclick="openAddMedicineModal()" data-i18n="medicines.addNewMedicine">
         + Add New Medicine
       </button>
     </div>
@@ -87,7 +87,7 @@
     </div>
 
     <!-- Important Medical Advice Disclaimer -->
-    <div style="background:var(--bg-cream); border:1px solid var(--border-medium); border-left:4px solid var(--accent-terracotta); padding:18px; border-radius:var(--radius-sm); margin-top:32px; font-size:0.85rem; color:var(--text-main); line-height:1.5;">
+    <div style="background:var(--bg-cream); border:1px solid var(--border-medium); border-left:4px solid var(--accent-terracotta); padding:18px; border-radius:var(--radius-sm); margin-top:32px; font-size:0.85rem; color:var(--text-main); line-height:1.5;" data-i18n="medicines.medicalAdvisory">
       <strong>Important Medical Advisory:</strong> GWS medicine reminders do not provide medical recommendations or alter prescriptions. Only take medications in the exact dosage and frequency prescribed by your consulting doctor. Do not change or stop medicines without consulting your healthcare provider.
     </div>
 
@@ -97,37 +97,37 @@
   <div class="modal-overlay" id="add-medicine-modal">
     <div class="modal-dialog">
       <div class="modal-header">
-        <h3 style="margin:0; font-size:1.15rem;">Add Prescribed Medicine</h3>
+        <h3 style="margin:0; font-size:1.15rem;" data-i18n="medicines.addPrescribed">Add Prescribed Medicine</h3>
         <button type="button" class="modal-close-btn" onclick="closeAddMedicineModal()">✕</button>
       </div>
       <div class="modal-body">
         <form onsubmit="handleAddMedicineSubmit(event)">
           <div style="margin-bottom:14px;">
-            <label class="form-label">Medicine Name & Strength *</label>
+            <label class="form-label" data-i18n="medicines.medicineName">Medicine Name & Strength *</label>
             <input type="text" id="new-med-name" class="form-input" placeholder="e.g. Telmisartan 40mg" required>
           </div>
           <div style="margin-bottom:14px;">
-            <label class="form-label">Instructions / Dosage Note</label>
+            <label class="form-label" data-i18n="medicines.dosageInstructions">Instructions / Dosage Note</label>
             <input type="text" id="new-med-dose" class="form-input" placeholder="e.g. Take once daily after breakfast">
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px;">
             <div>
-              <label class="form-label">Reminder Time</label>
+              <label class="form-label" data-i18n="medicines.timing">Reminder Time</label>
               <input type="text" id="new-med-time" class="form-input" placeholder="08:00 AM" value="08:00 AM">
             </div>
             <div>
-              <label class="form-label">Frequency</label>
+              <label class="form-label" data-i18n="medicines.frequency">Frequency</label>
               <select id="new-med-freq" class="form-select">
-                <option value="Daily">Daily</option>
-                <option value="Twice Daily">Twice Daily</option>
-                <option value="Weekly">Weekly</option>
-                <option value="As Needed">As Needed (SOS)</option>
+                <option value="Daily" data-i18n="medicines.daily">Daily</option>
+                <option value="Twice Daily" data-i18n="medicines.twiceDaily">Twice Daily</option>
+                <option value="Weekly" data-i18n="medicines.weekly">Weekly</option>
+                <option value="As Needed" data-i18n="medicines.asNeeded">As Needed (SOS)</option>
               </select>
             </div>
           </div>
           <div style="display:flex; justify-content:flex-end; gap:10px;">
-            <button type="button" class="btn btn-secondary btn-sm" onclick="closeAddMedicineModal()">Cancel</button>
-            <button type="submit" class="btn btn-primary btn-sm">Save Reminder</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="closeAddMedicineModal()" data-i18n="medicines.cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-sm" data-i18n="medicines.saveMedicine">Save Reminder</button>
           </div>
         </form>
       </div>
@@ -137,8 +137,8 @@
   <footer class="hospital-footer">
     <div class="container">
       <div class="footer-bottom-bar" style="border:none; padding:0;">
-        <div>GWS Multi-Hospital Connected Platform • Medicine Schedule System</div>
-        <div class="demo-prototype-badge">Browser Local Storage Persisted</div>
+        <div data-i18n="footer.copyright">© 2026 GWS Platform • Healthcare, connected. All rights reserved.</div>
+        <div class="demo-prototype-badge" data-i18n="global.prototypeBadge">College Hackathon Prototype</div>
       </div>
     </div>
   </footer>

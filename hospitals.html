@@ -12,27 +12,28 @@
 <body>
 
   <!-- Top Utility Bar -->
+  <!-- Top Utility Bar -->
   <div class="top-utility-bar">
     <div class="container top-utility-inner">
       <div class="top-utility-left">
-        <span class="utility-item emergency-phone">
-          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a> / 108
+        <span class="utility-item emergency-phone" data-i18n="global.emergencyPhone">
+          24×7 Emergency: +91 (020) 2600 2400 / 108
         </span>
         <span class="utility-divider"></span>
-        <span class="utility-badge">MULTI-HOSPITAL DIRECTORY</span>
+        <span class="utility-badge" data-i18n="global.nabhNetwork">MULTI-HOSPITAL DIRECTORY</span>
       </div>
       <div class="top-utility-right">
         <!-- Global Language Selector -->
         <div class="global-lang-picker">
-          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;" data-i18n="global.langLabel">Lang:</span>
           <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
           <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
           <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
         </div>
         <span class="utility-divider"></span>
-        <a href="index.html" class="utility-link">Home</a>
+        <a href="index.html" class="utility-link" data-i18n="nav.home">Home</a>
         <span class="utility-divider"></span>
-        <a href="patient.html" class="utility-link">Patient Dashboard</a>
+        <a href="patient.html" class="utility-link" data-i18n="global.myDashboard">My Dashboard</a>
       </div>
     </div>
   </div>
@@ -45,23 +46,24 @@
           <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div class="brand-text">
-          <span class="brand-title">GWS</span>
-          <span class="brand-subtitle">Healthcare, connected.</span>
+          <span class="brand-title" data-i18n="global.appName">GWS</span>
+          <span class="brand-subtitle" data-i18n="global.brandTagline">Healthcare, connected.</span>
         </div>
       </a>
 
       <nav class="main-nav" id="main-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="hospitals.html" class="nav-link active">Find Hospitals</a>
-        <a href="appointments.html" class="nav-link">Appointments</a>
-        <a href="patient.html" class="nav-link">Live Queue</a>
-        <a href="reports.html" class="nav-link">Lab Reports</a>
-        <a href="icu.html" class="nav-link">Family Care</a>
-        <a href="business.html" class="nav-link">Business Model</a>
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="hospitals.html" class="nav-link active" data-i18n="nav.hospitals">Find Hospitals</a>
+        <a href="doctors.html" class="nav-link" data-i18n="nav.doctors">Doctors</a>
+        <a href="appointments.html" class="nav-link" data-i18n="nav.appointments">Appointments</a>
+        <a href="patient.html" class="nav-link" data-i18n="nav.liveQueue">Live Queue</a>
+        <a href="reports.html" class="nav-link" data-i18n="nav.reports">Lab Reports</a>
+        <a href="icu.html" class="nav-link" data-i18n="nav.familyCare">Family Care</a>
+        <a href="business.html" class="nav-link" data-i18n="nav.business">Business Model</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="emergency.html" class="btn-emergency-nav">24×7 Emergency</a>
+        <a href="emergency.html" class="btn-emergency-nav" data-i18n="nav.emergency">24×7 Emergency</a>
         <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
       </div>
     </div>
@@ -72,117 +74,117 @@
     <!-- Directory Title Wrap -->
     <div class="section-title-wrap">
       <div>
-        <span class="section-label">Verified Hospital Network</span>
-        <h1 style="margin:0 0 4px 0;">Find a Hospital</h1>
-        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+        <span class="section-label" data-i18n="hospitals.verifiedNetwork">Verified Hospital Network</span>
+        <h1 style="margin:0 0 4px 0;" data-i18n="hospitals.title">Find a Hospital</h1>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;" data-i18n="hospitals.subtitle">
           Compare live OPD waiting times, specialist doctors, and travel distances across connected hospitals.
         </p>
       </div>
       <div style="display:flex; align-items:center; gap:12px;">
         <span class="utility-badge" id="results-count-badge">6 Hospitals Found</span>
-        <button onclick="requestBrowserLocation()" class="btn btn-secondary btn-sm">
+        <button onclick="requestBrowserLocation()" class="btn btn-secondary btn-sm" data-i18n="search.useMyLocation">
           📍 Use My Location
         </button>
       </div>
     </div>
 
     <!-- Live Search & Sort Bar -->
-    <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-md); padding:16px 20px; margin-bottom:24px; display:grid; grid-template-columns:1fr 200px 220px; gap:12px; align-items:center;">
+    <div class="directory-controls-bar">
       <div>
-        <input type="text" id="dir-search-input" class="form-input" placeholder="Search hospital, department or doctor..." style="width:100%; padding:10px 14px;" oninput="applyFiltersAndRender()">
+        <input type="text" id="dir-search-input" class="form-input" placeholder="Search hospital, department or doctor..." style="width:100%; padding:10px 14px;" data-i18n-placeholder="hospitals.searchPlaceholder" oninput="applyFiltersAndRender()">
       </div>
       <div>
         <select id="dir-city-select" class="form-select" style="width:100%; padding:10px;" onchange="selectCityLocation(this.value); applyFiltersAndRender();">
-          <option value="Pune">📍 Pune (Default)</option>
-          <option value="Mumbai">📍 Mumbai</option>
-          <option value="Ahmedabad">📍 Ahmedabad</option>
-          <option value="Jamnagar">📍 Jamnagar</option>
-          <option value="Surat">📍 Surat</option>
+          <option value="Pune" data-i18n="search.puneDefault">📍 Pune (Default)</option>
+          <option value="Mumbai" data-i18n="search.mumbai">📍 Mumbai</option>
+          <option value="Ahmedabad" data-i18n="search.ahmedabad">📍 Ahmedabad</option>
+          <option value="Jamnagar" data-i18n="search.jamnagar">📍 Jamnagar</option>
+          <option value="Surat" data-i18n="search.surat">📍 Surat</option>
         </select>
       </div>
       <div>
         <select id="dir-sort-select" class="form-select" style="width:100%; padding:10px; font-weight:600;" onchange="applyFiltersAndRender()">
-          <option value="recommended">Sort: Recommended</option>
-          <option value="wait">Sort: Shortest OPD Wait ⚡</option>
-          <option value="nearest">Sort: Nearest Distance 📍</option>
-          <option value="appointment">Sort: Earliest Appointment 📅</option>
-          <option value="rating">Sort: Highest Rated ⭐</option>
+          <option value="recommended" data-i18n="hospitals.sortRecommended">Sort: Recommended</option>
+          <option value="wait" data-i18n="hospitals.sortWait">Sort: Shortest OPD Wait ⚡</option>
+          <option value="nearest" data-i18n="hospitals.sortNearest">Sort: Nearest Distance 📍</option>
+          <option value="appointment" data-i18n="hospitals.sortAppt">Sort: Earliest Appointment 📅</option>
+          <option value="rating" data-i18n="hospitals.sortRating">Sort: Highest Rated ⭐</option>
         </select>
       </div>
     </div>
 
-    <!-- 2-Column Filter Sidebar + Hospital Cards Layout -->
+    <!-- 2-Column Responsive Layout: Left Filter Sidebar (30%) + Right Hospital Listings (70%) -->
     <div class="hospitals-directory-layout">
       
-      <!-- Left Filter Sidebar -->
-      <aside class="filter-sidebar">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--border-subtle);">
-          <strong style="font-size:0.95rem;">Filters</strong>
-          <button type="button" class="btn btn-sm btn-secondary" onclick="resetFilters()" style="padding:2px 8px; font-size:0.75rem;">Reset</button>
+      <!-- Left Filter Sidebar (Sticky, 30% Width on Desktop) -->
+      <aside class="filter-sidebar" id="hospital-filters-sidebar">
+        <div class="filter-header">
+          <strong style="font-size:0.95rem;" data-i18n="hospitals.filtersTitle">Filter Hospitals</strong>
+          <button type="button" class="btn btn-sm btn-secondary" onclick="resetFilters()" style="padding:2px 8px; font-size:0.75rem;" data-i18n="hospitals.reset">Reset</button>
         </div>
 
         <!-- Filter: Department -->
         <div class="filter-group">
-          <div class="filter-title">Department / Speciality</div>
-          <select id="filter-dept" class="form-select" style="width:100%; font-size:0.85rem;" onchange="applyFiltersAndRender()">
-            <option value="all">All Departments</option>
-            <option value="cardiology">Cardiology</option>
-            <option value="orthopaedics">Orthopaedics</option>
-            <option value="medicine">General Medicine</option>
-            <option value="paediatrics">Paediatrics</option>
+          <label class="filter-title" for="filter-dept" data-i18n="hospitals.deptTitle">Department / Speciality</label>
+          <select id="filter-dept" class="form-select" onchange="applyFiltersAndRender()">
+            <option value="all" data-i18n="hospitals.allDepts">All Departments</option>
+            <option value="cardiology" data-i18n="search.cardiology">Cardiology</option>
+            <option value="orthopaedics" data-i18n="search.orthopaedics">Orthopaedics</option>
+            <option value="medicine" data-i18n="search.generalMedicine">General Medicine</option>
+            <option value="paediatrics" data-i18n="search.paediatrics">Paediatrics</option>
             <option value="neurology">Neurology</option>
             <option value="gynaecology">Gynaecology</option>
-            <option value="diagnostics">Diagnostics / Lab</option>
+            <option value="diagnostics" data-i18n="search.diagnostics">Diagnostics / Lab</option>
           </select>
         </div>
 
         <!-- Filter: Max Distance -->
         <div class="filter-group">
-          <div class="filter-title">Maximum Distance</div>
-          <select id="filter-distance" class="form-select" style="width:100%; font-size:0.85rem;" onchange="applyFiltersAndRender()">
-            <option value="all">Any Distance</option>
-            <option value="3">Within 3 km</option>
-            <option value="5">Within 5 km</option>
-            <option value="8">Within 8 km</option>
+          <label class="filter-title" for="filter-distance" data-i18n="hospitals.distanceTitle">Maximum Distance</label>
+          <select id="filter-distance" class="form-select" onchange="applyFiltersAndRender()">
+            <option value="all" data-i18n="hospitals.anyDistance">Any Distance</option>
+            <option value="3" data-i18n="hospitals.within3km">Within 3 km</option>
+            <option value="5" data-i18n="hospitals.within5km">Within 5 km</option>
+            <option value="8" data-i18n="hospitals.within8km">Within 8 km</option>
           </select>
         </div>
 
         <!-- Filter: Max OPD Wait -->
         <div class="filter-group">
-          <div class="filter-title">Max OPD Waiting Time</div>
-          <select id="filter-wait" class="form-select" style="width:100%; font-size:0.85rem;" onchange="applyFiltersAndRender()">
-            <option value="all">Any Waiting Time</option>
-            <option value="20">Under 20 Minutes ⚡</option>
-            <option value="30">Under 30 Minutes</option>
-            <option value="45">Under 45 Minutes</option>
+          <label class="filter-title" for="filter-wait" data-i18n="hospitals.waitTitle">Max OPD Waiting Time</label>
+          <select id="filter-wait" class="form-select" onchange="applyFiltersAndRender()">
+            <option value="all" data-i18n="hospitals.anyWait">Any Waiting Time</option>
+            <option value="20" data-i18n="hospitals.under20min">Under 20 Minutes ⚡</option>
+            <option value="30" data-i18n="hospitals.under30min">Under 30 Minutes</option>
+            <option value="45" data-i18n="hospitals.under45min">Under 45 Minutes</option>
           </select>
         </div>
 
         <!-- Filter: Emergency Only -->
         <div class="filter-group">
-          <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:0.875rem;">
+          <label class="filter-checkbox-label">
             <input type="checkbox" id="filter-emergency" onchange="applyFiltersAndRender()">
-            <span>24×7 Emergency Open</span>
+            <span data-i18n="hospitals.emergencyOpen">24×7 Emergency Open</span>
           </label>
         </div>
 
         <!-- Filter: Rating -->
         <div class="filter-group">
-          <div class="filter-title">Hospital Rating</div>
-          <select id="filter-rating" class="form-select" style="width:100%; font-size:0.85rem;" onchange="applyFiltersAndRender()">
-            <option value="all">All Ratings</option>
-            <option value="4.5">★★★★☆ 4.5 & Above</option>
-            <option value="4.7">★★★★★ 4.7 & Above</option>
+          <label class="filter-title" for="filter-rating" data-i18n="hospitals.ratingTitle">Hospital Rating</label>
+          <select id="filter-rating" class="form-select" onchange="applyFiltersAndRender()">
+            <option value="all" data-i18n="hospitals.allRatings">All Ratings</option>
+            <option value="4.5" data-i18n="hospitals.rating45">★★★★☆ 4.5 & Above</option>
+            <option value="4.7" data-i18n="hospitals.rating47">★★★★★ 4.7 & Above</option>
           </select>
         </div>
 
-        <div style="background:var(--bg-cream); padding:12px; border-radius:4px; font-size:0.775rem; color:var(--text-muted); line-height:1.5;">
-          💡 <strong>Fair Search Guarantee:</strong> Rankings on GWS are determined organically by relevance, distance, and verified waiting times.
+        <div class="fair-search-banner" data-i18n="hospitals.fairSearchGuarantee">
+          💡 <strong>Fair Search Guarantee:</strong> Rankings on GWS are determined organically by clinical relevance, verified waiting times, and patient proximity.
         </div>
       </aside>
 
-      <!-- Right Hospital Results Grid -->
-      <section id="hospitals-list-container" style="display:flex; flex-direction:column; gap:16px;">
+      <!-- Right Section: Hospital Listings (70% Width on Desktop) -->
+      <section id="hospitals-list-container" class="hospitals-listings-section" aria-label="Hospital Search Results">
         <!-- Populated dynamically by renderHospitalsDirectory() -->
       </section>
 
@@ -193,8 +195,8 @@
   <footer class="hospital-footer">
     <div class="container">
       <div class="footer-bottom-bar" style="border:none; padding:0;">
-        <div>GWS Multi-Hospital Digital Network • Healthcare, connected.</div>
-        <div class="demo-prototype-badge">Fictional Demo Hospitals Database</div>
+        <div data-i18n="global.brandTagline">GWS Multi-Hospital Digital Network • Healthcare, connected.</div>
+        <div class="demo-prototype-badge" data-i18n="footer.prototypeBadge">Fictional Demo Hospitals Database</div>
       </div>
     </div>
   </footer>
@@ -205,13 +207,14 @@
     }
 
     function applyFiltersAndRender() {
-      const q = document.getElementById('dir-search-input').value;
-      const dept = document.getElementById('filter-dept').value;
-      const dist = document.getElementById('filter-distance').value;
-      const wait = document.getElementById('filter-wait').value;
-      const emg = document.getElementById('filter-emergency').checked;
-      const rat = document.getElementById('filter-rating').value;
-      const sort = document.getElementById('dir-sort-select').value;
+      const searchEl = document.getElementById('dir-search-input');
+      const q = searchEl ? searchEl.value : '';
+      const dept = document.getElementById('filter-dept') ? document.getElementById('filter-dept').value : 'all';
+      const dist = document.getElementById('filter-distance') ? document.getElementById('filter-distance').value : 'all';
+      const wait = document.getElementById('filter-wait') ? document.getElementById('filter-wait').value : 'all';
+      const emg = document.getElementById('filter-emergency') ? document.getElementById('filter-emergency').checked : false;
+      const rat = document.getElementById('filter-rating') ? document.getElementById('filter-rating').value : 'all';
+      const sort = document.getElementById('dir-sort-select') ? document.getElementById('dir-sort-select').value : 'recommended';
 
       const results = searchHospitals(q, {
         department: dept,
@@ -222,7 +225,7 @@
       }, sort);
 
       const countBadge = document.getElementById('results-count-badge');
-      if (countBadge) countBadge.textContent = `${results.length} Hospital${results.length === 1 ? '' : 's'} Found`;
+      if (countBadge) countBadge.textContent = t('hospitals.hospitalsFound', { count: results.length, plural: results.length === 1 ? '' : 's' });
 
       const container = document.getElementById('hospitals-list-container');
       if (!container) return;
@@ -230,9 +233,9 @@
       if (results.length === 0) {
         container.innerHTML = `
           <div style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:48px; text-align:center;">
-            <h3>No hospitals found matching your criteria</h3>
-            <p class="text-muted">Try clearing some filters or searching for another doctor or department.</p>
-            <button class="btn btn-secondary btn-sm" onclick="resetFilters()">Reset All Filters</button>
+            <h3>${t('hospitals.noHospitalsFound')}</h3>
+            <p class="text-muted">${t('hospitals.noHospitalsMatching', { term: escapeHtml(q || '') })}</p>
+            <button class="btn btn-secondary btn-sm" onclick="resetFilters()">${t('hospitals.reset')}</button>
           </div>
         `;
         return;
@@ -240,8 +243,23 @@
 
       container.innerHTML = '';
       results.forEach(h => {
-        const deptNames = Object.values(h.departments).map(d => d.name.replace(" OPD", "")).join(" • ");
-        const isFastest = h.avgWaitMin <= 20;
+        const deptNames = Array.isArray(h.departments) 
+          ? h.departments.join(" • ")
+          : (typeof h.departments === 'object' ? Object.values(h.departments).map(d => d.name ? d.name.replace(" OPD", "") : d).join(" • ") : 'General Medicine');
+        const isFastest = (h.avgWaitMin || h.waitingTime || 25) <= 20;
+        const wait = h.avgWaitMin || h.waitingTime || 25;
+        const accred = (h.accreditation && typeof h.accreditation === 'string') ? h.accreditation.split(' ')[0] : 'NABH';
+        const freeBeds = (h.icu && h.icu.totalBeds) ? (h.icu.totalBeds - h.icu.occupiedBeds) : 4;
+        const ambCount = (h.emergencyResources && h.emergencyResources.ambulancesAvailable) ? h.emergencyResources.ambulancesAvailable : 2;
+
+        const currentWaitTxt = t('hospitals.currentWait', { time: wait });
+        const kmAwayTxt = t('hospitals.kmAway', { distance: h.distance });
+        const reviewsTxt = t('hospitals.reviews', { count: h.reviewCount });
+        const viewHospTxt = t('hospitals.viewHospital');
+        const bookApptTxt = t('hospitals.bookAppointment');
+        const ambTxt = t('hospitals.ambulanceAvailable', { count: ambCount });
+        const icuTxt = t('hospitals.icuBedsFree', { count: freeBeds });
+        const deptsLabel = t('hospitals.departments');
 
         const card = document.createElement('div');
         card.className = 'hospital-compare-card';
@@ -251,42 +269,42 @@
             <div>
               <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px; flex-wrap:wrap;">
                 <h3 style="margin:0; font-size:1.35rem; color:var(--text-main);">${h.name}</h3>
-                <span class="utility-badge" style="background:var(--bg-cream);">${h.accreditation.split(' ')[0]} ACCREDITED</span>
+                <span class="utility-badge" style="background:var(--bg-cream);">${accred} ACCREDITED</span>
               </div>
               <div class="text-xs text-muted" style="margin-bottom:8px;">
-                📍 ${h.area}, ${h.city} • <strong>${h.distance} km away</strong> • ⭐ <strong style="color:var(--accent-amber);">${h.rating}</strong> (${h.reviewCount} reviews)
+                📍 ${h.area || h.location}, ${h.city} • <strong>${kmAwayTxt}</strong> • ⭐ <strong style="color:var(--accent-amber);">${h.rating}</strong> ${reviewsTxt}
               </div>
               <p style="margin:0 0 10px 0; font-size:0.875rem; color:var(--text-muted);">
-                ${h.tagline}
+                ${h.tagline || 'Center of Clinical Excellence'}
               </p>
               <div style="font-size:0.825rem; color:var(--text-main); margin-bottom:8px;">
-                <strong>Departments:</strong> ${deptNames}
+                <strong>${deptsLabel}</strong> ${deptNames}
               </div>
             </div>
 
             <!-- Wait Time & Status Pill -->
             <div style="text-align:right;">
               <div class="hospital-badge-wait ${isFastest ? 'hospital-badge-fastest' : ''}" style="margin-bottom:6px;">
-                ${isFastest ? '⚡' : '⏱️'} OPD Wait: ~${h.avgWaitMin} min
+                ${isFastest ? '⚡' : '⏱️'} ${currentWaitTxt}
               </div>
               <div class="text-xs" style="color:var(--text-muted);">
-                Next Slot: <strong style="color:var(--primary-green);">${h.nextApptSlot} Today</strong>
+                Next Slot: <strong style="color:var(--primary-green);">${h.nextApptSlot || h.nextAvailable || '10:30 AM Today'}</strong>
               </div>
-              ${h.emergency ? '<div class="text-xs font-bold" style="color:var(--accent-emergency); margin-top:4px;">● Emergency 24×7 Open</div>' : ''}
+              ${h.emergency ? `<div class="text-xs font-bold" style="color:var(--accent-emergency); margin-top:4px;">● ${t('hospitals.open247')}</div>` : ''}
             </div>
           </div>
 
           <!-- Bottom Action Bar -->
           <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-subtle); padding-top:14px; margin-top:8px; flex-wrap:wrap; gap:10px;">
             <div class="text-xs text-muted">
-              Ambulance: <strong>${h.emergencyResources.ambulancesAvailable} Available</strong> • ICU: <strong>${h.icu.totalBeds - h.icu.occupiedBeds} Beds Free</strong>
+              ${ambTxt} • ${icuTxt}
             </div>
             <div style="display:flex; gap:10px;">
               <button class="btn btn-secondary btn-sm" onclick="selectHospitalAndOpen('${h.id}')">
-                VIEW HOSPITAL
+                ${viewHospTxt}
               </button>
               <button class="btn btn-primary btn-sm" onclick="selectHospitalAndBook('${h.id}')">
-                BOOK APPOINTMENT
+                ${bookApptTxt}
               </button>
             </div>
           </div>

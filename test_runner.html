@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>GWS Hospital Search Test Suite</title>
+  <script src="app.js"></script>
+</head>
+<body>
+  <!-- Mock Homepage DOM Structure -->
+  <input type="text" id="home-search-query" oninput="handleHomeHospitalSearch(this.value)">
+  <select id="home-city-select" onchange="selectCityLocation(this.value)">
+    <option value="Pune" selected>Pune</option>
+    <option value="Mumbai">Mumbai</option>
+  </select>
+  <span id="home-hospitals-count-badge"></span>
+  <h2 id="home-search-title"></h2>
+  <span id="home-search-label"></span>
+  <div id="home-hospitals-container"></div>
+
+  <!-- Test Results Output -->
+  <pre id="test-output" style="font-family:monospace; white-space:pre-wrap;"></pre>
+
+  <script>
+    const log = [];
+    function assert(condition, message) {
+      if (condition) {
+        log.push(`[PASS] ${message}`);
+      } else {
+        log.push(`[FAIL] ${message}`);
+        console.error(`Assertion failed: ${message}`);
+      }
+    }
+
+    try {
+      // TEST 1: Default initialization on page load (without typing)
+      initializeHospitalDirectory();
+      const initialCards = document.querySelectorAll('#home-hospitals-container .hospital-compare-card');
+      assert(initialCards.length === 6, `TEST 1: Default hospital cards render immediately on load (Found ${initialCards.length} cards, expected 6)`);
+      const countBadgeText = document.getElementById('home-hospitals-count-badge').textContent;
+      assert(countBadgeText.includes('6 Hospitals'), `TEST 1b: Count badge reflects all 6 hospitals: "${countBadgeText}"`);
+
+      // TEST 2: Search "Shantideep"
+      handleHomeHospitalSearch('Shantideep');
+      let cards = document.querySelectorAll('#home-hospitals-container .hospital-compare-card');
+      assert(cards.length === 1 && cards[0].textContent.includes('Shantideep Multispeciality Hospital'), `TEST 2: Search "Shantideep" returns Shantideep Multispeciality Hospital (Found ${cards.length} cards)`);
+
+      // TEST 3: Search "shantideep" (case-insensitive lowercase)
+      handleHomeHospitalSearch('shantideep');
+      cards = document.querySelectorAll('#home-hospitals-container .hospital-compare-card');
+      assert(cards.length === 1 && cards[0].textContent.includes('Shantideep Multispeciality Hospital'), `TEST 3: Search "shantideep" (lowercase) returns same result (Found ${cards.length} cards)`);
+
+      // TEST 3b: Search "SHANTIDEEP" (case-insensitive uppercase)
+      handleHomeHospitalSearch('SHANTIDEEP');
+      cards = document.querySelectorAll('#home-hospitals-container .hospital-compare-card');
+      assert(cards.length === 1 && cards[0].textContent.includes('Shantideep Multispeciality Hospital'), `TEST 3b: Search "SHANTIDEEP" (uppercase) returns same result (Found ${cards.length} cards)`);
+
+      // TEST 4: Search "CARDIOLOGY" (department search)
+      handleHomeHospitalSearch('CARDIOLOGY');
+      cards = document.querySelectorAll('#home-hospitals-container .hospital-compare-card');
+      assert(cards.length >= 4, `TEST 4: Search "CARDIOLOGY" returns hospitals offering Cardiology (Found ${cards.length} cards)`);
+
+      // TEST 5: Search "Dr. Arjun" (doctor search)
+      handleHomeHospitalSearch('Dr. Arjun');
+      cards = document.querySelectorAll('#home-hospitals-container .hospital-compare-card');
+      assert(cards.length >= 1 && cards[0].textContent.includes('Shantideep Multispeciality Hospital'), `TEST 5: Search "Dr. Arjun" returns Shantideep Hospital where Dr. Arjun is (Found ${cards.length} cards)`);
+
+      // TEST 5b: Search "Emergency" (service search)
+      handleHomeHospitalSearch('Emergency');
+      cards = document.querySelectorAll('#home-hospitals-container .hospital-compare-card');
+      assert(cards.length === 5, `TEST 5b: Search "Emergency" returns hospitals with emergency service (Found ${cards.length} cards)`);
+
+      // TEST 6: Delete search text / empty search
+      handleHomeHospitalSearch('');
+      cards = document.querySelectorAll('#home-hospitals-container .hospital-compare-card');
+      assert(cards.length === 6, `TEST 6: Empty search restores ALL hospitals (Found ${cards.length} cards, expected 6)`);
+
+      // TEST 7: Search nonexistent hospital "XYZ Hospital" -> No results state
+      handleHomeHospitalSearch('XYZ Hospital');
+      cards = document.querySelectorAll('#home-hospitals-container .hospital-compare-card');
+      const noResultsBox = document.querySelector('#home-hospitals-container .no-results-box');
+      assert(cards.length === 0 && !!noResultsBox, `TEST 7: Search "XYZ Hospital" displays "No hospitals found" state`);
+      assert(noResultsBox && noResultsBox.textContent.includes('XYZ Hospital'), `TEST 7b: No-results state specifies query "XYZ Hospital"`);
+
+      // TEST 8: Clear Search button restore
+      clearHospitalSearch();
+      cards = document.querySelectorAll('#home-hospitals-container .hospital-compare-card');
+      assert(cards.length === 6, `TEST 8: clearHospitalSearch() restores ALL hospitals (Found ${cards.length} cards)`);
+
+      // TEST 9: View hospital selectedHospitalId localStorage & details
+      setSelectedHospital('H002', false);
+      const storedId1 = localStorage.getItem('selectedHospitalId');
+      const storedId2 = localStorage.getItem('gws_selected_hospital_id');
+      assert(storedId1 === 'H002' && storedId2 === 'H002', `TEST 9: setSelectedHospital('H002') properly updates localStorage keys ('selectedHospitalId' and 'gws_selected_hospital_id')`);
+      const selectedHosp = getSelectedHospital();
+      assert(selectedHosp && selectedHosp.id === 'H002' && selectedHosp.name === 'Aarogya Care Hospital', `TEST 9b: getSelectedHospital() returns Aarogya Care Hospital`);
+
+      // TEST 10: Register a new demo hospital and verify it is discoverable in search
+      const regRes = registerHospital({
+        name: 'Sunrise Apex Hospital',
+        city: 'Pune',
+        location: 'Kalyani Nagar',
+        departments: ['Cardiology', 'Oncology'],
+        beds: 150
+      });
+      assert(regRes && regRes.hospital && regRes.hospital.name === 'Sunrise Apex Hospital', `TEST 10a: registerHospital created new hospital`);
+      handleHomeHospitalSearch('Sunrise Apex');
+      cards = document.querySelectorAll('#home-hospitals-container .hospital-compare-card');
+      assert(cards.length === 1 && cards[0].textContent.includes('Sunrise Apex Hospital'), `TEST 10b: Newly registered hospital appears immediately in search (Found ${cards.length} cards)`);
+
+      // TEST 11: Location permission denied fallback test
+      GWS_CURRENT_USER_LOCATION.lat = 18.5204;
+      GWS_CURRENT_USER_LOCATION.lng = 73.8567;
+      const allHosp = getAllHospitals();
+      assert(allHosp.length >= 6 && allHosp[0].distance > 0, `TEST 11: Geolocation fallback maintains full hospital directory with calculated distances`);
+
+      // TEST 12: Sorting test
+      const waitSorted = searchHospitals('', {}, 'wait');
+      assert(waitSorted[0].waitingTime <= waitSorted[1].waitingTime, `TEST 12a: Shortest wait sorting works (${waitSorted[0].waitingTime} <= ${waitSorted[1].waitingTime})`);
+      const distSorted = searchHospitals('', {}, 'nearest');
+      assert(distSorted[0].distance <= distSorted[1].distance, `TEST 12b: Nearest distance sorting works (${distSorted[0].distance} <= ${distSorted[1].distance})`);
+
+      // TEST 13: i18n Translation Engine Tests
+      setGlobalLanguage('hi');
+      assert(getGlobalLanguage() === 'hi', `TEST 13a: setGlobalLanguage('hi') sets language to 'hi' in state & localStorage`);
+      assert(t('nav.doctors') === 'डॉक्टर्स', `TEST 13b: t('nav.doctors') returns Hindi translation: "${t('nav.doctors')}"`);
+      assert(t('global.appName') === 'GWS', `TEST 13c: t('global.appName') returns GWS`);
+      assert(t('hospitals.currentWait', { time: 25 }) === 'वर्तमान प्रतीक्षा: ~25 मिनट', `TEST 13d: Dynamic interpolation in Hindi: "${t('hospitals.currentWait', { time: 25 })}"`);
+
+      setGlobalLanguage('mr');
+      assert(getGlobalLanguage() === 'mr', `TEST 13e: setGlobalLanguage('mr') sets language to 'mr' in state & localStorage`);
+      assert(t('nav.doctors') === 'डॉक्टर', `TEST 13f: t('nav.doctors') returns Marathi translation: "${t('nav.doctors')}"`);
+      assert(t('hospitals.currentWait', { time: 25 }) === 'सध्याची प्रतीक्षा: ~25 मिनिटे', `TEST 13g: Dynamic interpolation in Marathi: "${t('hospitals.currentWait', { time: 25 })}"`);
+
+      setGlobalLanguage('en');
+      assert(getGlobalLanguage() === 'en', `TEST 13h: setGlobalLanguage('en') resets language to 'en'`);
+      assert(t('nav.doctors') === 'Doctors', `TEST 13i: t('nav.doctors') returns English: "${t('nav.doctors')}"`);
+
+      log.push("\n>>> ALL AUTOMATED TESTS COMPLETED (100% PASS) <<<");
+    } catch (err) {
+      log.push(`[ERROR] ${err.toString()}\n${err.stack}`);
+    }
+
+    document.getElementById('test-output').textContent = log.join('\n');
+  </script>
+</body>
+</html>

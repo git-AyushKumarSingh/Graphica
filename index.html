@@ -15,34 +15,33 @@
   <div class="top-utility-bar">
     <div class="container top-utility-inner">
       <div class="top-utility-left">
-        <span class="utility-item emergency-phone">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a> / 108
+        <span class="utility-item emergency-phone" data-i18n="global.emergencyPhone">
+          24×7 Emergency: +91 (020) 2600 2400 / 108
         </span>
         <span class="utility-divider"></span>
-        <span class="utility-item">
-          <strong>Network Status:</strong> 6 Hospitals Connected • Live OPD Sync Active
+        <span class="utility-item" data-i18n="global.networkStatus">
+          Network Status: 6 Hospitals Connected • Live OPD Sync Active
         </span>
         <span class="utility-divider"></span>
-        <span class="utility-badge">NABH & NABL NETWORK</span>
+        <span class="utility-badge" data-i18n="global.nabhNetwork">NABH & NABL NETWORK</span>
       </div>
 
       <div class="top-utility-right">
         <!-- Global Language Selector -->
         <div class="global-lang-picker">
-          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;" data-i18n="global.langLabel">Lang:</span>
           <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
           <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
           <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
         </div>
         <span class="utility-divider"></span>
-        <a href="appointments.html" class="utility-link" data-i18n="navAppointments">Appointments</a>
+        <a href="appointments.html" class="utility-link" data-i18n="nav.appointments">Appointments</a>
         <span class="utility-divider"></span>
-        <a href="business.html" class="utility-link" data-i18n="navBusiness">How GWS Works</a>
+        <a href="business.html" class="utility-link" data-i18n="nav.business">How GWS Works</a>
         <span class="utility-divider"></span>
-        <a href="login.html" class="utility-link">Sign In</a>
+        <a href="login.html" class="utility-link" data-i18n="global.signIn">Sign In</a>
         <span class="utility-divider"></span>
-        <button onclick="resetDemoState()" class="utility-badge" style="cursor:pointer;" title="Reset all demonstration states">Reset Demo</button>
+        <button onclick="resetDemoState()" class="utility-badge" style="cursor:pointer;" title="Reset all demonstration states" data-i18n="global.resetDemo">Reset Demo</button>
       </div>
     </div>
   </div>
@@ -55,28 +54,28 @@
           <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div class="brand-text">
-          <span class="brand-title">GWS</span>
-          <span class="brand-subtitle" data-i18n="brandTagline">Healthcare, connected.</span>
+          <span class="brand-title" data-i18n="global.appName">GWS</span>
+          <span class="brand-subtitle" data-i18n="global.brandTagline">Healthcare, connected.</span>
         </div>
       </a>
 
       <!-- Main Navigation Menu -->
       <nav class="main-nav" id="main-nav">
-        <a href="index.html" class="nav-link active" data-i18n="navHome">Home</a>
-        <a href="hospitals.html" class="nav-link" data-i18n="navHospitals">Find Hospitals</a>
-        <a href="appointments.html" class="nav-link" data-i18n="navAppointments">Appointments</a>
+        <a href="index.html" class="nav-link active" data-i18n="nav.home">Home</a>
+        <a href="hospitals.html" class="nav-link" data-i18n="nav.hospitals">Find Hospitals</a>
+        <a href="doctors.html" class="nav-link" data-i18n="nav.doctors">Doctors</a>
+        <a href="appointments.html" class="nav-link" data-i18n="nav.appointments">Appointments</a>
         <a href="patient.html" class="nav-link live-queue-tab">
           <span class="live-dot" style="width:6px;height:6px;"></span>
-          <span data-i18n="navLiveQueue">Live Queue</span>
+          <span data-i18n="nav.liveQueue">Live Queue</span>
         </a>
-        <a href="reports.html" class="nav-link" data-i18n="navReports">Lab Reports</a>
-        <a href="icu.html" class="nav-link" data-i18n="navFamilyCare">Family Care (ICU)</a>
-        <a href="business.html" class="nav-link" data-i18n="navBusiness">Business Model</a>
+        <a href="reports.html" class="nav-link" data-i18n="nav.reports">Lab Reports</a>
+        <a href="icu.html" class="nav-link" data-i18n="nav.familyCare">Family Care (ICU)</a>
+        <a href="business.html" class="nav-link" data-i18n="nav.business">Business Model</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="emergency.html" class="btn-emergency-nav" data-i18n="navEmergency">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        <a href="emergency.html" class="btn-emergency-nav" data-i18n="nav.emergency">
           24×7 Emergency
         </a>
         <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
@@ -88,46 +87,45 @@
   <section class="hero-section" style="background:var(--bg-cream); border-bottom:1px solid var(--border-medium); padding:48px 0 54px;">
     <div class="container">
       <div style="max-width:860px; margin:0 auto; text-align:center;">
-        <div class="hero-institution-tag" style="margin-bottom:12px;">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/></svg>
+        <div class="hero-institution-tag" style="margin-bottom:12px;" data-i18n="home.institutionTag">
           GWS DIGITAL HEALTHCARE PLATFORM • 6 CONNECTED HOSPITALS
         </div>
-        <h1 class="hero-title" data-i18n="heroTitle" style="font-size:2.65rem; line-height:1.2; margin-bottom:14px;">
+        <h1 class="hero-title" data-i18n="home.heroTitle" style="font-size:2.65rem; line-height:1.2; margin-bottom:14px;">
           Find the right care, without the unnecessary waiting.
         </h1>
-        <p class="hero-lead" data-i18n="heroSub" style="font-size:1.15rem; color:var(--text-muted); margin-bottom:28px;">
+        <p class="hero-lead" data-i18n="home.heroSub" style="font-size:1.15rem; color:var(--text-muted); margin-bottom:28px;">
           Search hospitals, compare availability, book appointments and stay updated throughout your visit.
         </p>
       </div>
 
       <!-- Primary Unified Search Component -->
       <div class="gws-search-box" style="max-width:960px; margin:0 auto;">
-        <div style="font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:10px;">
+        <div style="font-weight:700; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:10px;" data-i18n="search.whatNeedToday">
           What do you need today?
         </div>
         
-        <form onsubmit="handleHomeSearch(event)">
+        <form onsubmit="handleHomeHospitalSearchForm(event)">
           <div class="gws-search-inputs-grid">
             <!-- Search Query Input -->
             <div style="position:relative;">
-              <input type="text" id="home-search-query" class="form-input" placeholder="Search doctors, departments or hospitals (e.g. Cardiologist, Shantideep, Blood test)..." style="padding:12px 14px 12px 38px; font-size:0.95rem; width:100%; border:1px solid var(--border-strong);" data-i18n-placeholder="searchPlaceholder">
+              <input type="text" id="home-search-query" class="form-input" placeholder="Search hospitals, doctors or departments (e.g. Shantideep, Cardiology, Dr. Arjun)..." style="padding:12px 14px 12px 38px; font-size:0.95rem; width:100%; border:1px solid var(--border-strong);" data-i18n-placeholder="search.placeholder" oninput="handleHomeHospitalSearch(this.value)">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--text-muted)" style="position:absolute; left:12px; top:14px;"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
             </div>
 
             <!-- Location / City Dropdown -->
             <div>
               <select id="home-city-select" class="form-select" style="padding:12px 14px; font-size:0.9rem; width:100%;" onchange="selectCityLocation(this.value)">
-                <option value="Pune">📍 Pune (City Default)</option>
-                <option value="Mumbai">📍 Mumbai</option>
-                <option value="Ahmedabad">📍 Ahmedabad</option>
-                <option value="Jamnagar">📍 Jamnagar</option>
-                <option value="Surat">📍 Surat</option>
+                <option value="Pune" data-i18n="search.puneDefault">📍 Pune (City Default)</option>
+                <option value="Mumbai" data-i18n="search.mumbai">📍 Mumbai</option>
+                <option value="Ahmedabad" data-i18n="search.ahmedabad">📍 Ahmedabad</option>
+                <option value="Jamnagar" data-i18n="search.jamnagar">📍 Jamnagar</option>
+                <option value="Surat" data-i18n="search.surat">📍 Surat</option>
               </select>
             </div>
 
             <!-- Primary Action Button -->
             <div>
-              <button type="submit" class="btn btn-primary btn-block" style="padding:12px; font-weight:700; font-size:0.95rem; text-transform:uppercase;" data-i18n="findCareBtn">
+              <button type="submit" class="btn btn-primary btn-block" style="padding:12px; font-weight:700; font-size:0.95rem; text-transform:uppercase;" data-i18n="search.findCare">
                 FIND CARE
               </button>
             </div>
@@ -137,18 +135,17 @@
         <!-- Location Permission Trigger & Quick Need Chips -->
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-top:14px; padding-top:12px; border-top:1px solid var(--border-subtle);">
           <div class="gws-quick-chips">
-            <span style="font-size:0.775rem; color:var(--text-muted); font-weight:600;">Popular Needs:</span>
-            <button type="button" class="chip-btn" onclick="quickFilterNeeds('Cardiology')">Cardiology</button>
-            <button type="button" class="chip-btn" onclick="quickFilterNeeds('Orthopaedics')">Orthopaedics</button>
-            <button type="button" class="chip-btn" onclick="quickFilterNeeds('General Medicine')">General Medicine</button>
-            <button type="button" class="chip-btn" onclick="quickFilterNeeds('Paediatrics')">Paediatrics</button>
-            <button type="button" class="chip-btn" onclick="quickFilterNeeds('Diagnostics')">Diagnostics / Lab</button>
-            <button type="button" class="chip-btn" onclick="window.location.href='emergency.html'" style="color:var(--accent-emergency); border-color:var(--accent-emergency);">🚨 Emergency 24×7</button>
+            <span style="font-size:0.775rem; color:var(--text-muted); font-weight:600;" data-i18n="search.popularNeeds">Popular Needs:</span>
+            <button type="button" class="chip-btn" onclick="quickFilterHomeNeeds('Cardiology')" data-i18n="search.cardiology">Cardiology</button>
+            <button type="button" class="chip-btn" onclick="quickFilterHomeNeeds('Orthopaedics')" data-i18n="search.orthopaedics">Orthopaedics</button>
+            <button type="button" class="chip-btn" onclick="quickFilterHomeNeeds('General Medicine')" data-i18n="search.generalMedicine">General Medicine</button>
+            <button type="button" class="chip-btn" onclick="quickFilterHomeNeeds('Paediatrics')" data-i18n="search.paediatrics">Paediatrics</button>
+            <button type="button" class="chip-btn" onclick="quickFilterHomeNeeds('Diagnostics')" data-i18n="search.diagnostics">Diagnostics / Lab</button>
+            <button type="button" class="chip-btn" onclick="quickFilterHomeNeeds('Emergency')" style="color:var(--accent-emergency); border-color:var(--accent-emergency);" data-i18n="search.emergencyChip">🚨 Emergency 24×7</button>
           </div>
 
           <div>
-            <button type="button" onclick="requestBrowserLocation()" class="btn btn-secondary btn-sm" style="font-size:0.775rem; padding:4px 10px;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px;"><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+            <button type="button" onclick="requestBrowserLocation()" class="btn btn-secondary btn-sm" style="font-size:0.775rem; padding:4px 10px;" data-i18n="search.useMyLocation">
               Use My Location
             </button>
           </div>
@@ -157,126 +154,25 @@
     </div>
   </section>
 
-  <!-- Key Innovation Showcase: Live Waiting Time Comparison -->
-  <section class="container" style="padding:48px 24px 32px;">
+  <!-- Hospital Search Results & Immediate Listing Section -->
+  <section class="container" style="padding:40px 24px 32px;" id="hospital-search-results-section">
     <div class="section-title-wrap">
       <div>
-        <span class="section-label">Core GWS Differentiator</span>
-        <h2 style="margin:0 0 4px 0;">Compare Live Waiting Times Before You Travel</h2>
-        <p class="text-muted" style="margin:0; font-size:0.95rem;">
-          Traditional directories only show if a hospital is open. GWS shows live OPD queue wait times so you can choose care based on your need and schedule.
+        <span class="section-label" id="home-search-label" data-i18n="home.connectedNetwork">Connected Healthcare Network</span>
+        <h2 style="margin:0 0 4px 0;" id="home-search-title" data-i18n="home.nearbyHospitals">Nearby Hospitals</h2>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;" id="home-search-desc" data-i18n="home.hospitalDesc">
+          Browse connected hospitals, compare live OPD queue wait times, and book confirmed consultations.
         </p>
       </div>
-      <div>
-        <a href="hospitals.html" class="btn btn-secondary btn-sm">View All 6 Hospitals →</a>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="utility-badge" id="home-hospitals-count-badge" data-i18n="home.statsHospitals">6 Hospitals Available</span>
+        <a href="hospitals.html" class="btn btn-secondary btn-sm" data-i18n="home.fullDirectoryBtn">Full Directory & Filters →</a>
       </div>
     </div>
 
-    <!-- 3 Hospital Live Comparison Cards -->
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
-      
-      <!-- Hospital 1: Lifeline (Fastest Wait) -->
-      <div class="hospital-compare-card" style="border-top:4px solid var(--accent-success);">
-        <div>
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-            <div>
-              <span class="hospital-badge-wait hospital-badge-fastest">⚡ Shortest Wait: ~18 min</span>
-              <h3 style="margin:6px 0 2px 0; font-size:1.25rem;">Lifeline Medical Centre</h3>
-              <div class="text-xs text-muted">Baner / Aundh • 1.8 km away • ★★★★★ 4.8</div>
-            </div>
-            <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Open 24×7</span>
-          </div>
-
-          <div style="background:var(--bg-cream); padding:10px 12px; border-radius:var(--radius-sm); font-size:0.85rem; margin-bottom:12px;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-              <span class="text-muted">Cardiology OPD Wait:</span>
-              <strong>~18 min</strong>
-            </div>
-            <div style="display:flex; justify-content:space-between;">
-              <span class="text-muted">Next Available Slot:</span>
-              <strong style="color:var(--primary-green);">10:15 AM Today</strong>
-            </div>
-          </div>
-
-          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
-            Specialities: Cardiology • General Medicine • Gynaecology • Diagnostics
-          </div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-          <button class="btn btn-secondary btn-sm" onclick="setSelectedHospital('H003', true)">View Hospital</button>
-          <a href="appointments.html" class="btn btn-primary btn-sm" onclick="setSelectedHospital('H003', false)">Book Appt</a>
-        </div>
-      </div>
-
-      <!-- Hospital 2: Shantideep (Featured Demo) -->
-      <div class="hospital-compare-card" style="border-top:4px solid var(--primary-green);">
-        <div>
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-            <div>
-              <span class="hospital-badge-wait">⚡ OPD Wait: ~28 min</span>
-              <h3 style="margin:6px 0 2px 0; font-size:1.25rem;">Shantideep Multispeciality</h3>
-              <div class="text-xs text-muted">Shivajinagar • 2.4 km away • ★★★★★ 4.7</div>
-            </div>
-            <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Open 24×7</span>
-          </div>
-
-          <div style="background:var(--bg-cream); padding:10px 12px; border-radius:var(--radius-sm); font-size:0.85rem; margin-bottom:12px;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-              <span class="text-muted">Cardiology OPD Wait:</span>
-              <strong>~28 min (A-109 serving)</strong>
-            </div>
-            <div style="display:flex; justify-content:space-between;">
-              <span class="text-muted">Next Available Slot:</span>
-              <strong style="color:var(--primary-green);">10:30 AM Today</strong>
-            </div>
-          </div>
-
-          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
-            Specialities: Cardiology • Orthopaedics • General Medicine • Paediatrics
-          </div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-          <button class="btn btn-secondary btn-sm" onclick="setSelectedHospital('H001', true)">View Hospital</button>
-          <a href="appointments.html" class="btn btn-primary btn-sm" onclick="setSelectedHospital('H001', false)">Book Appt</a>
-        </div>
-      </div>
-
-      <!-- Hospital 3: Aarogya Care -->
-      <div class="hospital-compare-card" style="border-top:4px solid var(--secondary-sage);">
-        <div>
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-            <div>
-              <span class="hospital-badge-wait">⚡ OPD Wait: ~41 min</span>
-              <h3 style="margin:6px 0 2px 0; font-size:1.25rem;">Aarogya Care Hospital</h3>
-              <div class="text-xs text-muted">Kothrud • 3.1 km away • ★★★★★ 4.5</div>
-            </div>
-            <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Open 24×7</span>
-          </div>
-
-          <div style="background:var(--bg-cream); padding:10px 12px; border-radius:var(--radius-sm); font-size:0.85rem; margin-bottom:12px;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-              <span class="text-muted">Cardiology OPD Wait:</span>
-              <strong>~41 min</strong>
-            </div>
-            <div style="display:flex; justify-content:space-between;">
-              <span class="text-muted">Next Available Slot:</span>
-              <strong style="color:var(--primary-green);">11:00 AM Today</strong>
-            </div>
-          </div>
-
-          <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px;">
-            Specialities: Cardiology • Neurology • General Medicine • ENT
-          </div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-          <button class="btn btn-secondary btn-sm" onclick="setSelectedHospital('H002', true)">View Hospital</button>
-          <a href="appointments.html" class="btn btn-primary btn-sm" onclick="setSelectedHospital('H002', false)">Book Appt</a>
-        </div>
-      </div>
-
+    <!-- Live Dynamic Hospital Cards Container -->
+    <div id="home-hospitals-container" style="display:flex; flex-direction:column; gap:16px;">
+      <!-- Populated dynamically by app.js renderHospitals() on page load and live search -->
     </div>
   </section>
 
@@ -284,9 +180,9 @@
   <section style="background:var(--bg-paper); border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle); padding:52px 0;">
     <div class="container">
       <div style="text-align:center; max-width:760px; margin:0 auto 36px;">
-        <span class="section-label">End-To-End Digital Healthcare Journey</span>
-        <h2 style="margin:0 0 6px 0;">How GWS Connects You to Hospital Care</h2>
-        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+        <span class="section-label" data-i18n="home.howItWorksLabel">End-To-End Digital Healthcare Journey</span>
+        <h2 style="margin:0 0 6px 0;" data-i18n="home.howItWorksTitle">How GWS Connects You to Hospital Care</h2>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;" data-i18n="home.howItWorksSub">
           From the moment you realize you need a doctor to your consultation, laboratory reports, and family updates.
         </p>
       </div>
@@ -295,32 +191,32 @@
         
         <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
           <div style="font-family:var(--font-mono); font-size:1.5rem; font-weight:700; color:var(--accent-terracotta); margin-bottom:8px;">01</div>
-          <h4 style="margin:0 0 6px 0;">Search Nearby Care</h4>
-          <p class="text-xs text-muted" style="margin:0;">
+          <h4 style="margin:0 0 6px 0;" data-i18n="home.step1Title">Search Nearby Care</h4>
+          <p class="text-xs text-muted" style="margin:0;" data-i18n="home.step1Desc">
             Search by symptom, doctor specialization, department, or hospital name across your city.
           </p>
         </div>
 
         <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
           <div style="font-family:var(--font-mono); font-size:1.5rem; font-weight:700; color:var(--primary-green); margin-bottom:8px;">02</div>
-          <h4 style="margin:0 0 6px 0;">Compare Availability</h4>
-          <p class="text-xs text-muted" style="margin:0;">
+          <h4 style="margin:0 0 6px 0;" data-i18n="home.step2Title">Compare Availability</h4>
+          <p class="text-xs text-muted" style="margin:0;" data-i18n="home.step2Desc">
             Compare live OPD queue waiting times, earliest appointment slots, and travel distances side-by-side.
           </p>
         </div>
 
         <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
           <div style="font-family:var(--font-mono); font-size:1.5rem; font-weight:700; color:var(--secondary-sage-dark); margin-bottom:8px;">03</div>
-          <h4 style="margin:0 0 6px 0;">Book & Get Token</h4>
-          <p class="text-xs text-muted" style="margin:0;">
+          <h4 style="margin:0 0 6px 0;" data-i18n="home.step3Title">Book & Get Token</h4>
+          <p class="text-xs text-muted" style="margin:0;" data-i18n="home.step3Desc">
             Confirm your slot, receive a digital token, and print department-specific visit checklists.
           </p>
         </div>
 
         <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:20px;">
           <div style="font-family:var(--font-mono); font-size:1.5rem; font-weight:700; color:var(--text-main); margin-bottom:8px;">04</div>
-          <h4 style="margin:0 0 6px 0;">Stay Connected</h4>
-          <p class="text-xs text-muted" style="margin:0;">
+          <h4 style="margin:0 0 6px 0;" data-i18n="home.step4Title">Stay Connected</h4>
+          <p class="text-xs text-muted" style="margin:0;" data-i18n="home.step4Desc">
             Track your queue in real time, view floor maps, access lab reports, and keep family informed during ICU care.
           </p>
         </div>
@@ -334,19 +230,19 @@
     <div style="background:var(--bg-cream); border:1px solid var(--border-medium); border-radius:var(--radius-md); padding:28px 32px; display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:24px; text-align:center;">
       <div>
         <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--primary-green); line-height:1;">6</div>
-        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;">Connected Hospitals</div>
+        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;" data-i18n="home.statsHospitals">Connected Hospitals</div>
       </div>
       <div>
         <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--primary-green); line-height:1;">84</div>
-        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;">Active Specialists</div>
+        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;" data-i18n="home.statsDoctors">Active Specialists</div>
       </div>
       <div>
         <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--primary-green); line-height:1;">28</div>
-        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;">Clinical Departments</div>
+        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;" data-i18n="home.statsDepts">Clinical Departments</div>
       </div>
       <div>
         <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--primary-green); line-height:1;">312</div>
-        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;">Appointments Today</div>
+        <div class="text-xs text-muted" style="font-weight:600; text-transform:uppercase; margin-top:4px;" data-i18n="home.statsAppts">Appointments Today</div>
       </div>
       <div>
         <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--accent-terracotta); line-height:1;">1,420</div>
@@ -485,6 +381,7 @@
         <div class="footer-col">
           <h4 class="footer-heading">For Hospitals</h4>
           <ul class="footer-links">
+            <li><a href="hospital-register.html">Register Hospital (SaaS)</a></li>
             <li><a href="business.html">GWS Platform Architecture</a></li>
             <li><a href="business.html#pricing">Hospital SaaS Pricing</a></li>
             <li><a href="hospital.html">Hospital Administrator Desk</a></li>
@@ -519,16 +416,9 @@
   </footer>
 
   <script>
-    function handleHomeSearch(e) {
-      if (e) e.preventDefault();
-      const q = document.getElementById('home-search-query').value.trim();
-      const city = document.getElementById('home-city-select').value;
-      window.location.href = `hospitals.html?q=${encodeURIComponent(q)}&city=${encodeURIComponent(city)}`;
-    }
-
-    function quickFilterNeeds(category) {
-      window.location.href = `hospitals.html?q=${encodeURIComponent(category)}`;
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      initializeHospitalDirectory();
+    });
   </script>
 
 </body>

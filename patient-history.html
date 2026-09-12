@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Medical History & Clinical Timeline | GWS</title>
+  <meta name="description" content="Comprehensive patient medical history, consultation notes, laboratory diagnostics, and clinical timeline on GWS.">
+  <link rel="icon" type="image/svg+xml" href="GWS_true_vector.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body style="background-color: var(--bg-cream);" data-require-role="doctor">
+
+  <!-- Staff Portal Top Header -->
+  <header style="background-color: var(--primary-green); color: #ffffff; padding: 14px 0; border-bottom: 3px solid var(--primary-green-dark);">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="hospital-emblem" style="background:#FCFBF9; width:36px; height:36px; padding:2px; overflow:hidden;">
+          <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
+        </div>
+        <div>
+          <h2 style="color:#ffffff; margin:0; font-size:1.2rem; font-family:var(--font-sans); font-weight:700;">
+            Shantideep Multispeciality Hospital • Clinical Records
+          </h2>
+          <div class="text-xs" style="color:#A7D0B4;">Dr. Arjun Mehta (Cardiology) • Patient Longitudinal Record</div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker" style="background:rgba(255,255,255,0.15); padding:2px 6px; border-radius:4px;">
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')" style="color:#fff;">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')" style="color:#fff;">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')" style="color:#fff;">मराठी</button>
+        </div>
+        <a href="patients.html" class="btn btn-secondary btn-sm" style="color:var(--text-main); background:#ffffff;" data-i18n="nav.assignedPatients">
+          ← Patients Register
+        </a>
+        <a href="doctor.html" class="btn btn-secondary btn-sm" style="color:var(--text-main); background:#ffffff;" data-i18n="nav.liveQueue">
+          OPD Desk
+        </a>
+        <button onclick="handleLogout()" style="color:#ffffff; font-size:0.85rem; text-decoration:underline; background:none; border:none; cursor:pointer;" data-i18n="global.signOut">
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 32px 20px 60px;">
+
+    <!-- Patient Profile Header Card -->
+    <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:24px; margin-bottom:24px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+        <div>
+          <span class="utility-badge" style="background:var(--bg-cream); font-size:0.75rem; margin-bottom:6px; display:inline-block;">
+            ABHA VERIFIED PATIENT RECORD
+          </span>
+          <h1 class="font-serif" style="margin:0 0 4px 0; font-size:1.85rem;" id="hist-patient-name">Rahul Sharma</h1>
+          <div class="text-sm text-muted" id="hist-patient-details">
+            42 Yrs • Male • Phone: +91 98765 43210 • Email: patient@demo.com
+          </div>
+          <div class="text-xs text-muted" style="margin-top:4px;" id="hist-patient-id">
+            Patient ID: <strong>GWS-1024</strong> • National ABHA: <strong>91-4829-1029-4401</strong>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:10px;">
+          <div style="display:flex; gap:8px;">
+            <button type="button" class="btn btn-primary btn-sm" onclick="openAddNoteModal()">
+              + Add Consultation Note
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="openAddUpdateModal()">
+              + Share Patient Update
+            </button>
+          </div>
+          <div style="font-size:0.8rem; color:var(--text-muted);">
+            Blood Group: <strong style="color:var(--accent-terracotta);" id="hist-blood-group">B+ Positive</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Vitals Bar -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:14px; margin-top:20px; padding-top:18px; border-top:1px solid var(--border-subtle);">
+        <div style="background:var(--bg-cream); padding:10px 14px; border-radius:var(--radius-sm);">
+          <div class="text-xs text-muted">Latest Blood Pressure</div>
+          <strong style="font-family:var(--font-mono); font-size:1.1rem; color:var(--primary-green);">124/82 mmHg</strong>
+        </div>
+        <div style="background:var(--bg-cream); padding:10px 14px; border-radius:var(--radius-sm);">
+          <div class="text-xs text-muted">Pulse Rate / SpO2</div>
+          <strong style="font-family:var(--font-mono); font-size:1.1rem; color:var(--primary-green);">72 bpm • 98%</strong>
+        </div>
+        <div style="background:var(--bg-cream); padding:10px 14px; border-radius:var(--radius-sm);">
+          <div class="text-xs text-muted">Glycated HbA1c</div>
+          <strong style="font-family:var(--font-mono); font-size:1.1rem; color:var(--accent-success);">5.9% (Normal)</strong>
+        </div>
+        <div style="background:var(--bg-cream); padding:10px 14px; border-radius:var(--radius-sm);">
+          <div class="text-xs text-muted" data-i18n="hospitalDetails.medicineRemindersTitle">Active Prescriptions</div>
+          <strong style="font-family:var(--font-mono); font-size:1.1rem;">3 Daily Medicines</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 Column Clinical Records Layout -->
+    <div style="display:grid; grid-template-columns: 1fr 380px; gap: 24px;">
+      
+      <!-- Left Column: Medical History Timeline -->
+      <section style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+          <div>
+            <h3 style="margin:0 0 2px 0;">Consultation & Clinical Notes Timeline</h3>
+            <p class="text-xs text-muted" style="margin:0;">Chronological history of OPD consultations, diagnoses, and specialist findings.</p>
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="openAddNoteModal()">+ New Note</button>
+        </div>
+
+        <div class="history-timeline" id="patient-history-timeline">
+          <!-- Populated dynamically by app.js renderPatientHistoryPage() -->
+        </div>
+      </section>
+
+      <!-- Right Column: Associated Lab Reports & Appointments -->
+      <aside style="display:flex; flex-direction:column; gap:24px;">
+        
+        <!-- Diagnostic Lab Reports -->
+        <section style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <h4 style="margin:0; font-size:1.05rem;" data-i18n="reports.title">Ordered Diagnostic Reports</h4>
+            <a href="reports.html" class="text-xs" style="color:var(--primary-green); font-weight:600;" data-i18n="reports.viewReport">View All →</a>
+          </div>
+
+          <div id="patient-associated-reports">
+            <!-- Populated dynamically by app.js renderPatientHistoryPage() -->
+          </div>
+        </section>
+
+        <!-- Active Prescriptions Quick View -->
+        <section style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:20px;">
+          <h4 style="margin:0 0 12px 0; font-size:1.05rem;" data-i18n="medicines.prescriptionSchedule">Active Medications</h4>
+          <div style="font-size:0.85rem; display:flex; flex-direction:column; gap:10px;">
+            <div style="background:var(--bg-cream); padding:10px 12px; border-radius:var(--radius-sm);">
+              <strong>Metformin 500mg</strong> (1 Tablet)
+              <div class="text-xs text-muted">Morning after breakfast • Dr. Rohan Patel</div>
+            </div>
+            <div style="background:var(--bg-cream); padding:10px 12px; border-radius:var(--radius-sm);">
+              <strong>Atorvastatin 20mg</strong> (1 Tablet)
+              <div class="text-xs text-muted">Post dinner at night • Dr. Arjun Mehta</div>
+            </div>
+            <div style="background:var(--bg-cream); padding:10px 12px; border-radius:var(--radius-sm);">
+              <strong>Pantoprazole 40mg</strong> (1 Capsule)
+              <div class="text-xs text-muted">30 mins before breakfast • Dr. Rohan Patel</div>
+            </div>
+          </div>
+        </section>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- Add Consultation Note Modal -->
+  <div class="modal-overlay" id="add-consultation-modal">
+    <div class="modal-dialog" style="max-width:560px;">
+      <div class="modal-header">
+        <h3 style="margin:0; font-size:1.15rem;">Record Clinical Consultation Note</h3>
+        <button class="modal-close-btn" onclick="closeAddNoteModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="saveConsultationNoteFromForm(event)">
+          <div class="form-group">
+            <label class="form-label" for="note-dept">Consulting Department:</label>
+            <select id="note-dept" class="form-input" required>
+              <option value="Cardiology">Cardiology</option>
+              <option value="Orthopaedics">Orthopaedics</option>
+              <option value="General Medicine">General Medicine</option>
+              <option value="Paediatrics">Paediatrics</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="note-complaint">Chief Clinical Complaint:</label>
+            <input type="text" id="note-complaint" class="form-input" placeholder="e.g. Follow-up for chest heaviness, normal ECG" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="note-notes">Clinical Assessment & Prescription Notes:</label>
+            <textarea id="note-notes" class="form-input" rows="4" placeholder="Detailed clinical evaluation, diagnostic review, medication adjustments, and follow-up guidance..." required></textarea>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+            <button type="button" class="btn btn-secondary" onclick="closeAddNoteModal()" data-i18n="medicines.cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save to Patient Timeline</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Patient Update Modal -->
+  <div class="modal-overlay" id="add-update-modal">
+    <div class="modal-dialog" style="max-width:500px;">
+      <div class="modal-header">
+        <h3 style="margin:0; font-size:1.15rem;">Share Patient Status Update</h3>
+        <button class="modal-close-btn" onclick="closeAddUpdateModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="savePatientUpdateFromForm(event)">
+          <p class="text-xs text-muted" style="margin-top:0;">
+            This status message will be published to the patient companion portal and authorized family members (ICU / Inpatient tracker).
+          </p>
+          <div class="form-group">
+            <label class="form-label" for="update-text">Clinical Update Message:</label>
+            <textarea id="update-text" class="form-input" rows="3" placeholder="e.g. Patient consultation concluded. Vitals stable. Advised 2-week follow-up after blood tests." required></textarea>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+            <button type="button" class="btn btn-secondary" onclick="closeAddUpdateModal()" data-i18n="medicines.cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary">Broadcast Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diagnostic Report Sheet Modal -->
+  <div class="modal-overlay" id="report-viewer-modal">
+    <div class="modal-dialog" style="max-width:760px;">
+      <div class="modal-body" id="report-viewer-content" style="padding:0;">
+        <!-- Dynamically rendered by app.js openReportViewer() -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="hospital-footer">
+    <div class="container">
+      <div class="footer-bottom-bar" style="border:none; padding:0;">
+        <div data-i18n="footer.copyright">© 2026 GWS Platform • Healthcare, connected. All rights reserved.</div>
+        <div class="demo-prototype-badge">Doctor Authenticated • ABHA Integrated Demo</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPatientHistoryPage();
+    });
+  </script>
+
+</body>
+</html>

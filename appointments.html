@@ -15,24 +15,24 @@
   <div class="top-utility-bar">
     <div class="container top-utility-inner">
       <div class="top-utility-left">
-        <span class="utility-item emergency-phone">
-          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a>
+        <span class="utility-item emergency-phone" data-i18n="global.emergencyPhone">
+          24×7 Emergency: +91 (020) 2600 2400 / 108
         </span>
         <span class="utility-divider"></span>
-        <span class="utility-badge">OPD CONSULTATION BOOKING</span>
+        <span class="utility-badge" data-i18n="appointments.opdTimings">OPD CONSULTATION BOOKING</span>
       </div>
       <div class="top-utility-right">
         <!-- Global Language Selector -->
         <div class="global-lang-picker">
-          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;" data-i18n="global.langLabel">Lang:</span>
           <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
           <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
           <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
         </div>
         <span class="utility-divider"></span>
-        <a href="index.html" class="utility-link">Home</a>
+        <a href="index.html" class="utility-link" data-i18n="nav.home">Home</a>
         <span class="utility-divider"></span>
-        <a href="patient.html" class="utility-link">Patient Dashboard</a>
+        <a href="patient.html" class="utility-link" data-i18n="global.myDashboard">Patient Dashboard</a>
       </div>
     </div>
   </div>
@@ -45,22 +45,23 @@
           <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div class="brand-text">
-          <span class="brand-title">GWS</span>
-          <span class="brand-subtitle">Doctor Availability & Appointments</span>
+          <span class="brand-title" data-i18n="global.appName">GWS</span>
+          <span class="brand-subtitle" data-i18n="appointments.title">Doctor Availability & Appointments</span>
         </div>
       </a>
 
       <nav class="main-nav" id="main-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="hospitals.html" class="nav-link">Find Hospitals</a>
-        <a href="appointments.html" class="nav-link active">Appointments</a>
-        <a href="patient.html" class="nav-link">Live Queue</a>
-        <a href="reports.html" class="nav-link">Lab Reports</a>
-        <a href="icu.html" class="nav-link">Family Care</a>
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="hospitals.html" class="nav-link" data-i18n="nav.hospitals">Find Hospitals</a>
+        <a href="doctors.html" class="nav-link" data-i18n="nav.doctors">Doctors</a>
+        <a href="appointments.html" class="nav-link active" data-i18n="nav.appointments">Appointments</a>
+        <a href="patient.html" class="nav-link" data-i18n="nav.liveQueue">Live Queue</a>
+        <a href="reports.html" class="nav-link" data-i18n="nav.reports">Lab Reports</a>
+        <a href="icu.html" class="nav-link" data-i18n="nav.familyCare">Family Care</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="emergency.html" class="btn-emergency-nav">24×7 Emergency</a>
+        <a href="emergency.html" class="btn-emergency-nav" data-i18n="nav.emergency">24×7 Emergency</a>
         <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
       </div>
     </div>
@@ -70,14 +71,14 @@
     
     <div class="section-title-wrap">
       <div>
-        <span class="section-label">Confirmed OPD Slots</span>
-        <h1 style="margin:0 0 4px 0;">Book Doctor Consultation</h1>
-        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+        <span class="section-label" data-i18n="appointments.tokenGenerated">Confirmed OPD Slots</span>
+        <h1 style="margin:0 0 4px 0;" data-i18n="appointments.title">Book Doctor Consultation</h1>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;" data-i18n="appointments.subtitle">
           Select a hospital, specialist doctor, preferred date and time slot for a confirmed OPD consultation.
         </p>
       </div>
       <div>
-        <span class="utility-badge" style="font-size:0.8rem;">OPD TIMINGS: 08:30 AM – 02:00 PM</span>
+        <span class="utility-badge" style="font-size:0.8rem;" data-i18n="appointments.opdTimings">OPD TIMINGS: 08:30 AM – 02:00 PM</span>
       </div>
     </div>
 
@@ -89,7 +90,7 @@
       
       <!-- Step 1: Select Hospital -->
       <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:24px; margin-bottom:24px;">
-        <h3 style="margin:0 0 14px 0; font-size:1.15rem;">Step 1: Select Hospital</h3>
+        <h3 style="margin:0 0 14px 0; font-size:1.15rem;" data-i18n="appointments.step1">Step 1: Select Hospital</h3>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;" id="hospital-selector-cards">
           <!-- Populated dynamically -->
         </div>
@@ -97,7 +98,7 @@
 
       <!-- Step 2: Choose Specialist & Department -->
       <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:24px; margin-bottom:24px;">
-        <h3 style="margin:0 0 14px 0; font-size:1.15rem;">Step 2: Choose Specialist Consultant</h3>
+        <h3 style="margin:0 0 14px 0; font-size:1.15rem;" data-i18n="appointments.step2">Step 2: Choose Specialist Consultant</h3>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px;" id="doctor-selector-cards">
           <!-- Populated dynamically -->
         </div>
@@ -105,12 +106,12 @@
 
       <!-- Step 3: Select Date & Time Slot -->
       <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:24px; margin-bottom:24px;">
-        <h3 style="margin:0 0 14px 0; font-size:1.15rem;">Step 3: Choose Date & Consultation Slot</h3>
+        <h3 style="margin:0 0 14px 0; font-size:1.15rem;" data-i18n="appointments.step3">Step 3: Choose Date & Consultation Slot</h3>
         
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
           <!-- Dates -->
           <div>
-            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase; margin-bottom:8px;">Available Dates (September 2026)</div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase; margin-bottom:8px;" data-i18n="appointments.availableDates">Available Dates (September 2026)</div>
             <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;">
               <button type="button" class="btn btn-secondary btn-sm date-btn active" onclick="selectDate(this, '18 Sep 2026')">18 Sep (Today)</button>
               <button type="button" class="btn btn-secondary btn-sm date-btn" onclick="selectDate(this, '19 Sep 2026')">19 Sep (Sat)</button>
@@ -120,7 +121,7 @@
 
           <!-- Time Slots -->
           <div>
-            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase; margin-bottom:8px;">Available Morning Slots</div>
+            <div class="text-xs text-muted" style="font-weight:700; text-transform:uppercase; margin-bottom:8px;" data-i18n="appointments.availableSlots">Available Morning Slots</div>
             <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px;">
               <button type="button" class="btn btn-secondary btn-sm slot-btn active" onclick="selectSlot(this, '10:30 AM')">10:30 AM</button>
               <button type="button" class="btn btn-secondary btn-sm slot-btn" onclick="selectSlot(this, '11:00 AM')">11:00 AM</button>
@@ -135,25 +136,25 @@
 
       <!-- Step 4: Patient Details & Confirm -->
       <div style="background:var(--bg-paper); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:24px; margin-bottom:24px;">
-        <h3 style="margin:0 0 14px 0; font-size:1.15rem;">Step 4: Patient Details & Confirmation</h3>
+        <h3 style="margin:0 0 14px 0; font-size:1.15rem;" data-i18n="appointments.step4">Step 4: Patient Details & Confirmation</h3>
         
         <form onsubmit="handleAppointmentSubmit(event)">
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
             <div>
-              <label class="form-label">Full Patient Name *</label>
-              <input type="text" id="appt-patient-name" class="form-input" value="Rahul Sharma" required>
+              <label class="form-label" data-i18n="appointments.fullName">Full Patient Name *</label>
+              <input type="text" id="appt-patient-name" class="form-input" value="Rahul Sharma" required data-i18n-placeholder="appointments.fullName">
             </div>
             <div>
-              <label class="form-label">Mobile Number *</label>
-              <input type="tel" id="appt-patient-phone" class="form-input" value="+91 98765 43210" required>
+              <label class="form-label" data-i18n="appointments.phone">Mobile Number *</label>
+              <input type="tel" id="appt-patient-phone" class="form-input" value="+91 98765 43210" required data-i18n-placeholder="appointments.phone">
             </div>
           </div>
 
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-top:1px solid var(--border-subtle); padding-top:16px;">
-            <div class="text-xs text-muted">
+            <div class="text-xs text-muted" data-i18n="appointments.zeroCharges">
               Zero booking charges. Consultation fee is payable directly at the hospital cash counter.
             </div>
-            <button type="submit" class="btn btn-primary btn-lg" style="padding:12px 28px; font-weight:700;">
+            <button type="submit" class="btn btn-primary btn-lg" style="padding:12px 28px; font-weight:700;" data-i18n="appointments.confirmBtn">
               CONFIRM APPOINTMENT & GENERATE TOKEN
             </button>
           </div>
@@ -167,8 +168,8 @@
   <footer class="hospital-footer">
     <div class="container">
       <div class="footer-bottom-bar" style="border:none; padding:0;">
-        <div>GWS Multi-Hospital Connected Platform • Appointment Scheduling Desk</div>
-        <div class="demo-prototype-badge">Instant Token Slip Generator</div>
+        <div data-i18n="global.copyright">© 2026 GWS Multi-Hospital Connected Platform • Healthcare, connected.</div>
+        <div class="demo-prototype-badge" data-i18n="global.prototypeBadge">Instant Token Slip Generator</div>
       </div>
     </div>
   </footer>
@@ -181,7 +182,17 @@
 
     function initBookingPage() {
       const state = getAppState();
-      selectedHospitalId = state.selectedHospitalId || "H001";
+      const urlParams = new URLSearchParams(window.location.search);
+      selectedHospitalId = urlParams.get('hospital') || state.selectedHospitalId || "H001";
+      
+      const docParam = urlParams.get('doctor');
+      if (docParam) {
+        const foundDoc = (state.doctors || []).find(d => d.doctorId === docParam);
+        if (foundDoc) {
+          selectedHospitalId = foundDoc.hospitalId;
+          selectedDeptKey = foundDoc.department.toLowerCase().replace(/[^a-z]/g, '');
+        }
+      }
 
       renderHospitalOptions();
       renderDoctorOptions();
@@ -199,15 +210,19 @@
         card.style.cssText = `border:2px solid ${isSelected ? 'var(--primary-green)' : 'var(--border-subtle)'}; background:${isSelected ? 'var(--primary-green-light)' : 'var(--bg-cream)'}; border-radius:var(--radius-sm); padding:14px; cursor:pointer;`;
         card.onclick = () => {
           selectedHospitalId = h.id;
-          const firstDept = Object.keys(h.departments)[0];
-          selectedDeptKey = firstDept;
+          selectedDeptKey = 'cardiology';
           renderHospitalOptions();
           renderDoctorOptions();
         };
 
+        const dist = h.distanceKm || calculateDistance(18.5204, 73.8567, h.lat, h.lng);
+        const wait = h.currentOpdWaitMin || 25;
+        const kmText = t('hospitals.kmAway', { distance: dist });
+        const waitText = t('hospitals.currentWait', { time: wait });
+
         card.innerHTML = `
           <div style="font-weight:700; font-size:0.95rem; color:${isSelected ? 'var(--primary-green)' : 'var(--text-main)'};">${h.name}</div>
-          <div class="text-xs text-muted">${h.area} • ${h.distance} km • ~${h.avgWaitMin}m wait</div>
+          <div class="text-xs text-muted">${h.location || h.city} • ${kmText} • ${waitText}</div>
         `;
         container.appendChild(card);
       });
@@ -215,27 +230,33 @@
 
     function renderDoctorOptions() {
       const state = getAppState();
-      const hospital = state.hospitals.find(h => h.id === selectedHospitalId) || state.hospitals[0];
       const container = document.getElementById('doctor-selector-cards');
       if (!container) return;
 
       container.innerHTML = '';
-      Object.keys(hospital.departments).forEach(key => {
-        const d = hospital.departments[key];
-        const isSelected = key === selectedDeptKey;
+      
+      let docsForHospital = (state.doctors || []).filter(d => d.hospitalId === selectedHospitalId);
+      if (docsForHospital.length === 0) {
+        docsForHospital = state.doctors || [];
+      }
+
+      docsForHospital.forEach((doc, idx) => {
+        const deptKey = doc.department.toLowerCase().replace(/[^a-z]/g, '');
+        const isSelected = (deptKey === selectedDeptKey) || (idx === 0 && !selectedDeptKey);
 
         const card = document.createElement('div');
         card.style.cssText = `border:2px solid ${isSelected ? 'var(--accent-terracotta)' : 'var(--border-subtle)'}; background:${isSelected ? 'var(--accent-terracotta-light)' : 'var(--bg-cream)'}; border-radius:var(--radius-sm); padding:14px; cursor:pointer;`;
         card.onclick = () => {
-          selectedDeptKey = key;
+          selectedDeptKey = deptKey;
           renderDoctorOptions();
         };
 
+        const feeText = t('doctors.fee');
         card.innerHTML = `
-          <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--text-muted);">${d.name}</div>
-          <div style="font-weight:700; font-size:1.05rem; margin:2px 0;">${d.doctor}</div>
-          <div class="text-xs text-muted">${d.qualifications}</div>
-          <div style="font-size:0.8rem; color:var(--primary-green); font-weight:600; margin-top:4px;">${d.room} • Fee: ${d.consultationFee || '₹700'}</div>
+          <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--text-muted);">${doc.department}</div>
+          <div style="font-weight:700; font-size:1.05rem; margin:2px 0;">${doc.name}</div>
+          <div class="text-xs text-muted">${doc.qualifications}</div>
+          <div style="font-size:0.8rem; color:var(--primary-green); font-weight:600; margin-top:4px;">${doc.room} • ${feeText} ${doc.consultationFee}</div>
         `;
         container.appendChild(card);
       });
@@ -267,11 +288,8 @@
         phone: phone
       });
 
-      // Render Confirmation Banner and "What Should I Bring?" Checklist
       const confBox = document.getElementById('appt-confirmation-box');
-      const flowContainer = document.getElementById('booking-flow-container');
-      
-      const checklist = DEPARTMENT_CHECKLISTS[selectedDeptKey] || DEPARTMENT_CHECKLISTS.default;
+      const checklist = (typeof DEPARTMENT_CHECKLISTS !== 'undefined' && DEPARTMENT_CHECKLISTS[selectedDeptKey]) ? DEPARTMENT_CHECKLISTS[selectedDeptKey] : { items: ['Photo Identity Card (Aadhaar / Voter ID)', 'Previous Medical History & Prescriptions', 'Active Medical Insurance Cards'] };
       const checklistItemsHtml = checklist.items.map(item => `
         <li style="margin-bottom:6px; display:flex; align-items:flex-start; gap:8px;">
           <span style="color:var(--primary-green); font-weight:700;">✓</span>
@@ -285,12 +303,12 @@
           <div style="background:var(--accent-success-light); border:2px solid var(--accent-success); border-radius:var(--radius-md); padding:28px; box-shadow:var(--shadow-medium);">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom:18px;">
               <div>
-                <span class="utility-badge" style="background:var(--accent-success); color:#fff;">CONFIRMED APPOINTMENT</span>
-                <h2 style="margin:6px 0 2px 0; color:var(--primary-green);">Appointment Booked Successfully!</h2>
+                <span class="utility-badge" style="background:var(--accent-success); color:#fff;">${t('appointments.tokenGenerated')}</span>
+                <h2 style="margin:6px 0 2px 0; color:var(--primary-green);">${t('appointments.tokenGenerated')}</h2>
                 <div class="text-xs text-muted">Booking Reference: <strong style="font-family:var(--font-mono); font-size:0.95rem;">${appt.id}</strong></div>
               </div>
               <div style="text-align:right;">
-                <div class="text-xs text-muted" style="font-weight:700;">YOUR ASSIGNED TOKEN</div>
+                <div class="text-xs text-muted" style="font-weight:700;">${t('patient.yourToken')}</div>
                 <div style="font-family:var(--font-mono); font-size:2.4rem; font-weight:700; color:var(--accent-terracotta); line-height:1;">${appt.token}</div>
               </div>
             </div>
@@ -302,13 +320,12 @@
               <div><span class="text-muted">Consultation Room:</span><br><strong>${appt.room}</strong></div>
             </div>
 
-            <!-- "What Should I Bring?" Checklist Box -->
             <div style="background:var(--bg-cream); border:1px solid var(--border-medium); border-radius:var(--radius-sm); padding:20px; margin-bottom:20px;">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                <h4 style="margin:0; font-size:1.05rem;">📋 Before Your Visit — Checklist for ${appt.department}</h4>
+                <h4 style="margin:0; font-size:1.05rem;">📋 ${t('appointments.printChecklist')} — ${appt.department}</h4>
                 <button type="button" class="btn btn-sm btn-secondary" onclick="window.print()">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px;"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-4 11H9v-5h6v5zm4-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-2-9H7v3h10V3z"/></svg>
-                  PRINT CHECKLIST
+                  ${t('appointments.printChecklist')}
                 </button>
               </div>
               <ul style="list-style:none; padding:0; margin:0; font-size:0.875rem; line-height:1.6;">
@@ -317,8 +334,8 @@
             </div>
 
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-              <a href="patient.html" class="btn btn-primary btn-lg">Go to Live Token Dashboard →</a>
-              <button class="btn btn-secondary btn-sm" onclick="window.location.reload()">Book Another Appointment</button>
+              <a href="patient.html" class="btn btn-primary btn-lg">${t('patient.liveQueueTitle')} →</a>
+              <button class="btn btn-secondary btn-sm" onclick="window.location.reload()">${t('appointments.title')}</button>
             </div>
           </div>
         `;

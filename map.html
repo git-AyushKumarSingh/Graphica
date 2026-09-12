@@ -16,23 +16,23 @@
     <div class="container top-utility-inner">
       <div class="top-utility-left">
         <span class="utility-item emergency-phone">
-          24×7 Emergency: <a href="tel:+912026002400">+91 (020) 2600 2400</a>
+          <span data-i18n="global.emergencyPhone">24×7 Emergency: +91 (020) 2600 2400 / 108</span>
         </span>
         <span class="utility-divider"></span>
-        <span class="utility-badge">CAMPUS INDOOR NAVIGATION</span>
+        <span class="utility-badge" data-i18n="map.indoorGuidance">CAMPUS INDOOR NAVIGATION</span>
       </div>
       <div class="top-utility-right">
         <!-- Global Language Selector -->
         <div class="global-lang-picker">
-          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;">Lang:</span>
+          <span style="font-size:0.75rem; color:var(--text-muted); margin-right:2px;" data-i18n="global.langLabel">Lang:</span>
           <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')">EN</button>
           <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')">हिन्दी</button>
           <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')">मराठी</button>
         </div>
         <span class="utility-divider"></span>
-        <a href="index.html" class="utility-link">Home</a>
+        <a href="index.html" class="utility-link" data-i18n="nav.home">Home</a>
         <span class="utility-divider"></span>
-        <a href="patient.html" class="utility-link">Live Queue</a>
+        <a href="patient.html" class="utility-link" data-i18n="nav.liveQueue">Live Queue</a>
       </div>
     </div>
   </div>
@@ -45,21 +45,21 @@
           <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
         </div>
         <div class="brand-text">
-          <span class="brand-title">GWS</span>
-          <span class="brand-subtitle">Hospital Floor Plan & Navigation</span>
+          <span class="brand-title" data-i18n="global.appName">GWS</span>
+          <span class="brand-subtitle" data-i18n="hospitalDetails.hospitalMapTitle">Hospital Floor Plan & Navigation</span>
         </div>
       </a>
 
       <nav class="main-nav" id="main-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="hospitals.html" class="nav-link">Find Hospitals</a>
-        <a href="appointments.html" class="nav-link">Appointments</a>
-        <a href="patient.html" class="nav-link">Live Queue</a>
-        <a href="map.html" class="nav-link active">Hospital Map</a>
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Home</a>
+        <a href="hospitals.html" class="nav-link" data-i18n="nav.hospitals">Find Hospitals</a>
+        <a href="appointments.html" class="nav-link" data-i18n="nav.appointments">Appointments</a>
+        <a href="patient.html" class="nav-link" data-i18n="nav.liveQueue">Live Queue</a>
+        <a href="map.html" class="nav-link active" data-i18n="nav.map">Hospital Map</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="emergency.html" class="btn-emergency-nav">24×7 Emergency</a>
+        <a href="emergency.html" class="btn-emergency-nav" data-i18n="nav.emergency">24×7 Emergency</a>
         <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Toggle navigation">☰</button>
       </div>
     </div>
@@ -69,26 +69,26 @@
     
     <div class="section-title-wrap">
       <div>
-        <span class="section-label">Indoor Hospital Guidance</span>
-        <h1 style="margin:0 0 4px 0;">Find Your Way Around the Hospital</h1>
-        <p class="text-muted" style="margin:0; font-size:0.95rem;">
+        <span class="section-label" data-i18n="map.indoorGuidance">Indoor Hospital Guidance</span>
+        <h1 style="margin:0 0 4px 0;" data-i18n="map.title">Find Your Way Around the Hospital</h1>
+        <p class="text-muted" style="margin:0; font-size:0.95rem;" data-i18n="map.subtitle">
           Select a floor and click any room or department below to view step-by-step walking directions.
         </p>
       </div>
       <div>
-        <span class="utility-badge" style="font-size:0.8rem;">CAMPUS HELP: GROUND FLOOR COUNTER 1</span>
+        <span class="utility-badge" style="font-size:0.8rem;" data-i18n="map.campusHelp">CAMPUS HELP: GROUND FLOOR COUNTER 1</span>
       </div>
     </div>
 
     <!-- Floor Selector Tabs -->
     <div class="map-floor-selector" style="display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap;">
-      <button type="button" class="btn btn-secondary btn-sm active map-floor-btn" data-floor="0" onclick="renderFloorPlan(0)">
+      <button type="button" class="btn btn-secondary btn-sm active map-floor-btn" data-floor="0" onclick="renderFloorPlan(0)" data-i18n="map.groundFloor">
         GROUND FLOOR (Reception, Emergency, Pharmacy, Diagnostics)
       </button>
-      <button type="button" class="btn btn-secondary btn-sm map-floor-btn" data-floor="1" onclick="renderFloorPlan(1)">
+      <button type="button" class="btn btn-secondary btn-sm map-floor-btn" data-floor="1" onclick="renderFloorPlan(1)" data-i18n="map.firstFloor">
         FIRST FLOOR (Cardiology, Orthopaedics, Medicine, Paediatrics)
       </button>
-      <button type="button" class="btn btn-secondary btn-sm map-floor-btn" data-floor="2" onclick="renderFloorPlan(2)">
+      <button type="button" class="btn btn-secondary btn-sm map-floor-btn" data-floor="2" onclick="renderFloorPlan(2)" data-i18n="map.secondFloor">
         SECOND FLOOR (ICU Critical Care, Operation Theatres, Inpatient Wards)
       </button>
     </div>
@@ -108,8 +108,8 @@
   <footer class="hospital-footer">
     <div class="container">
       <div class="footer-bottom-bar" style="border:none; padding:0;">
-        <div>GWS Multi-Hospital Navigation Layer • Healthcare, connected.</div>
-        <div class="demo-prototype-badge">Interactive Campus Floor Plan</div>
+        <div data-i18n="footer.copyright">© 2026 GWS Platform • Healthcare, connected. All rights reserved.</div>
+        <div class="demo-prototype-badge" data-i18n="global.prototypeBadge">College Hackathon Prototype</div>
       </div>
     </div>
   </footer>
@@ -149,6 +149,7 @@
 
       grid.innerHTML = '';
       const rooms = FLOOR_DATA[floorNum] || FLOOR_DATA[0];
+      const viewRouteText = getGlobalLanguage() === 'hi' ? 'कदम-दर-कदम पैदल मार्ग देखने के लिए क्लिक करें →' : (getGlobalLanguage() === 'mr' ? 'पायऱ्यांसह पायी जाणारा मार्ग पाहण्यासाठी क्लिक करा →' : 'Click to view step-by-step walking route →');
 
       rooms.forEach(r => {
         const card = document.createElement('div');
@@ -163,7 +164,7 @@
           </div>
           <div class="text-xs text-muted" style="margin-bottom:8px;">${r.desc}</div>
           <div style="font-size:0.775rem; color:var(--accent-terracotta); font-weight:600;">
-            Click to view step-by-step walking route →
+            ${viewRouteText}
           </div>
         `;
         grid.appendChild(card);
@@ -174,17 +175,21 @@
       const guidanceBox = document.getElementById('map-route-guidance');
       if (!guidanceBox) return;
 
+      const navToText = getGlobalLanguage() === 'hi' ? 'मार्गदर्शन' : (getGlobalLanguage() === 'mr' ? 'मार्गदर्शन' : 'NAVIGATING TO');
+      const routeText = getGlobalLanguage() === 'hi' ? 'मुख्य स्वागत कक्ष से पैदल मार्ग:' : (getGlobalLanguage() === 'mr' ? 'मुख्य स्वागत कक्षापासून पायी मार्ग:' : 'Walking Route from Main Reception:');
+      const closeText = getGlobalLanguage() === 'hi' ? '✕ बंद करें' : (getGlobalLanguage() === 'mr' ? '✕ बंद करा' : '✕ Close');
+
       guidanceBox.style.display = 'block';
       guidanceBox.innerHTML = `
         <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
           <div>
-            <span class="utility-badge" style="background:var(--primary-green); color:#fff;">NAVIGATING TO</span>
+            <span class="utility-badge" style="background:var(--primary-green); color:#fff;">${navToText}</span>
             <h3 style="margin:4px 0 0 0; color:var(--primary-green);">${roomObj.name} (${roomObj.room})</h3>
           </div>
-          <button class="btn btn-sm btn-secondary" onclick="this.parentElement.parentElement.style.display='none'">✕ Close</button>
+          <button class="btn btn-sm btn-secondary" onclick="this.parentElement.parentElement.style.display='none'">${closeText}</button>
         </div>
         <div style="background:var(--bg-cream); border:1px solid var(--border-subtle); border-radius:4px; padding:14px; margin-bottom:12px;">
-          <strong>Walking Route from Main Reception:</strong>
+          <strong>${routeText}</strong>
           <p style="margin:4px 0 0 0; font-size:0.9rem; color:var(--text-main);">${roomObj.directions}</p>
         </div>
         <div class="text-xs text-muted">

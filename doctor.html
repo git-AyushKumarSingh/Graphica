@@ -13,7 +13,7 @@
 
   <!-- Staff Portal Top Header -->
   <header style="background-color: var(--primary-green); color: #ffffff; padding: 14px 0; border-bottom: 3px solid var(--primary-green-dark);">
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
       <div style="display:flex; align-items:center; gap:12px;">
         <div class="hospital-emblem" style="background:#FCFBF9; width:36px; height:36px; padding:2px; overflow:hidden;">
           <img src="GWS_true_vector.svg" alt="GWS Logo" style="width:100%; height:100%; object-fit:contain; border-radius:3px;">
@@ -26,11 +26,23 @@
         </div>
       </div>
 
-      <div style="display:flex; align-items:center; gap:14px;">
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <!-- Global Language Selector -->
+        <div class="global-lang-picker" style="background:rgba(255,255,255,0.15); padding:2px 6px; border-radius:4px;">
+          <button type="button" class="lang-toggle-btn active" data-lang="en" onclick="setGlobalLanguage('en')" style="color:#fff;">EN</button>
+          <button type="button" class="lang-toggle-btn" data-lang="hi" onclick="setGlobalLanguage('hi')" style="color:#fff;">हिन्दी</button>
+          <button type="button" class="lang-toggle-btn" data-lang="mr" onclick="setGlobalLanguage('mr')" style="color:#fff;">मराठी</button>
+        </div>
+        <a href="patients.html" class="btn btn-secondary btn-sm" style="color:var(--text-main); background:#ffffff;" data-i18n="nav.assignedPatients">
+          📁 Assigned Patients
+        </a>
+        <a href="patient-history.html?id=GWS-1024" class="btn btn-secondary btn-sm" style="color:var(--text-main); background:#ffffff;" data-i18n="nav.patientHistory">
+          📋 Patient History (Rahul)
+        </a>
         <span class="utility-badge" style="background:rgba(255,255,255,0.15); color:#ffffff; border:1px solid rgba(255,255,255,0.3);">
           LIVE OPD SYNC ACTIVE ●
         </span>
-        <button onclick="handleLogout()" style="color:#ffffff; font-size:0.85rem; text-decoration:underline;">
+        <button onclick="handleLogout()" style="color:#ffffff; font-size:0.85rem; text-decoration:underline; background:none; border:none; cursor:pointer;" data-i18n="global.signOut">
           Sign Out
         </button>
       </div>
@@ -45,7 +57,7 @@
       <section style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:24px; display:flex; flex-direction:column; gap:20px;">
         
         <div style="border-bottom:1px solid var(--border-subtle); padding-bottom:16px;">
-          <div class="section-label">Active Clinical Session</div>
+          <div class="section-label" data-i18n="doctorDesk.activeClinicalSession">Active Clinical Session</div>
           <h3 class="font-serif" style="margin:0 0 2px 0;">Dr. Arjun Mehta</h3>
           <div class="text-xs text-muted">MBBS, MD, DM (Cardiology) • Senior Consultant</div>
           <div style="font-size:0.85rem; color:var(--primary-green); font-weight:700; margin-top:4px;">
@@ -55,7 +67,7 @@
 
         <!-- Current Active Token Call Box -->
         <div style="background:var(--bg-cream); border:2px solid var(--border-strong); border-radius:var(--radius-sm); padding:18px; text-align:center;">
-          <div class="section-label" style="color:var(--text-muted); font-size:0.7rem;">CURRENT CONSULTATION TOKEN</div>
+          <div class="section-label" style="color:var(--text-muted); font-size:0.7rem;" data-i18n="doctorDesk.currentConsultationToken">CURRENT CONSULTATION TOKEN</div>
           <div style="font-family:var(--font-mono); font-size:3.25rem; font-weight:700; color:var(--primary-green); line-height:1.1; margin-bottom:4px;" id="doc-serving-token">
             A-109
           </div>
@@ -65,21 +77,21 @@
 
         <!-- Primary Action: Call Next Patient -->
         <div>
-          <button type="button" class="btn btn-primary btn-block btn-lg" style="font-size:1.1rem; padding:16px; font-weight:700; text-transform:uppercase;" onclick="doctorCallNextPatient()">
+          <button type="button" class="btn btn-primary btn-block btn-lg" style="font-size:1.1rem; padding:16px; font-weight:700; text-transform:uppercase;" onclick="doctorCallNextPatient()" data-i18n="doctorDesk.callNextPatient">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:6px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
             CALL NEXT PATIENT
           </button>
-          <div style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:6px;">
+          <div style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:6px;" data-i18n="doctorDesk.advancesQueue">
             Advances queue and triggers chime across patient monitors
           </div>
         </div>
 
         <!-- Secondary Consultation Actions -->
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-          <button type="button" class="btn btn-secondary btn-sm" onclick="doctorRecallCurrent()">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="doctorRecallCurrent()" data-i18n="doctorDesk.repeatChime">
             Repeat Chime
           </button>
-          <button type="button" class="btn btn-secondary btn-sm" onclick="doctorAddWalkin()">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="doctorAddWalkin()" data-i18n="doctorDesk.addWalkin">
             + Add Walk-In
           </button>
         </div>
@@ -87,22 +99,22 @@
         <!-- Session Overview Stats -->
         <div style="background:var(--bg-offwhite); padding:14px; border:1px solid var(--border-subtle); border-radius:var(--radius-sm); font-size:0.825rem;">
           <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-            <span class="text-muted">Patients Waiting:</span>
+            <span class="text-muted" data-i18n="doctorDesk.patientsWaiting">Patients Waiting:</span>
             <strong>11</strong>
           </div>
           <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-            <span class="text-muted">Average Consultation:</span>
+            <span class="text-muted" data-i18n="doctorDesk.avgConsultation">Average Consultation:</span>
             <strong>4.0 min</strong>
           </div>
           <div style="display:flex; justify-content:space-between;">
-            <span class="text-muted">OPD Status:</span>
-            <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);">Active Session</span>
+            <span class="text-muted" data-i18n="doctorDesk.opdStatus">OPD Status:</span>
+            <span class="utility-badge" style="background:var(--accent-success-light); color:var(--accent-success);" data-i18n="doctorDesk.activeSession">Active Session</span>
           </div>
         </div>
 
         <!-- Multi-Tab Sync Note -->
         <div style="background:var(--bg-cream); border:1px dashed var(--border-medium); border-radius:4px; padding:12px; font-size:0.775rem; color:var(--text-muted);">
-          💡 <strong>Live Multi-Tab Demonstration:</strong> Open <code>patient.html</code> in another browser tab. Clicking <strong>CALL NEXT PATIENT</strong> will update the patient's token screen immediately without page refresh.
+          💡 <strong data-i18n="doctorDesk.liveMultiTabDemo">Live Multi-Tab Demonstration:</strong> <span data-i18n="doctorDesk.multiTabNote">Open patient.html in another browser tab. Clicking CALL NEXT PATIENT will update the patient's token screen immediately without page refresh.</span>
         </div>
 
       </section>
@@ -111,10 +123,10 @@
       <section style="background:var(--bg-paper); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:24px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
           <div>
-            <h3 style="margin:0 0 2px 0;">Today's OPD Queue Register</h3>
-            <p class="text-xs text-muted" style="margin:0;">Cardiology Consultation Session • Morning 08:30 AM – 02:00 PM</p>
+            <h3 style="margin:0 0 2px 0;" data-i18n="doctorDesk.todayQueueRegister">Today's OPD Queue Register</h3>
+            <p class="text-xs text-muted" style="margin:0;" data-i18n="doctorDesk.sessionHours">Cardiology Consultation Session • Morning 08:30 AM – 02:00 PM</p>
           </div>
-          <span class="utility-badge">AUTO-SYNC ENABLED</span>
+          <span class="utility-badge" data-i18n="doctorDesk.autoSyncEnabled">AUTO-SYNC ENABLED</span>
         </div>
 
         <div style="overflow-x:auto;">
@@ -141,8 +153,8 @@
   <footer class="hospital-footer">
     <div class="container">
       <div class="footer-bottom-bar" style="border:none; padding:0;">
-        <div>GWS Doctor Clinical Console • Internal Healthcare Operations</div>
-        <div class="demo-prototype-badge">Role Protected • Doctor Authenticated</div>
+        <div data-i18n="footer.copyright">© 2026 GWS Platform • Healthcare, connected. All rights reserved.</div>
+        <div class="demo-prototype-badge" data-i18n="global.prototypeBadge">Role Protected • Doctor Authenticated</div>
       </div>
     </div>
   </footer>
